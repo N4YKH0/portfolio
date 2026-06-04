@@ -312,7 +312,7 @@
             <span class="tag tg-design">Diseño Interactivo</span>
             <span class="tag tg-design">UX Design</span>
             <span class="tag tg-design">Figma</span>
-            <span class="tag tg-design">Prototipado</span>
+            <span class="tag tg-design">Identidad Visual</span>
           </div>
         </div>
 
@@ -330,9 +330,9 @@
           <p class="tg-label">VISUAL</p>
           <div class="tg-tags">
             <span class="tag tg-visual">Concept Art</span>
-            <span class="tag tg-visual">Blender / 3D</span>
-            <span class="tag tg-visual">Animación Cut-out</span>
-            <span class="tag tg-visual">Motion Graphics</span>
+            <span class="tag tg-visual">Ilustración Digital</span>
+            <span class="tag tg-visual">Adobe Illustrator</span>
+            <span class="tag tg-visual">Adobe Photoshop</span>
           </div>
         </div>
 
@@ -462,6 +462,33 @@
 
 
 <!-- ══════════════════════════════════════════════════════════
+     GALLERY LIGHTBOX
+════════════════════════════════════════════════════════════ -->
+<div class="gallery-overlay" id="gallery" role="dialog" aria-modal="true" aria-label="Galería de arte">
+
+  <div class="gal-topbar">
+    <button class="gal-close-btn" onclick="closeGallery()">✕ &nbsp;CERRAR</button>
+  </div>
+
+  <div class="gal-inner">
+    <div class="gal-img-wrap">
+      <button class="gal-nav gal-nav--prev gal-hidden" id="gal-prev" onclick="galleryNav(-1)" aria-label="Anterior">←</button>
+      <img src="" alt="" id="gal-img" class="gal-img">
+      <button class="gal-nav gal-nav--next gal-hidden" id="gal-next" onclick="galleryNav(1)" aria-label="Siguiente">→</button>
+    </div>
+
+    <div class="gal-info">
+      <div class="gal-dots" id="gal-dots"></div>
+      <p class="gal-medium" id="gal-medium"></p>
+      <h2 class="gal-title" id="gal-title"></h2>
+      <p class="gal-desc" id="gal-desc"></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
      WHATSAPP FAB + POPUP
 ════════════════════════════════════════════════════════════ -->
 <button class="wa-fab" onclick="toggleWaPopup()" aria-label="WhatsApp">
@@ -567,6 +594,54 @@ const PROJECTS = [
     body:'Rol: desarrollo Unity AR, integración del pipeline completo Arduino → Firebase → Unity, e implementación de pantallas (UI diseñada por Angela Monroy). Stack: Unity AR Foundation, Barracuda, Arduino (acelerómetro), Firebase, C#. Equipo de 5 — Laura Salazar: Arduino + UX.',
     links:[{label:'VER DEMO', url:'Portafolio/PhySync_demo.mp4'}],
     metrics:[{v:'AR',l:'TECNOLOGÍA'},{v:'Arduino',l:'HARDWARE'},{v:'MVP',l:'ALCANCE'}]
+  },
+  {
+    id:7, cat:'art', year:'2024',
+    title:'DISEÑO DE LOGO',
+    brief:'Diseño de identidad visual y marca. De la construcción geométrica a la aplicación cromática: el mark explorado en distintos contextos y variaciones de color.',
+    icon:'ID',
+    cover:'Portafolio/Dise%C3%B1o%20Logo%201.jpg',
+    isGallery:true,
+    medium:'IDENTIDAD VISUAL · DISEÑO GRÁFICO',
+    desc:'Proceso completo de diseño de logotipo: construcción geométrica, refinamiento de la forma y sistema de color. La pieza central es un mark contenido en octógono —explorado en múltiples variaciones cromáticas para evaluar versatilidad y aplicabilidad sobre fondos claros y oscuros.',
+    images:['Portafolio/Dise%C3%B1o%20Logo%201.jpg','Portafolio/Dise%C3%B1o%20Logo%202.jpg'],
+    metrics:[]
+  },
+  {
+    id:8, cat:'art', year:'2023',
+    title:'ANXIETAS',
+    brief:'Diseño de personaje e ilustración del monstruo de la ansiedad para el proyecto transmedia "Viviendo con un Monstruo".',
+    icon:'AX',
+    cover:'Portafolio/Anxietas_.png',
+    isGallery:true,
+    medium:'DISEÑO DE PERSONAJE · ILUSTRACIÓN DIGITAL',
+    desc:'Diseño e ilustración del monstruo de la ansiedad. La criatura debía comunicar presencia, peso e inestabilidad sin recurrir a arquetipos clásicos de terror. La paleta azul/verde genera familiaridad perturbada. La hoja muestra figura completa y tres variaciones de tamaño para validar legibilidad en distintos formatos.',
+    images:['Portafolio/Anxietas_.png'],
+    metrics:[]
+  },
+  {
+    id:9, cat:'art', year:'2023',
+    title:'VALENTINA',
+    brief:'Diseño de personaje protagonista con hoja de expresiones. Silueta, paleta emocional y rango expresivo definidos para producción.',
+    icon:'VL',
+    cover:'Portafolio/Valentina_.png',
+    isGallery:true,
+    medium:'DISEÑO DE PERSONAJE · ILUSTRACIÓN DIGITAL',
+    desc:'Personaje protagonista del proyecto transmedia. La hoja define body shot, perfil, busto y estado de colapso emocional: el rango expresivo completo para producción. Pelo azul sobre tono cálido establece la dualidad visual con Anxietas. Diseñado para ser reconocible en silueta y legible en thumbnail.',
+    images:['Portafolio/Valentina_.png'],
+    metrics:[]
+  },
+  {
+    id:10, cat:'art', year:'2022',
+    title:'DIBUJO LÁPIZ',
+    brief:'Selección de ilustraciones tradicionales a lápiz: composición narrativa, concept de personaje y estudios de figura y gesto.',
+    icon:'DL',
+    cover:'Portafolio/Dibujo%20Lapiz%204.jpeg',
+    isGallery:true,
+    medium:'ILUSTRACIÓN TRADICIONAL · LÁPIZ',
+    desc:'Tres piezas de distinto propósito: composición narrativa con figura central en entorno de fantasía (4), concept de personaje con notas de diseño integradas —proceso de ideación visible— (5), y estudios de gesto y figura anatómica como base de fundamentos (2). El dibujo analógico es el punto de partida del proceso conceptual antes de la etapa digital.',
+    images:['Portafolio/Dibujo%20Lapiz%204.jpeg','Portafolio/Dibujo%20Lapiz%205.jpeg','Portafolio/Dibujo%20Lapiz%202.jpeg'],
+    metrics:[]
   }
 ];
 
@@ -574,8 +649,9 @@ const PROJECTS = [
 const BADGE = { ar:'b-ar', games:'b-games', transmedia:'b-transmedia', art:'b-art' };
 
 function renderCardHTML(p) {
+  const isGal = !!p.isGallery;
   return `
-    <article class="p-card" role="listitem" onclick="openModal(${p.id})">
+    <article class="p-card" role="listitem" onclick="${isGal ? 'openGallery' : 'openModal'}(${p.id})">
       <div class="p-thumb${p.cover ? ' p-thumb--img' : ''}">
         ${p.cover
           ? `<img src="${p.cover}" alt="${p.title}" class="p-thumb-cover" loading="lazy">`
@@ -588,7 +664,7 @@ function renderCardHTML(p) {
         <p class="p-brief">${p.brief}</p>
         <div class="p-meta">
           <span class="p-year">${p.year}</span>
-          <span class="p-cta">VER CASO &nbsp;▶</span>
+          <span class="p-cta">${isGal ? 'VER OBRA' : 'VER CASO'} &nbsp;▶</span>
         </div>
       </div>
     </article>`;
@@ -681,6 +757,66 @@ document.getElementById('modal').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeModal();
 });
 
+/* ── GALLERY LIGHTBOX ────────────────────────────────────────── */
+let _galProj = null, _galIdx = 0;
+
+function openGallery(id) {
+  const p = PROJECTS.find(x => x.id === id);
+  if (!p || !p.isGallery) return;
+  _galProj = p; _galIdx = 0;
+  document.getElementById('gal-medium').textContent = p.medium || '';
+  document.getElementById('gal-title').textContent  = p.title;
+  document.getElementById('gal-desc').textContent   = p.desc;
+  _renderGalSlide();
+  document.getElementById('gallery').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function _renderGalSlide() {
+  const p     = _galProj;
+  const img   = document.getElementById('gal-img');
+  const dots  = document.getElementById('gal-dots');
+  const prev  = document.getElementById('gal-prev');
+  const next  = document.getElementById('gal-next');
+  const multi = p.images.length > 1;
+  img.src = p.images[_galIdx];
+  img.alt = p.title;
+  prev.classList.toggle('gal-hidden', !multi);
+  next.classList.toggle('gal-hidden', !multi);
+  dots.innerHTML = multi
+    ? p.images.map((_, i) =>
+        `<div class="gal-dot${i === _galIdx ? ' active' : ''}" onclick="galleryGoTo(${i})"></div>`
+      ).join('')
+    : '';
+}
+
+function galleryNav(delta) {
+  if (!_galProj) return;
+  const n = _galProj.images.length;
+  _galIdx = ((_galIdx + delta) % n + n) % n;
+  const img = document.getElementById('gal-img');
+  img.classList.add('fading');
+  setTimeout(() => { _renderGalSlide(); img.classList.remove('fading'); }, 160);
+}
+
+function galleryGoTo(i) {
+  if (!_galProj || i === _galIdx) return;
+  _galIdx = i;
+  const img = document.getElementById('gal-img');
+  img.classList.add('fading');
+  setTimeout(() => { _renderGalSlide(); img.classList.remove('fading'); }, 160);
+}
+
+function closeGallery() {
+  document.getElementById('gallery').classList.remove('open');
+  document.body.style.overflow = '';
+  _galProj = null; _galIdx = 0;
+}
+
+document.getElementById('gallery').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeGallery();
+});
+
 /* ── WHATSAPP ──────────────────────────────────────────────── */
 function toggleWaPopup() { document.getElementById('wa-popup').classList.toggle('open'); }
 function openWaPopup()   { document.getElementById('wa-popup').classList.add('open'); }
@@ -688,7 +824,9 @@ function closeWaPopup()  { document.getElementById('wa-popup').classList.remove(
 
 /* ── ESC ───────────────────────────────────────────────────── */
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeModal(); closeWaPopup(); }
+  if (e.key === 'Escape')     { closeModal(); closeWaPopup(); closeGallery(); }
+  if (e.key === 'ArrowLeft')  galleryNav(-1);
+  if (e.key === 'ArrowRight') galleryNav(1);
 });
 
 /* ── SCROLL DOTS ───────────────────────────────────────────── */
@@ -861,7 +999,7 @@ initScrollReveal();
   const CW = S * W3;                // horizontal center-to-center (pointy-top)
   const RH = S * 1.5;              // vertical center-to-center
 
-  let edges = [], sparks = [], spawnIn = 0, prevTs = 0;
+  let edges = [], sparks = [], spawnIn = 0, prevTs = 0, hexActive = true;
 
   /* Round to 0.5 px to avoid float mismatch in dedup keys */
   const snap = v => Math.round(v * 2) / 2;
@@ -1001,7 +1139,7 @@ initScrollReveal();
       }
     }
 
-    requestAnimationFrame(frame);
+    if (hexActive) requestAnimationFrame(frame);
   }
 
   /* ── Resize ────────────────────────────────────────────────── */
@@ -1019,6 +1157,11 @@ initScrollReveal();
   canvas.height = innerHeight;
   rebuild();
   requestAnimationFrame(ts => { prevTs = ts; requestAnimationFrame(frame); });
+
+  document.addEventListener('visibilitychange', () => {
+    hexActive = !document.hidden;
+    if (hexActive) requestAnimationFrame(ts => { prevTs = ts; requestAnimationFrame(frame); });
+  });
 })();
 
 </script>
