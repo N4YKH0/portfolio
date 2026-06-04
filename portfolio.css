@@ -956,6 +956,14 @@ footer {
   opacity:0; animation:fade-in .5s .4s ease-out forwards;
 }
 
+/* Skip hint */
+.ldr-skip-hint {
+  position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
+  font-family:var(--font-mono); font-size:8px; letter-spacing:.4em;
+  color:var(--text-lo); text-transform:uppercase; cursor:pointer;
+  opacity:0; animation:fade-in .5s 1.2s ease-out forwards;
+}
+
 /* ════════════════════════════════════════════════════════════
    WORK — 2-column: menu LEFT · grid RIGHT
 ════════════════════════════════════════════════════════════ */
@@ -1045,13 +1053,15 @@ footer {
   visibility:hidden;
   opacity:0;
   pointer-events:none;
-  transition:opacity 220ms ease-out, visibility 0s 220ms;
+  transform:scale(0.97);
+  transition:opacity 220ms ease-out, transform 220ms var(--ease), visibility 0s 220ms;
 }
 .modal-overlay.open {
   visibility:visible;
   opacity:1;
   pointer-events:auto;
-  transition:opacity 220ms ease-out, visibility 0s 0s;
+  transform:scale(1);
+  transition:opacity 220ms ease-out, transform 220ms var(--ease), visibility 0s 0s;
 }
 /* content slides up on open */
 .m-wrap {
@@ -1138,14 +1148,14 @@ footer {
   animation:hero-diamond-pulse 5s ease-in-out infinite;
 }
 @keyframes hero-diamond-pulse {
-  0%,100% { filter:drop-shadow(0 0 10px rgba(0,212,255,.22)); }
-  50%      { filter:drop-shadow(0 0 26px rgba(0,212,255,.55))
-                    drop-shadow(0 0 60px rgba(0,212,255,.12)); }
+  0%,100% { filter:drop-shadow(0 0 8px rgba(0,212,255,.15)); }
+  50%      { filter:drop-shadow(0 0 18px rgba(0,212,255,.32))
+                    drop-shadow(0 0 40px rgba(0,212,255,.08)); }
 }
 
 .hero-logo-img {
   position:relative; z-index:1;
-  width:300px; height:300px;
+  width:170px; height:170px;
   object-fit:contain;
   filter:invert(1) sepia(1) saturate(500%) hue-rotate(155deg) brightness(1.15);
   mix-blend-mode:screen;
@@ -1156,16 +1166,16 @@ footer {
 .hero-logo-img.logo-visible {
   opacity:1;
   transform:scale(1);
-  animation:logo-glow 3.5s ease-in-out 1.2s infinite;
+  animation:logo-glow 3.5s ease-in-out 1s infinite;
 }
 @keyframes logo-glow {
   0%,100% {
     filter:invert(1) sepia(1) saturate(500%) hue-rotate(155deg) brightness(1.15);
   }
   50% {
-    filter:invert(1) sepia(1) saturate(600%) hue-rotate(155deg) brightness(1.9)
-           drop-shadow(0 0 14px rgba(0,212,255,.85))
-           drop-shadow(0 0 32px rgba(0,212,255,.4));
+    filter:invert(1) sepia(1) saturate(600%) hue-rotate(155deg) brightness(1.7)
+           drop-shadow(0 0 12px rgba(0,212,255,.7))
+           drop-shadow(0 0 28px rgba(0,212,255,.3));
   }
 }
 
