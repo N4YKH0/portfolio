@@ -1116,7 +1116,7 @@ footer {
 ════════════════════════════════════════════════════════════ */
 .hero-diamond-wrap {
   position:relative;
-  width:220px; height:220px;
+  width:300px; height:300px;
   display:flex; align-items:center; justify-content:center;
   margin:0 auto 1.5rem;
   transform:scale(0.78);
@@ -1139,7 +1139,7 @@ footer {
 
 .hero-logo-img {
   position:relative; z-index:1;
-  width:62%; height:62%;
+  width:80%; height:80%;
   object-fit:contain;
   filter:invert(1) sepia(1) saturate(500%) hue-rotate(155deg) brightness(1.15);
   mix-blend-mode:screen;
