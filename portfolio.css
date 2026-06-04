@@ -256,7 +256,7 @@ section {
 ════════════════════════════════════════════════════════════ */
 #home {
   display:grid;
-  grid-template-columns:1fr 350px;
+  grid-template-columns:1fr 500px;
   align-items:center; gap:0;
   min-height:100vh;
   padding-top:calc(var(--nav-h) + 60px);
@@ -265,7 +265,6 @@ section {
 
 .hero-left {
   position:relative; z-index:2;
-  padding-right:150px;
 }
 
 .hero-eyebrow {
@@ -811,7 +810,6 @@ footer {
 @media (max-width:1100px) {
   #home { grid-template-columns:1fr }
   .hero-visual { display:none }
-  .hero-left { padding-right:0; }
   section { padding-left:2.5rem; padding-right:2.5rem; }
   .main-nav { padding:0 2.5rem; }
   footer { padding:1.5rem 2.5rem; }
