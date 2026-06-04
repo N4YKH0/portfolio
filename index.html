@@ -462,6 +462,26 @@
 
 
 <!-- ══════════════════════════════════════════════════════════
+     ART HUB
+════════════════════════════════════════════════════════════ -->
+<div class="art-hub-overlay" id="art-hub" role="dialog" aria-modal="true" aria-label="Colección de arte">
+
+  <div class="ah-topbar">
+    <div class="ah-topbar-left">
+      <p class="ah-eyebrow">// ART COLLECTION</p>
+      <h2 class="ah-display">ARTE</h2>
+    </div>
+    <button class="ah-close" onclick="closeArtHub()">✕ &nbsp;CERRAR</button>
+  </div>
+
+  <div class="ah-inner">
+    <div class="ah-grid" id="ah-grid"></div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
      GALLERY LIGHTBOX
 ════════════════════════════════════════════════════════════ -->
 <div class="gallery-overlay" id="gallery" role="dialog" aria-modal="true" aria-label="Galería de arte">
@@ -642,6 +662,15 @@ const PROJECTS = [
     desc:'Tres piezas de distinto propósito: composición narrativa con figura central en entorno de fantasía (4), concept de personaje con notas de diseño integradas —proceso de ideación visible— (5), y estudios de gesto y figura anatómica como base de fundamentos (2). El dibujo analógico es el punto de partida del proceso conceptual antes de la etapa digital.',
     images:['Portafolio/Dibujo%20Lapiz%204.jpeg','Portafolio/Dibujo%20Lapiz%205.jpeg','Portafolio/Dibujo%20Lapiz%202.jpeg'],
     metrics:[]
+  },
+  {
+    id:11, cat:'art', year:'2022–2024',
+    title:'ARTE',
+    brief:'Identidad visual, diseño de personaje, ilustración digital y dibujo tradicional. Una colección de 5 piezas de distintas disciplinas.',
+    icon:'ART',
+    cover:'Portafolio/Anxietas_.png',
+    isArtHub:true,
+    metrics:[]
   }
 ];
 
@@ -649,9 +678,12 @@ const PROJECTS = [
 const BADGE = { ar:'b-ar', games:'b-games', transmedia:'b-transmedia', art:'b-art' };
 
 function renderCardHTML(p) {
+  const isHub = !!p.isArtHub;
   const isGal = !!p.isGallery;
+  const handler   = isHub ? 'openArtHub()' : (isGal ? `openGallery(${p.id})` : `openModal(${p.id})`);
+  const ctaLabel  = isHub ? 'EXPLORAR'     : (isGal ? 'VER OBRA'             : 'VER CASO');
   return `
-    <article class="p-card" role="listitem" onclick="${isGal ? 'openGallery' : 'openModal'}(${p.id})">
+    <article class="p-card" role="listitem" onclick="${handler}">
       <div class="p-thumb${p.cover ? ' p-thumb--img' : ''}">
         ${p.cover
           ? `<img src="${p.cover}" alt="${p.title}" class="p-thumb-cover" loading="lazy">`
@@ -664,7 +696,7 @@ function renderCardHTML(p) {
         <p class="p-brief">${p.brief}</p>
         <div class="p-meta">
           <span class="p-year">${p.year}</span>
-          <span class="p-cta">${isGal ? 'VER OBRA' : 'VER CASO'} &nbsp;▶</span>
+          <span class="p-cta">${ctaLabel} &nbsp;▶</span>
         </div>
       </div>
     </article>`;
@@ -672,10 +704,12 @@ function renderCardHTML(p) {
 
 /* Renders projects into the grid — all or filtered by category */
 function showProjects(cat) {
-  const list = cat === 'all' ? PROJECTS : PROJECTS.filter(p => p.cat === cat);
+  let list;
+  if (cat === 'all')       list = PROJECTS.filter(p => p.cat !== 'art' || p.isArtHub);
+  else if (cat === 'art')  list = PROJECTS.filter(p => p.isArtHub);
+  else                     list = PROJECTS.filter(p => p.cat === cat);
   const grid = document.getElementById('work-project-grid');
   grid.innerHTML = list.map(renderCardHTML).join('');
-  // Stagger entrance
   requestAnimationFrame(() => {
     grid.querySelectorAll('.p-card').forEach((card, i) => {
       setTimeout(() => card.classList.add('card-visible'), i * 75);
@@ -687,8 +721,10 @@ function showProjects(cat) {
 function initCounts() {
   const cats = ['all', 'ar', 'games', 'transmedia', 'art'];
   cats.forEach(cat => {
-    const n = cat === 'all' ? PROJECTS.length
-              : PROJECTS.filter(p => p.cat === cat).length;
+    let n;
+    if (cat === 'all')       n = PROJECTS.filter(p => p.cat !== 'art' || p.isArtHub).length;
+    else if (cat === 'art')  n = PROJECTS.filter(p => p.cat === 'art' && !p.isArtHub).length;
+    else                     n = PROJECTS.filter(p => p.cat === cat).length;
     const el = document.getElementById('cnt-' + cat);
     if (el) el.textContent = String(n).padStart(2, '0');
   });
@@ -817,6 +853,59 @@ document.getElementById('gallery').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeGallery();
 });
 
+/* ── ART HUB ────────────────────────────────────────────────── */
+function openArtHub() {
+  const pieces = PROJECTS
+    .filter(p => p.cat === 'art' && !p.isArtHub)
+    .sort((a, b) => {
+      if (a.isGallery && !b.isGallery) return -1;
+      if (!a.isGallery && b.isGallery) return 1;
+      return a.id - b.id;
+    });
+
+  const grid = document.getElementById('ah-grid');
+  grid.innerHTML = pieces.map(p => {
+    const isGal  = !!p.isGallery;
+    const medium = p.medium || 'ART';
+    return `
+      <div class="ah-piece" onclick="openFromHub(${p.id})">
+        <div class="ah-piece-thumb${isGal ? ' ah-piece-thumb--contain' : ''}">
+          ${p.cover
+            ? `<img src="${p.cover}" alt="${p.title}" loading="lazy">`
+            : `<span class="ah-piece-icon">${p.icon}</span>`
+          }
+        </div>
+        <div class="ah-piece-body">
+          <p class="ah-piece-medium">${medium}</p>
+          <h3 class="ah-piece-title">${p.title}</h3>
+          <span class="ah-piece-cta">VER OBRA &nbsp;▶</span>
+        </div>
+      </div>`;
+  }).join('');
+
+  document.getElementById('art-hub').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function openFromHub(id) {
+  const p = PROJECTS.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('art-hub').classList.remove('open');
+  setTimeout(() => {
+    if (p.isGallery) openGallery(id);
+    else openModal(id);
+  }, 240);
+}
+
+function closeArtHub() {
+  document.getElementById('art-hub').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('art-hub').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeArtHub();
+});
+
 /* ── WHATSAPP ──────────────────────────────────────────────── */
 function toggleWaPopup() { document.getElementById('wa-popup').classList.toggle('open'); }
 function openWaPopup()   { document.getElementById('wa-popup').classList.add('open'); }
@@ -824,7 +913,7 @@ function closeWaPopup()  { document.getElementById('wa-popup').classList.remove(
 
 /* ── ESC ───────────────────────────────────────────────────── */
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape')     { closeModal(); closeWaPopup(); closeGallery(); }
+  if (e.key === 'Escape')     { closeModal(); closeWaPopup(); closeGallery(); closeArtHub(); }
   if (e.key === 'ArrowLeft')  galleryNav(-1);
   if (e.key === 'ArrowRight') galleryNav(1);
 });
