@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NICOLAS MARTINEZ — Interactive Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@900&family=Rajdhani:wght@600;700&family=Barlow:wght@300;400&family=Fira+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     LOADER
+════════════════════════════════════════════════════════════ -->
+<div id="loader" aria-hidden="true">
+
+  <!-- Full-screen panels — split at center when done -->
+  <div class="ldr-panel ldr-panel--top"></div>
+  <div class="ldr-panel ldr-panel--bottom"></div>
+
+  <!-- Center group: bar + label -->
+  <div class="ldr-center" id="ldr-center">
+
+    <!-- Barra con rombo embebido -->
+    <div class="ldr-bar-wrap" id="ldr-bar-wrap">
+
+      <!-- Track izquierdo -->
+      <div class="ldr-track">
+        <div class="ldr-fill" id="ldr-fill-left"></div>
+      </div>
+
+      <!-- Rombo centrado en la barra -->
+      <div class="ldr-diamond-wrap">
+        <svg class="ldr-diamond-svg" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <polygon points="50,3 97,50 50,97 3,50"
+                   stroke="currentColor" stroke-width="1.5" opacity=".2"/>
+          <polygon points="50,3 97,50 50,97 3,50"
+                   stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <div class="ldr-diamond-fill-wrap">
+          <div class="ldr-diamond-fill" id="ldr-fill-diamond"></div>
+        </div>
+        <span class="ldr-nm">NM</span>
+      </div>
+
+      <!-- Track derecho -->
+      <div class="ldr-track">
+        <div class="ldr-fill" id="ldr-fill-right"></div>
+      </div>
+
+    </div>
+
+    <p class="ldr-label">PORTFOLIO</p>
+
+  </div>
+</div>
+
+
+<canvas id="hex-bg" aria-hidden="true"></canvas>
+
+<!-- ══════════════════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════════════════ -->
+<nav class="main-nav">
+  <a href="#home" class="nav-logo">
+    <div class="nav-logo-icon" aria-hidden="true">
+      <svg viewBox="0 0 100 100" fill="none">
+        <polygon points="50,4 96,50 50,96 4,50" stroke="currentColor" stroke-width="2" opacity=".35"/>
+        <polygon points="50,4 96,50 50,96 4,50" stroke="currentColor" stroke-width="2"/>
+      </svg>
+      <span>NM</span>
+    </div>
+    <span class="nav-logo-text">PORTFOLIO</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home">INICIO</a></li>
+    <li class="has-sub">
+      <a href="#work">WORK ▾</a>
+      <div class="nav-sub">
+        <a href="#work" onclick="switchCat('ar')">AR</a>
+        <a href="#work" onclick="switchCat('games')">GAMES</a>
+        <a href="#work" onclick="switchCat('transmedia')">TRANSMEDIA</a>
+        <a href="#work" onclick="switchCat('art')">ART</a>
+      </div>
+    </li>
+    <li><a href="#about">PERFIL</a></li>
+    <li><a href="#about" onclick="event.preventDefault();openWaPopup()">CONTACTO</a></li>
+  </ul>
+</nav>
+
+<!-- scroll dots -->
+<div class="scroll-indicator" aria-hidden="true">
+  <div class="s-dot active" onclick="scrollTo({top:0,behavior:'smooth'})"></div>
+  <div class="s-dot" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="s-dot" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})"></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     HOME
+════════════════════════════════════════════════════════════ -->
+<section id="home">
+
+  <!-- LEFT: text -->
+  <div class="hero-left">
+
+    <p class="hero-eyebrow">INTERACTIVE DESIGNER · GAME &amp; MULTIMEDIA</p>
+
+    <h1 class="hero-name" aria-label="NICOLAS MARTINEZ">
+      <span class="l1" data-text="NICOLAS"></span>
+      <span class="l2" data-text="MARTINEZ"></span>
+    </h1>
+
+    <p class="hero-sub">// AR · GAMES · TRANSMEDIA · ART</p>
+
+    <p class="hero-bio">
+      Diseñador interactivo con experiencia en videojuegos y proyectos multimedia,
+      enfocado en crear experiencias digitales que integran diseño, narrativa
+      y tecnología. Participación en game jams, realidad aumentada con Unity y Python,
+      y producción audiovisual con principios de UX.
+    </p>
+
+    <div class="hero-cta">
+      <a href="#work" class="btn btn-blue">VER PROYECTOS</a>
+      <button class="btn btn-ghost" onclick="openWaPopup()">CONTACTAR</button>
+    </div>
+
+
+  </div>
+
+  <!-- RIGHT: brand diamond (logo placeholder) -->
+  <div class="hero-visual" aria-hidden="true">
+
+    <div class="hero-diamond-wrap">
+      <svg class="hero-diamond-svg" viewBox="0 0 100 100" fill="none">
+        <!-- Outer ambient ring -->
+        <polygon points="50,2 98,50 50,98 2,50"
+                 stroke="currentColor" stroke-width=".8" opacity=".1"/>
+        <!-- Mid ring -->
+        <polygon points="50,8 92,50 50,92 8,50"
+                 stroke="currentColor" stroke-width="1" opacity=".18"/>
+        <!-- Main diamond -->
+        <polygon points="50,14 86,50 50,86 14,50"
+                 stroke="currentColor" stroke-width="1.5" opacity=".35"/>
+        <polygon points="50,14 86,50 50,86 14,50"
+                 fill="currentColor" opacity=".03"/>
+        <polygon points="50,14 86,50 50,86 14,50"
+                 stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <span class="hero-nm-text">NM</span>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-val">6+</span>
+        <span class="stat-lbl">PROYECTOS</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val">4</span>
+        <span class="stat-lbl">ÁREAS</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val">3</span>
+        <span class="stat-lbl">IDIOMAS</span>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     WORK
+════════════════════════════════════════════════════════════ -->
+<section id="work">
+
+  <div class="s-header" data-reveal>
+    <p class="eyebrow">PROYECTOS SELECCIONADOS</p>
+    <h2 class="display-title">WORK / <em>ARCHIVE</em></h2>
+  </div>
+
+  <div class="work-layout">
+
+    <!-- LEFT: categorías grandes en vertical (220px) -->
+    <div class="work-sidebar">
+      <button class="cat-btn active" data-cat="all"        onclick="switchCat('all')"        data-reveal>
+        <span class="cat-label">TODO</span>
+        <span class="cat-count" id="cnt-all">—</span>
+      </button>
+      <button class="cat-btn"        data-cat="ar"         onclick="switchCat('ar')"         data-reveal data-delay="1">
+        <span class="cat-label">AR</span>
+        <span class="cat-count" id="cnt-ar">—</span>
+      </button>
+      <button class="cat-btn"        data-cat="games"      onclick="switchCat('games')"      data-reveal data-delay="2">
+        <span class="cat-label">GAMES</span>
+        <span class="cat-count" id="cnt-games">—</span>
+      </button>
+      <button class="cat-btn"        data-cat="transmedia" onclick="switchCat('transmedia')" data-reveal data-delay="3">
+        <span class="cat-label">TRANSMEDIA</span>
+        <span class="cat-count" id="cnt-transmedia">—</span>
+      </button>
+      <button class="cat-btn"        data-cat="art"        onclick="switchCat('art')"        data-reveal data-delay="4">
+        <span class="cat-label">ART</span>
+        <span class="cat-count" id="cnt-art">—</span>
+      </button>
+    </div>
+
+    <!-- RIGHT: grid de proyectos (1fr) -->
+    <div class="work-main">
+      <div class="work-project-grid" id="work-project-grid" role="list"></div>
+    </div>
+
+  </div>
+
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     ABOUT
+════════════════════════════════════════════════════════════ -->
+<section id="about">
+
+  <!-- ── LEFT SIDEBAR ──────────────────────────────────────── -->
+  <div class="id-sidebar">
+
+    <div class="id-card" data-reveal>
+      <div class="id-avatar"><span>NM</span></div>
+      <p class="id-name">NICOLAS MARTINEZ</p>
+      <p class="id-role">// INTERACTIVE DESIGNER</p>
+
+      <div class="lang-row">
+        <div class="lang-pill">ES <span class="lang-lvl">NATIVO</span></div>
+        <div class="lang-pill">EN <span class="lang-lvl">B2</span></div>
+        <div class="lang-pill">JP <span class="lang-lvl">N5</span></div>
+      </div>
+
+      <nav class="social-links" aria-label="Redes y contacto">
+        <a href="https://linkedin.com/in/nicolas-martinez-m" target="_blank" rel="noopener" class="s-link s-link--linkedin">⟁ &nbsp;LINKEDIN</a>
+        <a href="javascript:void(0)" class="s-link s-link--wa" onclick="openWaPopup()">⟁ &nbsp;WHATSAPP</a>
+        <a href="mailto:nicomm99@hotmail.com" class="s-link s-link--email">⟁ &nbsp;EMAIL</a>
+      </nav>
+    </div>
+
+    <div class="contact-card" data-reveal data-delay="1">
+      <p class="cc-title">CONTACTO DIRECTO</p>
+      <div class="cc-items">
+
+        <div class="cc-item">
+          <div class="cc-ico">@</div>
+          <div>
+            <p class="cc-sub">EMAIL</p>
+            <p class="cc-val"><a href="mailto:nicomm99@hotmail.com">nicomm99@hotmail.com</a></p>
+          </div>
+        </div>
+
+        <div class="cc-item">
+          <div class="cc-ico">
+            <svg viewBox="0 0 24 24" style="width:12px;height:12px;fill:var(--amber)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div>
+            <p class="cc-sub">WHATSAPP</p>
+            <p class="cc-val"><a href="https://wa.me/573186938099" target="_blank" rel="noopener">(+57) 318 693 8099</a></p>
+          </div>
+        </div>
+
+        <div class="cc-item">
+          <div class="cc-ico">▸</div>
+          <div>
+            <p class="cc-sub">UBICACIÓN</p>
+            <p class="cc-val">Bogotá, Colombia</p>
+          </div>
+        </div>
+
+        <div class="cc-item">
+          <div class="cc-ico">◈</div>
+          <div>
+            <p class="cc-sub">DISPONIBILIDAD</p>
+            <p class="cc-val">Inmediata — Freelance &amp; Studio</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /id-sidebar -->
+
+
+  <!-- ── RIGHT CONTENT ─────────────────────────────────────── -->
+  <div class="about-content">
+
+    <div class="s-header" data-reveal>
+      <p class="eyebrow">PERFIL &amp; CONTACTO</p>
+      <h2 class="display-title">SOBRE<br><em>NICOLAS</em></h2>
+    </div>
+
+    <div class="blk" data-reveal>
+      <p class="blk-lbl">HABILIDADES</p>
+      <div class="tool-groups">
+
+        <div class="tool-group">
+          <p class="tg-label">DISEÑO &amp; UX</p>
+          <div class="tg-tags">
+            <span class="tag tg-design">Diseño Interactivo</span>
+            <span class="tag tg-design">UX Design</span>
+            <span class="tag tg-design">Figma</span>
+            <span class="tag tg-design">Prototipado</span>
+          </div>
+        </div>
+
+        <div class="tool-group">
+          <p class="tg-label">DESARROLLO</p>
+          <div class="tg-tags">
+            <span class="tag tg-dev">Unity</span>
+            <span class="tag tg-dev">Python</span>
+            <span class="tag tg-dev">AR / XR</span>
+            <span class="tag tg-dev">Spatial.io</span>
+          </div>
+        </div>
+
+        <div class="tool-group">
+          <p class="tg-label">VISUAL</p>
+          <div class="tg-tags">
+            <span class="tag tg-visual">Concept Art</span>
+            <span class="tag tg-visual">Blender / 3D</span>
+            <span class="tag tg-visual">Animación Cut-out</span>
+            <span class="tag tg-visual">Motion Graphics</span>
+          </div>
+        </div>
+
+        <div class="tool-group">
+          <p class="tg-label">AUDIOVISUAL</p>
+          <div class="tg-tags">
+            <span class="tag tg-av">After Effects</span>
+            <span class="tag tg-av">Premiere Pro</span>
+            <span class="tag tg-av">Edición Audio</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="blk" data-reveal data-delay="1">
+      <p class="blk-lbl">EXPERIENCIA</p>
+      <div class="tl">
+
+        <div class="tl-item">
+          <span class="tl-yr">2025</span>
+          <div class="tl-spine"></div>
+          <div>
+            <p class="tl-role">AR Developer</p>
+            <p class="tl-co">FelloFullStack</p>
+            <div class="tl-tasks">
+              <p class="tl-task">Desarrollo e implementación de experiencia de realidad aumentada para integrar objetos 3D en entornos reales.</p>
+              <p class="tl-task">Implementación de lógica e interacción AR basada en cámara utilizando Unity y Python.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-yr">2025</span>
+          <div class="tl-spine"></div>
+          <div>
+            <p class="tl-role">Analista de Audiovisuales</p>
+            <p class="tl-co">Educación ColomboJaponesa S.A.S <span style="font-size:.7rem;color:var(--text-lo)">(Feb–Oct)</span></p>
+            <div class="tl-tasks">
+              <p class="tl-task">Creación de contenidos audiovisuales para redes sociales en cultura y educación japonesa.</p>
+              <p class="tl-task">Aplicación de principios de UX para mejorar claridad, interacción y retención del contenido.</p>
+              <p class="tl-task">Diseño de propuestas educativas en entornos virtuales y colaboración con equipos académicos.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="blk" data-reveal data-delay="2">
+      <p class="blk-lbl">EDUCACIÓN</p>
+      <div class="edu-list">
+        <div class="edu-item">
+          <p class="edu-deg">Diseño de Videojuegos y Contenidos Interactivos</p>
+          <p class="edu-yr">2018–2025</p>
+          <p class="edu-inst">Universidad Jorge Tadeo Lozano</p>
+        </div>
+        <div class="edu-item">
+          <p class="edu-deg">Diplomado de Animación Motion Graphics</p>
+          <p class="edu-yr">2023</p>
+          <p class="edu-inst">LCI Education</p>
+        </div>
+        <div class="edu-item">
+          <p class="edu-deg">Bachillerato</p>
+          <p class="edu-yr">2014–2017</p>
+          <p class="edu-inst">Colegio Abraham Maslow</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /about-content -->
+
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
+<footer>
+  <span class="f-brand">NM.PORTFOLIO — NICOLAS MARTINEZ</span>
+  <span class="f-copy">© 2025 — INTERACTIVE DESIGNER · BOGOTÁ, CO</span>
+</footer>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     CASE STUDY MODAL
+════════════════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
+
+  <div class="m-topbar">
+    <button class="m-close" onclick="closeModal()">✕ &nbsp;CERRAR</button>
+  </div>
+
+  <div class="m-banner" id="m-banner"></div>
+
+  <div class="m-wrap">
+
+    <div class="m-header">
+      <div class="m-header-left">
+        <p class="m-eyebrow" id="m-eyebrow">// CASE STUDY</p>
+        <h2 class="m-title"  id="m-title"></h2>
+      </div>
+      <div id="m-cta-wrap"></div>
+    </div>
+
+    <div class="m-narrative">
+      <div class="m-col m-col--problem">
+        <p class="m-col-label">EL PROBLEMA</p>
+        <p class="m-col-text" id="m-ch"></p>
+      </div>
+      <div class="m-col m-col--solution">
+        <p class="m-col-label">LA SOLUCIÓN</p>
+        <p class="m-col-text" id="m-so"></p>
+      </div>
+    </div>
+
+    <div class="m-role-strip">
+      <p class="m-role-strip-label">ROL &amp; PROCESO</p>
+      <p class="m-role-strip-text" id="m-body"></p>
+    </div>
+
+    <div class="m-results-row">
+      <div class="m-outcome">
+        <p class="m-outcome-label">RESULTADOS</p>
+        <p class="m-outcome-text" id="m-re"></p>
+      </div>
+      <div class="m-metrics-compact" id="m-metrics"></div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     WHATSAPP FAB + POPUP
+════════════════════════════════════════════════════════════ -->
+<button class="wa-fab" onclick="toggleWaPopup()" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</button>
+
+<div class="wa-popup" id="wa-popup">
+  <span class="wa-close" onclick="closeWaPopup()">✕ CERRAR</span>
+  <div class="wa-avatar"><span>NM</span></div>
+  <p class="wa-name">NICOLAS MARTINEZ</p>
+  <p class="wa-status">DISPONIBLE</p>
+  <p class="wa-msg">¡Hola! Estoy disponible para proyectos de AR, Games, Transmedia y diseño interactivo. Escríbeme por WhatsApp.</p>
+  <a href="https://wa.me/573186938099?text=Hola%20Nicolas%2C%20vi%20tu%20portafolio%20y%20me%20interesa%20hablar%20sobre%20un%20proyecto."
+     target="_blank" rel="noopener" class="wa-cta">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    INICIAR CHAT
+  </a>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════════════════ -->
+<script>
+'use strict';
+
+/* ── PROJECTS DATA ──────────────────────────────────────────── */
+const PROJECTS = [
+  {
+    id:1, cat:'games', year:'2024',
+    title:'BYTE-HAVEN',
+    brief:'Experiencia metaversal educativa en Spatial con 4 niveles temáticos sobre Metaverso, Crypto, Blockchain y NFTs, gamificada con puzzles y mecánicas de recolección.',
+    icon:'BH',
+    cover:'Bytehaven_Logo_Edit.png',
+    ch:'El metaverso era desconocido para el cliente y su audiencia. ¿Cómo presentar tecnologías emergentes —Blockchain, NFTs, Crypto— de forma accesible y memorable sin perder rigor conceptual?',
+    so:'Mundo metaversal en Spatial con 4 niveles independientes, cada uno dedicado a un tema: fundamentos del metaverso, criptomonedas, blockchain y NFTs. Puzzles de lógica + mecánicas de recolección. Accesible desde celular, tablet, PC y gafas VR.',
+    re:'Completado en 4 meses. Activo y funcional hasta hoy. Accesible desde cualquier plataforma sin instalación.',
+    body:'Producción completa end-to-end: conceptualización, diseño de niveles, modelados 3D, diseño de puzzles, programación de interacciones en Unity, montaje en Spatial y publicación. Sin equipo: de la idea al lobby en 4 meses.',
+    links:[{label:'ENTRAR AL LOBBY', url:'https://www.spatial.io/s/ByteHaven-Lobby-671a9239a1c8763a3096cf36?share=9163037786000497364'}],
+    metrics:[{v:'4',l:'NIVELES'},{v:'4m',l:'DESARROLLO'},{v:'Multi',l:'PLATAFORMA'}]
+  },
+  {
+    id:2, cat:'transmedia', year:'2023',
+    title:'VIVIENDO CON UN MONSTRUO',
+    brief:'Proyecto transmedia que aborda la ansiedad en estudiantes universitarios a través de video interactivo, experiencia en vivo y podcast.',
+    icon:'VM',
+    cover:'Miniatura_3.png',
+    ch:'La ansiedad es invisible e incomprendida. ¿Cómo representar una emoción compleja de forma que estudiantes universitarios puedan identificarse y hablar sobre ella sin estigma?',
+    so:'Ecosistema transmedia de 4 canales: video interactivo en YouTube con ramificaciones narrativas, instalación en vivo donde los asistentes dibujaron su "monstruo de la ansiedad", caja de mensajes colectivos, y podcast en Spotify.',
+    re:'Video interactivo activo en YouTube. 100+ participantes en la experiencia en vivo. 50+ mensajes anónimos de estrategias recopilados. Podcast publicado en Spotify.',
+    body:'Rol: director, productor y editor del video interactivo. Colorista de los personajes ilustrados. Coordinador y participante activo en la muestra en vivo. El proyecto funcionó como espejo colectivo: al darle forma visible a la ansiedad, los participantes pudieron nombrarla y compartirla.',
+    links:[{label:'VER VIDEO', url:'https://www.youtube.com/watch?v=ZX7NEKj4WII&ab_channel=ViviendoConMiMonstruo'}],
+    metrics:[{v:'100+',l:'PARTICIPANTES'},{v:'50+',l:'MENSAJES'},{v:'4',l:'CANALES'}]
+  },
+  {
+    id:3, cat:'games', year:'2023',
+    title:'WILD BYGONE',
+    brief:'Videojuego de recolección en tercera persona ambientado en un mundo post-apocalíptico destruido por la contaminación.',
+    icon:'WB',
+    cover:'Portafolio/Diapositiva3.JPG',
+    ch:'¿Cómo comunicar una narrativa de colapso ambiental y lazos humanos dentro de un juego de recolección, sin caer en el didactismo?',
+    so:'Mundo post-apocalíptico 3D donde la supervivencia y la narrativa se entrelazan. La contaminación define el espacio jugable y la historia emerge de los objetos que el jugador encuentra.',
+    re:'Publicado y jugable en itch.io. Desarrollado bajo la temática de Lazos y Puentes.',
+    body:'Participación en la narrativa del juego, modelado 3D de activos del entorno y diseño de niveles. Trabajo colaborativo en formato game jam.',
+    links:[{label:'JUGAR EN ITCH.IO', url:'https://sancho6040.itch.io/wild-by-gone'}],
+    metrics:[{v:'3D',l:'ENTORNO'},{v:'Jam',l:'FORMATO'},{v:'Pub.',l:'ITCH.IO'}]
+  },
+  {
+    id:4, cat:'games', year:'2023',
+    title:'PROFUGUS ABYSS',
+    brief:'Videojuego de plataformas 2D con estética 8-bits donde un pequeño niño debe recolectar diamantes para escapar del abismo.',
+    icon:'PA',
+    cover:'Portafolio/Diapositiva4.JPG',
+    ch:'¿Cómo diseñar un juego de plataformas 2D que sea desafiante pero accesible, con una estética retro que potencie la tensión narrativa sin instrucciones explícitas?',
+    so:'Sistema de plataformas 2D con mecánicas de recolección y obstáculos progresivos. Estética 8-bit que evoca tensión y nostalgia. El diseño de niveles guía al jugador de forma orgánica.',
+    re:'Publicado y jugable en itch.io. Diseño de niveles, personajes y mecánicas completos.',
+    body:'Diseño completo del juego: diseño de niveles, diseño de personajes, diseño de mecánicas de juego, montaje del nivel y publicación final en itch.io bajo el alias nkau.',
+    links:[{label:'JUGAR EN ITCH.IO', url:'https://nkau.itch.io/profugus-abyss'}],
+    metrics:[{v:'2D',l:'PLATAFORMAS'},{v:'8-bit',l:'ESTÉTICA'},{v:'Pub.',l:'ITCH.IO'}]
+  },
+  {
+    id:5, cat:'art', year:'2023',
+    title:'MODELADOS 3D',
+    brief:'Colección de modelados 3D desarrollados en proceso de formación, desde concept art de referencia hasta resultado final en motor.',
+    icon:'3D',
+    cover:'Portafolio/Diapositiva6.JPG',
+    ch:'¿Cómo traducir concept art de alta complejidad visual —arquitectura fantástica y personajes estilizados— en modelos 3D funcionales y fieles a la referencia?',
+    so:'Proceso iterativo de modelado partiendo de referencias de concept art. Cada pieza documenta el camino entre referencia e implementación 3D en tiempo real, priorizando la optimización para uso en motor de juego.',
+    re:'Modelados de arquitectura de fantasía estilo asiático y personajes low-poly tipo samurái. Proceso documentado con comparativa referencia / resultado.',
+    body:'Modelados desarrollados durante la formación en Diseño de Videojuegos. Incluye arquitectura fantástica con detalle de techo curvo y faroles, y personaje felino con armadura samurái en geometría low-poly optimizada.',
+    links:[],
+    metrics:[{v:'3D',l:'HERRAMIENTA'},{v:'LowPoly',l:'ESTILO'},{v:'2023',l:'AÑO'}]
+  },
+  {
+    id:6, cat:'ar', year:'2023',
+    title:'PHY-SYNC GAME',
+    brief:'MVP de videojuego AR de rehabilitación motriz que sincroniza un acelerómetro Arduino con Unity en tiempo real, diseñado para personas con discapacidad osteomuscular.',
+    icon:'PS',
+    cover:'Portafolio/Phy Sync Game.jpeg',
+    ch:'Las personas en rehabilitación motriz pierden adherencia al tratamiento por falta de motivación y espacios recreativos accesibles. ¿Cómo convertir los ejercicios de recuperación en una experiencia lúdica sin depender de instalaciones especializadas?',
+    so:'Videojuego AR con controlador físico: un acelerómetro conectado a Arduino captura el movimiento corporal del usuario y lo transmite a Unity vía comunicación serial. Firebase gestiona el estado de sesión en tiempo real. El movimiento físico se mapea directamente a las mecánicas de juego, convirtiendo los ejercicios terapéuticos en input de juego.',
+    re:'MVP funcional con un nivel completo jugable. Validado con usuarios reales en sesiones de prueba. Integración Arduino + Firebase + Unity AR operativa de extremo a extremo.',
+    body:'Rol: desarrollo Unity AR, integración del pipeline completo Arduino → Firebase → Unity, e implementación de pantallas (UI diseñada por Angela Monroy). Stack: Unity AR Foundation, Barracuda, Arduino (acelerómetro), Firebase, C#. Equipo de 5 — Laura Salazar: Arduino + UX.',
+    links:[],
+    metrics:[{v:'AR',l:'TECNOLOGÍA'},{v:'Arduino',l:'HARDWARE'},{v:'MVP',l:'ALCANCE'}]
+  }
+];
+
+/* ── CARD & WORK ───────────────────────────────────────────── */
+const BADGE = { ar:'b-ar', games:'b-games', transmedia:'b-transmedia', art:'b-art' };
+
+function renderCardHTML(p) {
+  return `
+    <article class="p-card" role="listitem" onclick="openModal(${p.id})">
+      <div class="p-thumb${p.cover ? ' p-thumb--img' : ''}">
+        ${p.cover
+          ? `<img src="${p.cover}" alt="${p.title}" class="p-thumb-cover" loading="lazy">`
+          : `<span class="p-icon">${p.icon}</span>`
+        }
+        <span class="p-badge ${BADGE[p.cat]}">${p.cat.toUpperCase()}</span>
+      </div>
+      <div class="p-body">
+        <h3 class="p-title">${p.title}</h3>
+        <p class="p-brief">${p.brief}</p>
+        <div class="p-meta">
+          <span class="p-year">${p.year}</span>
+          <span class="p-cta">VER CASO &nbsp;▶</span>
+        </div>
+      </div>
+    </article>`;
+}
+
+/* Renders projects into the grid — all or filtered by category */
+function showProjects(cat) {
+  const list = cat === 'all' ? PROJECTS : PROJECTS.filter(p => p.cat === cat);
+  const grid = document.getElementById('work-project-grid');
+  grid.innerHTML = list.map(renderCardHTML).join('');
+  // Stagger entrance
+  requestAnimationFrame(() => {
+    grid.querySelectorAll('.p-card').forEach((card, i) => {
+      setTimeout(() => card.classList.add('card-visible'), i * 75);
+    });
+  });
+}
+
+/* Updates the category count badges */
+function initCounts() {
+  const cats = ['all', 'ar', 'games', 'transmedia', 'art'];
+  cats.forEach(cat => {
+    const n = cat === 'all' ? PROJECTS.length
+              : PROJECTS.filter(p => p.cat === cat).length;
+    const el = document.getElementById('cnt-' + cat);
+    if (el) el.textContent = String(n).padStart(2, '0');
+  });
+}
+
+/* Switches active category and re-renders the grid */
+function switchCat(cat) {
+  document.querySelectorAll('.cat-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.cat === cat)
+  );
+  showProjects(cat);
+  document.getElementById('work').scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ── MODAL ─────────────────────────────────────────────────── */
+function openModal(id) {
+  const p = PROJECTS.find(x => x.id === id);
+  if (!p) return;
+
+  document.getElementById('m-eyebrow').textContent = `// CASE STUDY — ${p.cat.toUpperCase()}`;
+  document.getElementById('m-title').textContent   = p.title;
+
+  const banner = document.getElementById('m-banner');
+  if (p.cover) {
+    banner.innerHTML = `<img src="${p.cover}" alt="${p.title}" class="m-banner-img">`;
+    banner.classList.remove('m-banner--icon');
+  } else {
+    banner.innerHTML = `<span class="m-banner-icon">${p.icon}</span>`;
+    banner.classList.add('m-banner--icon');
+  }
+
+  const ctaWrap = document.getElementById('m-cta-wrap');
+  if (p.links && p.links.length) {
+    const l = p.links[0];
+    ctaWrap.innerHTML = `
+      <a href="${l.url}" target="_blank" rel="noopener" class="m-cta-primary">
+        <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
+        ${l.label}
+      </a>`;
+  } else {
+    ctaWrap.innerHTML = '';
+  }
+
+  document.getElementById('m-ch').textContent   = p.ch;
+  document.getElementById('m-so').textContent   = p.so;
+  document.getElementById('m-body').textContent = p.body;
+  document.getElementById('m-re').textContent   = p.re;
+
+  document.getElementById('m-metrics').innerHTML = p.metrics.map(m => `
+    <div class="m-metric-pill">
+      <span class="m-metric-pill-val">${m.v}</span>
+      <span class="m-metric-pill-lbl">${m.l}</span>
+    </div>
+  `).join('');
+
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeModal();
+});
+
+/* ── WHATSAPP ──────────────────────────────────────────────── */
+function toggleWaPopup() { document.getElementById('wa-popup').classList.toggle('open'); }
+function openWaPopup()   { document.getElementById('wa-popup').classList.add('open'); }
+function closeWaPopup()  { document.getElementById('wa-popup').classList.remove('open'); }
+
+/* ── ESC ───────────────────────────────────────────────────── */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeModal(); closeWaPopup(); }
+});
+
+/* ── SCROLL DOTS ───────────────────────────────────────────── */
+const SEC_IDS = ['home', 'work', 'about'];
+const dots    = document.querySelectorAll('.s-dot');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const i = SEC_IDS.indexOf(e.target.id);
+      if (i !== -1) dots.forEach((d, j) => d.classList.toggle('active', i === j));
+    }
+  });
+}, { threshold: .4 });
+SEC_IDS.forEach(id => { const el = document.getElementById(id); if (el) io.observe(el); });
+
+/* ── LOADER ────────────────────────────────────────────────── */
+(function () {
+  const loader      = document.getElementById('loader');
+  const fillLeft    = document.getElementById('ldr-fill-left');
+  const fillRight   = document.getElementById('ldr-fill-right');
+  const fillDiamond = document.getElementById('ldr-fill-diamond');
+  const barWrap     = document.getElementById('ldr-bar-wrap');
+  const center      = document.getElementById('ldr-center');
+
+  document.body.style.overflow = 'hidden';
+
+  // ── Sequential fill: left (720ms) → diamond (420ms) → right (720ms) ──
+  // Total fill time: 720 + 420 + 720 = 1860ms
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    // Phase 1 — left track fills
+    fillLeft.classList.add('ldr-go');
+    // Phase 2 — diamond fills when left completes
+    setTimeout(() => fillDiamond.classList.add('ldr-go'), 720);
+    // Phase 3 — right track fills when diamond completes
+    setTimeout(() => fillRight.classList.add('ldr-go'),  1140);
+  }));
+
+  // t ≈ 1900ms — all fills done → diamond glow pulse
+  setTimeout(() => {
+    loader.classList.add('ldr-complete');
+
+    // t ≈ 2100ms — fade out center group
+    setTimeout(() => {
+      center.style.transition = 'opacity 200ms ease-out';
+      center.style.opacity    = '0';
+
+      // t ≈ 2300ms — bar rushes to full width (becomes the split seam)
+      setTimeout(() => {
+        barWrap.style.transition = 'width 240ms cubic-bezier(.16,1,.3,1)';
+        barWrap.style.width      = '100vw';
+
+        // t ≈ 2560ms — panels fly apart along the bar's center line
+        setTimeout(() => {
+          loader.classList.add('ldr-split');
+
+          // t ≈ 3280ms — loader gone, restore scroll, typewriter arranca
+          setTimeout(() => {
+            loader.style.display         = 'none';
+            document.body.style.overflow = '';
+            startHeroTypewriter();
+          }, 720);
+        }, 260);
+      }, 200);
+    }, 200);
+  }, 1900);
+})();
+
+/* ── SCROLL REVEAL ──────────────────────────────────────────── */
+function initScrollReveal() {
+  const els = document.querySelectorAll('[data-reveal]');
+  if (!els.length) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    els.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+
+  els.forEach(el => obs.observe(el));
+}
+
+/* ── HERO TYPEWRITER ────────────────────────────────────────── */
+function startHeroTypewriter() {
+  const l1 = document.querySelector('.hero-name .l1');
+  const l2 = document.querySelector('.hero-name .l2');
+  if (!l1 || !l2) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    l1.textContent = l1.dataset.text;
+    l2.textContent = l2.dataset.text;
+    return;
+  }
+
+  const t1 = l1.dataset.text || '';
+  const t2 = l2.dataset.text || '';
+  const SPEED = 62;   // ms por carácter
+  const PAUSE = 90;   // pausa entre L1 y L2
+
+  const cursor = document.createElement('span');
+  cursor.className = 'typer-cursor';
+
+  function type(el, text, cb) {
+    let i = 0;
+    el.appendChild(cursor);
+    const tick = () => {
+      if (i < text.length) {
+        el.insertBefore(document.createTextNode(text[i++]), cursor);
+        setTimeout(tick, SPEED + (Math.random() * 28 - 14));
+      } else {
+        cb && cb();
+      }
+    };
+    tick();
+  }
+
+  type(l1, t1, () => {
+    setTimeout(() => {
+      l1.removeChild(cursor);
+      type(l2, t2, () => {
+        setTimeout(() => {
+          if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+        }, 1200);
+      });
+    }, PAUSE);
+  });
+}
+
+/* ── INIT ──────────────────────────────────────────────────── */
+showProjects('all');
+initCounts();
+initScrollReveal();
+
+/* ── HEX BACKGROUND — neural pulse animation ─────────────────
+   Architecture:
+     · Build a graph of all unique hex edges (de-duped by canonical key)
+     · Each edge stores glow (0–1) + adjacency list (edges sharing a vertex)
+     · A "spark" activates an edge (sets glow=1) and after a brief delay
+       cascades to 1–2 random neighbours, depth-limited to prevent blow-up
+     · Edges fade at 2.2/s; active edges draw two passes (outer glow + core)
+     · New chains spawn every 0.9–2.5s; max 30 sparks concurrent
+────────────────────────────────────────────────────────────── */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+
+  const canvas = document.getElementById('hex-bg');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const S  = 44;                    // hex circumradius (px)
+  const W3 = Math.sqrt(3);
+  const CW = S * W3;                // horizontal center-to-center (pointy-top)
+  const RH = S * 1.5;              // vertical center-to-center
+
+  let edges = [], sparks = [], spawnIn = 0, prevTs = 0;
+
+  /* Round to 0.5 px to avoid float mismatch in dedup keys */
+  const snap = v => Math.round(v * 2) / 2;
+
+  /* ── Build hex grid + adjacency graph ─────────────────────── */
+  function rebuild() {
+    edges = []; sparks = [];
+    const edgeMap  = new Map(); // canonical key → edge index
+    const vertEdge = new Map(); // "x,y" → [edge indices]
+
+    const cMax = Math.ceil(canvas.width  / CW) + 2;
+    const rMax = Math.ceil(canvas.height / RH) + 2;
+
+    for (let r = -1; r < rMax; r++) {
+      for (let c = -1; c < cMax; c++) {
+        const cx = snap(c * CW + (r & 1 ? CW / 2 : 0));
+        const cy = snap(r * RH);
+
+        // 6 vertices — pointy-top: first vertex at 30°
+        const vs = Array.from({ length: 6 }, (_, i) => {
+          const a = Math.PI / 3 * i + Math.PI / 6;
+          return { x: snap(cx + S * Math.cos(a)), y: snap(cy + S * Math.sin(a)) };
+        });
+
+        for (let i = 0; i < 6; i++) {
+          const a = vs[i], b = vs[(i + 1) % 6];
+          // Canonical key (smaller coords first) for dedup
+          const key = a.x < b.x || (a.x === b.x && a.y <= b.y)
+            ? `${a.x},${a.y}|${b.x},${b.y}`
+            : `${b.x},${b.y}|${a.x},${a.y}`;
+
+          if (!edgeMap.has(key)) {
+            const e = { x1: a.x, y1: a.y, x2: b.x, y2: b.y, glow: 0, adj: null };
+            edgeMap.set(key, edges.length);
+            edges.push(e);
+
+            [a, b].forEach(v => {
+              const vk = `${v.x},${v.y}`;
+              if (!vertEdge.has(vk)) vertEdge.set(vk, []);
+              vertEdge.get(vk).push(edges.length - 1);
+            });
+          }
+        }
+      }
+    }
+
+    // Adjacency: all edges that share at least one vertex
+    edges.forEach((e, i) => {
+      const adj = new Set([
+        ...(vertEdge.get(`${e.x1},${e.y1}`) || []),
+        ...(vertEdge.get(`${e.x2},${e.y2}`) || [])
+      ]);
+      adj.delete(i);
+      e.adj = [...adj];
+    });
+  }
+
+  /* ── Light one edge and schedule its cascade ─────────────── */
+  function light(idx, depth) {
+    if (!edges[idx] || depth <= 0 || sparks.length >= 80) return;
+    const e = edges[idx];
+    if (e.glow > 0.05) return;   // already active — skip
+    e.glow = 1;
+    sparks.push({
+      idx,
+      t: 0,
+      depth,
+      cascaded: false,
+      delay: 0.012 + Math.random() * 0.025  // 12–37 ms — disparo neuronal rápido
+    });
+  }
+
+  /* ── Spawn a new random pulse chain ──────────────────────── */
+  function spawn() {
+    if (!edges.length) return;
+    const start = Math.floor(Math.random() * edges.length);
+    const depth = 12 + Math.floor(Math.random() * 8); // 12–19 hops — cadena larga de destello
+    light(start, depth);
+  }
+
+  /* ── Main draw + update loop ──────────────────────────────── */
+  function frame(ts) {
+    const dt = Math.min((ts - prevTs) / 1000, 0.05);
+    prevTs = ts;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    /* 1 — Static grid: batch all edges into ONE path call */
+    ctx.beginPath();
+    ctx.lineWidth = 0.5;
+    edges.forEach(e => { ctx.moveTo(e.x1, e.y1); ctx.lineTo(e.x2, e.y2); });
+    ctx.strokeStyle = 'rgba(0,212,255,0.06)';
+    ctx.stroke();
+
+    /* 2 — Glowing edges: two-pass (outer halo + inner core) */
+    edges.forEach(e => {
+      if (e.glow <= 0.003) { e.glow = 0; return; }
+      e.glow = Math.max(0, e.glow - dt * 0.22); // fade ~4.5s — destello persistente
+      const g = e.glow;
+
+      // Outer soft halo
+      ctx.beginPath(); ctx.moveTo(e.x1, e.y1); ctx.lineTo(e.x2, e.y2);
+      ctx.strokeStyle = `rgba(0,212,255,${(g * 0.20).toFixed(3)})`;
+      ctx.lineWidth = 7; ctx.stroke();
+
+      // Bright inner core
+      ctx.beginPath(); ctx.moveTo(e.x1, e.y1); ctx.lineTo(e.x2, e.y2);
+      ctx.strokeStyle = `rgba(0,212,255,${(g * 0.60).toFixed(3)})`;
+      ctx.lineWidth = 1.8; ctx.stroke();
+    });
+
+    ctx.lineWidth = 0.5; // reset
+
+    /* 3 — Update sparks & trigger cascades */
+    sparks = sparks.filter(s => {
+      s.t += dt;
+      if (!s.cascaded && s.t >= s.delay) {
+        s.cascaded = true;
+        const adj = edges[s.idx]?.adj ?? [];
+        // 1 or 2 neighbours, picked at random
+        const picks = Math.random() > 0.38 ? 2 : 1;
+        [...adj]
+          .sort(() => Math.random() - 0.5)
+          .slice(0, picks)
+          .forEach(ni => light(ni, s.depth - 1));
+      }
+      return s.t < 0.06; // spark lives 60ms — propagación rápida
+    });
+
+    /* 4 — Periodic spawn of new chains */
+    spawnIn -= dt;
+    if (spawnIn <= 0) {
+      spawnIn = 0.9 + Math.random() * 1.4; // cadenas frecuentes
+      const bursts = 1 + (Math.random() > 0.55 ? 1 : 0);
+      for (let i = 0; i < bursts; i++) {
+        setTimeout(spawn, i * 80 + Math.random() * 60);
+      }
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  /* ── Resize ────────────────────────────────────────────────── */
+  let rto;
+  window.addEventListener('resize', () => {
+    clearTimeout(rto);
+    rto = setTimeout(() => {
+      canvas.width  = innerWidth;
+      canvas.height = innerHeight;
+      rebuild();
+    }, 200);
+  });
+
+  canvas.width  = innerWidth;
+  canvas.height = innerHeight;
+  rebuild();
+  requestAnimationFrame(ts => { prevTs = ts; requestAnimationFrame(frame); });
+})();
+
+</script>
+</body>
+</html>
