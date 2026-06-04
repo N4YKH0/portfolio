@@ -89,7 +89,24 @@
     <li><a href="#about">PERFIL</a></li>
     <li><a href="#about" onclick="event.preventDefault();openWaPopup()">CONTACTO</a></li>
   </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menú" aria-expanded="false" onclick="toggleMobileNav()">
+    <span class="ham-bar"></span>
+    <span class="ham-bar"></span>
+    <span class="ham-bar"></span>
+  </button>
 </nav>
+
+<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Menú móvil">
+  <a href="#home"  onclick="closeMobileNav()">INICIO</a>
+  <span class="nm-sub-label">WORK</span>
+  <a href="#work"  onclick="switchCat('all');        closeMobileNav()">TODO</a>
+  <a href="#work"  onclick="switchCat('ar');         closeMobileNav()">AR</a>
+  <a href="#work"  onclick="switchCat('games');      closeMobileNav()">GAMES</a>
+  <a href="#work"  onclick="switchCat('transmedia'); closeMobileNav()">TRANSMEDIA</a>
+  <a href="#work"  onclick="switchCat('art');        closeMobileNav()">ART</a>
+  <a href="#about" onclick="closeMobileNav()">PERFIL</a>
+  <a href="#about" onclick="event.preventDefault(); openWaPopup(); closeMobileNav()">CONTACTO</a>
+</div>
 
 <!-- scroll dots -->
 <div class="scroll-indicator" aria-hidden="true">
@@ -154,20 +171,6 @@
       <img src="Portafolio/Logo_NM.jpg" alt="NM Logo" class="hero-logo-img" id="hero-logo">
     </div>
 
-    <div class="hero-stats">
-      <div class="stat-item">
-        <span class="stat-val">6+</span>
-        <span class="stat-lbl">PROYECTOS</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-val">4</span>
-        <span class="stat-lbl">ÁREAS</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-val">3</span>
-        <span class="stat-lbl">IDIOMAS</span>
-      </div>
-    </div>
 
   </div>
 
@@ -502,6 +505,7 @@
       <p class="gal-medium" id="gal-medium"></p>
       <h2 class="gal-title" id="gal-title"></h2>
       <p class="gal-desc" id="gal-desc"></p>
+      <div class="gal-project-ref" id="gal-project-ref"></div>
     </div>
   </div>
 
@@ -637,6 +641,7 @@ const PROJECTS = [
     medium:'DISEÑO DE PERSONAJE · ILUSTRACIÓN DIGITAL',
     desc:'Diseño e ilustración del monstruo de la ansiedad. La criatura debía comunicar presencia, peso e inestabilidad sin recurrir a arquetipos clásicos de terror. La paleta azul/verde genera familiaridad perturbada. La hoja muestra figura completa y tres variaciones de tamaño para validar legibilidad en distintos formatos.',
     images:['Portafolio/Anxietas_.png'],
+    projectRef:{ id:2, label:'VER PROYECTO: VIVIENDO CON UN MONSTRUO' },
     metrics:[]
   },
   {
@@ -649,18 +654,19 @@ const PROJECTS = [
     medium:'DISEÑO DE PERSONAJE · ILUSTRACIÓN DIGITAL',
     desc:'Personaje protagonista del proyecto transmedia. La hoja define body shot, perfil, busto y estado de colapso emocional: el rango expresivo completo para producción. Pelo azul sobre tono cálido establece la dualidad visual con Anxietas. Diseñado para ser reconocible en silueta y legible en thumbnail.',
     images:['Portafolio/Valentina_.png'],
+    projectRef:{ id:2, label:'VER PROYECTO: VIVIENDO CON UN MONSTRUO' },
     metrics:[]
   },
   {
     id:10, cat:'art', year:'2022',
-    title:'DIBUJO LÁPIZ',
-    brief:'Selección de ilustraciones tradicionales a lápiz: composición narrativa, concept de personaje y estudios de figura y gesto.',
+    title:'DIBUJO',
+    brief:'Selección de ilustraciones tradicionales a lápiz: composición narrativa, concept de personaje, estudios de figura y gesto.',
     icon:'DL',
     cover:'Portafolio/Dibujo%20Lapiz%204.jpeg',
     isGallery:true,
     medium:'ILUSTRACIÓN TRADICIONAL · LÁPIZ',
-    desc:'Tres piezas de distinto propósito: composición narrativa con figura central en entorno de fantasía (4), concept de personaje con notas de diseño integradas —proceso de ideación visible— (5), y estudios de gesto y figura anatómica como base de fundamentos (2). El dibujo analógico es el punto de partida del proceso conceptual antes de la etapa digital.',
-    images:['Portafolio/Dibujo%20Lapiz%204.jpeg','Portafolio/Dibujo%20Lapiz%205.jpeg','Portafolio/Dibujo%20Lapiz%202.jpeg'],
+    desc:'Muestra de dibujo tradicional a lápiz. Incluye composición narrativa, concept de personaje con notas de proceso, y estudios de figura y gesto anatómico. El dibujo analógico es el punto de partida del proceso conceptual antes de la etapa digital.',
+    images:['Portafolio/Dibujo%20Lapiz%204.jpeg','Portafolio/Dibujo%20Lapiz%205.jpeg','Portafolio/Dibujo%20Lapiz%202.jpeg','Portafolio/Dibujo%20Lapiz%201.jpeg','Portafolio/Dibujo%20Lapiz%203.jpeg','Portafolio/Dibujo%20Lapiz%206.jpeg'],
     metrics:[]
   },
   {
@@ -803,9 +809,20 @@ function openGallery(id) {
   document.getElementById('gal-medium').textContent = p.medium || '';
   document.getElementById('gal-title').textContent  = p.title;
   document.getElementById('gal-desc').textContent   = p.desc;
+  const refEl = document.getElementById('gal-project-ref');
+  if (refEl) {
+    refEl.innerHTML = p.projectRef
+      ? `<button class="gal-proj-btn" onclick="goToProjectFromGallery(${p.projectRef.id})">${p.projectRef.label} &nbsp;▶</button>`
+      : '';
+  }
   _renderGalSlide();
   document.getElementById('gallery').classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+
+function goToProjectFromGallery(id) {
+  closeGallery();
+  setTimeout(() => openModal(id), 220);
 }
 
 function _renderGalSlide() {
@@ -906,6 +923,28 @@ document.getElementById('art-hub').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeArtHub();
 });
 
+/* ── HAMBURGER / MOBILE NAV ─────────────────────────────────── */
+function toggleMobileNav() {
+  const nav = document.getElementById('nav-mobile');
+  const btn = document.getElementById('nav-hamburger');
+  const open = nav.classList.toggle('open');
+  btn.classList.toggle('active', open);
+  btn.setAttribute('aria-expanded', open);
+}
+function closeMobileNav() {
+  document.getElementById('nav-mobile').classList.remove('open');
+  const btn = document.getElementById('nav-hamburger');
+  btn.classList.remove('active');
+  btn.setAttribute('aria-expanded', 'false');
+}
+document.addEventListener('click', e => {
+  const nav = document.getElementById('nav-mobile');
+  const btn = document.getElementById('nav-hamburger');
+  if (nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+    closeMobileNav();
+  }
+});
+
 /* ── WHATSAPP ──────────────────────────────────────────────── */
 function toggleWaPopup() { document.getElementById('wa-popup').classList.toggle('open'); }
 function openWaPopup()   { document.getElementById('wa-popup').classList.add('open'); }
@@ -913,7 +952,7 @@ function closeWaPopup()  { document.getElementById('wa-popup').classList.remove(
 
 /* ── ESC ───────────────────────────────────────────────────── */
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape')     { closeModal(); closeWaPopup(); closeGallery(); closeArtHub(); }
+  if (e.key === 'Escape')     { closeModal(); closeWaPopup(); closeGallery(); closeArtHub(); closeMobileNav(); }
   if (e.key === 'ArrowLeft')  galleryNav(-1);
   if (e.key === 'ArrowRight') galleryNav(1);
 });
