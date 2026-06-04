@@ -336,7 +336,7 @@ section {
 }
 .p-card:hover {
   border-color:rgba(0,212,255,.22);
-  box-shadow:0 8px 40px rgba(0,0,0,.4), 0 0 0 1px rgba(0,212,255,.07);
+  box-shadow:0 12px 28px rgba(0,0,0,.45);
   transform:translateY(-3px);
 }
 
@@ -510,11 +510,10 @@ section {
 
 /* role strip */
 .m-role-strip {
-  background:var(--bg-card);
-  border:1px solid var(--border);
-  border-left:2px solid rgba(167,139,250,.4);
+  background:rgba(167,139,250,.05);
+  border:1px solid rgba(167,139,250,.18);
   padding:1.2rem 1.4rem; margin-bottom:2rem;
-  border-radius:0 var(--r) var(--r) 0;
+  border-radius:var(--r);
 }
 .m-role-strip-label {
   font-family:var(--font-heading);
@@ -618,11 +617,10 @@ section {
 }
 
 .contact-card {
-  background:var(--bg-card);
-  border:1px solid var(--border);
-  border-left:2px solid rgba(245,158,11,.35);
+  background:rgba(245,158,11,.04);
+  border:1px solid rgba(245,158,11,.14);
   padding:1.2rem;
-  border-radius:0 var(--r) var(--r) 0;
+  border-radius:var(--r);
 }
 .cc-title {
   font-family:var(--font-heading);
@@ -692,10 +690,9 @@ section {
 .edu-item {
   background:var(--bg-card);
   border:1px solid var(--border);
-  border-left:2px solid rgba(0,212,255,.28);
   padding:.85rem 1.1rem;
   display:grid; grid-template-columns:1fr auto; gap:.2rem .65rem;
-  align-items:start; border-radius:0 var(--r) var(--r) 0;
+  align-items:start; border-radius:var(--r);
 }
 .edu-deg { font-family:var(--font-heading); font-size:14px; font-weight:700; color:var(--text-hi); }
 .edu-yr { font-family:var(--font-mono); font-size:10px; color:var(--amber); text-align:right; }
@@ -1082,7 +1079,7 @@ footer {
 /* hover only applies to visible cards */
 .p-card.card-visible:hover {
   border-color:rgba(0,212,255,.22);
-  box-shadow:0 8px 40px rgba(0,0,0,.4), 0 0 0 1px rgba(0,212,255,.07);
+  box-shadow:0 12px 28px rgba(0,0,0,.45);
   transform:translateY(-3px);
 }
 .p-card:active { transform:scale(0.99); }
