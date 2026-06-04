@@ -149,7 +149,7 @@
         <polygon points="50,14 86,50 50,86 14,50"
                  stroke="currentColor" stroke-width="1.5"/>
       </svg>
-      <span class="hero-nm-text">NM</span>
+      <img src="Portafolio/Logo_NM.jpg" alt="NM Logo" class="hero-logo-img" id="hero-logo">
     </div>
 
     <div class="hero-stats">
@@ -747,11 +747,12 @@ SEC_IDS.forEach(id => { const el = document.getElementById(id); if (el) io.obser
         setTimeout(() => {
           loader.classList.add('ldr-split');
 
-          // t ≈ 3280ms — loader gone, restore scroll, typewriter arranca
+          // t ≈ 3280ms — loader gone, restore scroll, typewriter + logo
           setTimeout(() => {
             loader.style.display         = 'none';
             document.body.style.overflow = '';
             startHeroTypewriter();
+            startHeroLogo();
           }, 720);
         }, 260);
       }, 200);
@@ -779,6 +780,15 @@ function initScrollReveal() {
   }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
 
   els.forEach(el => obs.observe(el));
+}
+
+/* ── HERO LOGO REVEAL ───────────────────────────────────────── */
+function startHeroLogo() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const wrap = document.querySelector('.hero-diamond-wrap');
+  const logo = document.getElementById('hero-logo');
+  if (wrap) wrap.classList.add('diamond-ready');
+  if (logo) setTimeout(() => logo.classList.add('logo-visible'), 150);
 }
 
 /* ── HERO TYPEWRITER ────────────────────────────────────────── */
