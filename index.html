@@ -94,12 +94,12 @@
   <ul class="nav-links">
     <li><a href="#home">INICIO</a></li>
     <li class="has-sub">
-      <a href="#work">WORK ▾</a>
+      <a href="#work">TRABAJO ▾</a>
       <div class="nav-sub">
         <a href="#work" onclick="switchCat('ar')">AR</a>
-        <a href="#work" onclick="switchCat('games')">GAMES</a>
+        <a href="#work" onclick="switchCat('games')">JUEGOS</a>
         <a href="#work" onclick="switchCat('transmedia')">TRANSMEDIA</a>
-        <a href="#work" onclick="switchCat('art')">ART</a>
+        <a href="#work" onclick="switchCat('art')">ARTE</a>
       </div>
     </li>
     <li><a href="#about">PERFIL</a></li>
@@ -114,12 +114,12 @@
 
 <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Menú móvil">
   <a href="#home"  onclick="closeMobileNav()">INICIO</a>
-  <span class="nm-sub-label">WORK</span>
+  <span class="nm-sub-label">TRABAJO</span>
   <a href="#work"  onclick="switchCat('all');        closeMobileNav()">TODO</a>
   <a href="#work"  onclick="switchCat('ar');         closeMobileNav()">AR</a>
-  <a href="#work"  onclick="switchCat('games');      closeMobileNav()">GAMES</a>
+  <a href="#work"  onclick="switchCat('games');      closeMobileNav()">JUEGOS</a>
   <a href="#work"  onclick="switchCat('transmedia'); closeMobileNav()">TRANSMEDIA</a>
-  <a href="#work"  onclick="switchCat('art');        closeMobileNav()">ART</a>
+  <a href="#work"  onclick="switchCat('art');        closeMobileNav()">ARTE</a>
   <a href="#about" onclick="closeMobileNav()">PERFIL</a>
   <a href="#about" onclick="event.preventDefault(); openWaPopup(); closeMobileNav()">CONTACTO</a>
 </div>
@@ -217,7 +217,7 @@
         <span class="cat-count" id="cnt-ar">—</span>
       </button>
       <button class="cat-btn"        data-cat="games"      onclick="switchCat('games')"      data-reveal data-delay="2">
-        <span class="cat-label">GAMES</span>
+        <span class="cat-label">JUEGOS</span>
         <span class="cat-count" id="cnt-games">—</span>
       </button>
       <button class="cat-btn"        data-cat="transmedia" onclick="switchCat('transmedia')" data-reveal data-delay="3">
@@ -225,7 +225,7 @@
         <span class="cat-count" id="cnt-transmedia">—</span>
       </button>
       <button class="cat-btn"        data-cat="art"        onclick="switchCat('art')"        data-reveal data-delay="4">
-        <span class="cat-label">ART</span>
+        <span class="cat-label">ARTE</span>
         <span class="cat-count" id="cnt-art">—</span>
       </button>
     </div>
@@ -444,7 +444,7 @@
 
     <div class="m-header">
       <div class="m-header-left">
-        <p class="m-eyebrow" id="m-eyebrow">// CASE STUDY</p>
+        <p class="m-eyebrow" id="m-eyebrow">// CASO DE ESTUDIO</p>
         <h2 class="m-title"  id="m-title"></h2>
       </div>
       <div id="m-cta-wrap"></div>
@@ -519,6 +519,7 @@
       <p class="gal-medium" id="gal-medium"></p>
       <h2 class="gal-title" id="gal-title"></h2>
       <p class="gal-desc" id="gal-desc"></p>
+      <p class="gal-hint gal-hidden" id="gal-hint">Usa &nbsp;←&nbsp;→&nbsp;&nbsp;para navegar</p>
       <div class="gal-project-ref" id="gal-project-ref"></div>
     </div>
   </div>
@@ -696,6 +697,7 @@ const PROJECTS = [
 
 /* ── CARD & WORK ───────────────────────────────────────────── */
 const BADGE = { ar:'b-ar', games:'b-games', transmedia:'b-transmedia', art:'b-art' };
+const CAT_LABEL = { ar:'AR', games:'JUEGOS', transmedia:'TRANSMEDIA', art:'ARTE' };
 
 function renderCardHTML(p) {
   const isHub = !!p.isArtHub;
@@ -709,7 +711,7 @@ function renderCardHTML(p) {
           ? `<img src="${p.cover}" alt="${p.title}" class="p-thumb-cover" loading="lazy">`
           : `<span class="p-icon">${p.icon}</span>`
         }
-        <span class="p-badge ${BADGE[p.cat]}">${p.cat.toUpperCase()}</span>
+        <span class="p-badge ${BADGE[p.cat]}">${CAT_LABEL[p.cat]}</span>
       </div>
       <div class="p-body">
         <h3 class="p-title">${p.title}</h3>
@@ -738,6 +740,7 @@ function showProjects(cat) {
 }
 
 /* Updates the category count badges */
+const CAT_FULL_LABEL = { all:'TODO', ar:'AR', games:'JUEGOS', transmedia:'TRANSMEDIA', art:'ARTE' };
 function initCounts() {
   const cats = ['all', 'ar', 'games', 'transmedia', 'art'];
   cats.forEach(cat => {
@@ -747,6 +750,12 @@ function initCounts() {
     else                     n = PROJECTS.filter(p => p.cat === cat).length;
     const el = document.getElementById('cnt-' + cat);
     if (el) el.textContent = String(n).padStart(2, '0');
+    const btn = document.querySelector(`.cat-btn[data-cat="${cat}"]`);
+    if (btn) {
+      const label = `${CAT_FULL_LABEL[cat]} — ${n} ${n === 1 ? 'proyecto' : 'proyectos'}`;
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('title', label);
+    }
   });
 }
 
@@ -764,7 +773,7 @@ function openModal(id) {
   const p = PROJECTS.find(x => x.id === id);
   if (!p) return;
 
-  document.getElementById('m-eyebrow').textContent = `// CASE STUDY · ${p.cat.toUpperCase()}`;
+  document.getElementById('m-eyebrow').textContent = `// CASO DE ESTUDIO · ${CAT_LABEL[p.cat]}`;
   document.getElementById('m-title').textContent   = p.title;
 
   const banner = document.getElementById('m-banner');
@@ -845,11 +854,13 @@ function _renderGalSlide() {
   const dots  = document.getElementById('gal-dots');
   const prev  = document.getElementById('gal-prev');
   const next  = document.getElementById('gal-next');
+  const hint  = document.getElementById('gal-hint');
   const multi = p.images.length > 1;
   img.src = p.images[_galIdx];
   img.alt = p.title;
   prev.classList.toggle('gal-hidden', !multi);
   next.classList.toggle('gal-hidden', !multi);
+  hint.classList.toggle('gal-hidden', !multi);
   dots.innerHTML = multi
     ? p.images.map((_, i) =>
         `<div class="gal-dot${i === _galIdx ? ' active' : ''}" onclick="galleryGoTo(${i})"></div>`
@@ -986,7 +997,16 @@ SEC_IDS.forEach(id => { const el = document.getElementById(id); if (el) io.obser
 
 /* ── LOADER ────────────────────────────────────────────────── */
 (function () {
-  const loader      = document.getElementById('loader');
+  const loader = document.getElementById('loader');
+
+  if (sessionStorage.getItem('nm_loader_seen')) {
+    loader.style.display = 'none';
+    startHeroTypewriter();
+    startHeroLogo();
+    return;
+  }
+  sessionStorage.setItem('nm_loader_seen', '1');
+
   const fillLeft    = document.getElementById('ldr-fill-left');
   const fillRight   = document.getElementById('ldr-fill-right');
   const fillDiamond = document.getElementById('ldr-fill-diamond');

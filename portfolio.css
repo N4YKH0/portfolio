@@ -1347,6 +1347,11 @@ footer {
   font-size:14px; color:var(--text-mid); line-height:1.85;
 }
 
+.gal-hint {
+  font-family:var(--font-mono); font-size:10px; letter-spacing:.1em;
+  color:var(--text-lo); margin-top:.9rem;
+}
+
 .gal-project-ref { margin-top:1.4rem; }
 .gal-proj-btn {
   display:inline-flex; align-items:center; gap:8px;
