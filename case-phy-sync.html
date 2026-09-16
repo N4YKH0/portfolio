@@ -23,139 +23,191 @@
   <canvas id="hex-bg"></canvas>
 
   <div class="cs-wrap">
-    <a href="index.html#work" class="cs-back">
-      <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
-      Volver al portafolio
-    </a>
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <a href="index.html#work" class="cs-back" style="padding-top:28px" data-i18n="back">
+        <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
+        Volver al portafolio
+      </a>
+      <div class="lang-toggle" style="margin-top:28px">
+        <button class="lang-btn active" data-lb="es" onclick="setCaseLang('es')">ES</button>
+        <button class="lang-btn" data-lb="en" onclick="setCaseLang('en')">EN</button>
+      </div>
+    </div>
 
     <div class="cs-hero">
       <div class="cs-tags">
-        <span class="cs-tag">AR / REHABILITACIÓN</span>
-        <span class="cs-tag cs-tag--amber">MVP VALIDADO</span>
+        <span class="cs-tag" data-i18n="tag1">AR / REHABILITACIÓN</span>
+        <span class="cs-tag cs-tag--amber" data-i18n="tag2">MVP VALIDADO</span>
       </div>
       <h1 class="cs-title">PHY-SYNC + GAME</h1>
-      <p class="cs-subtitle">Videojuego AR de rehabilitación motriz — tu cuerpo real, capturado por cámara y una red neuronal de pose 3D, es el control del juego. Sin hardware adicional.</p>
+      <p class="cs-subtitle" data-i18n="subtitle">Videojuego AR de rehabilitación motriz — tu cuerpo real, capturado por cámara y una red neuronal de pose 3D, es el control del juego. Sin hardware adicional.</p>
     </div>
 
     <img class="cs-cover" src="Portafolio/PhySync_Cover.png" alt="Logo PHY-SYNC + GAME — Physical, Synchronic, VideoGame">
 
     <div class="cs-meta">
-      <div class="cs-meta-item"><span class="k">Mi rol</span><span class="v">Desarrollo Unity + AR — pipeline cámara → pose 3D → juego</span></div>
-      <div class="cs-meta-item"><span class="k">Equipo</span><span class="v">5 personas — Nicolas Martinez, Laura Salazar, Manuel Ávila, Daniel Ospina, Angela Monroy</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.role">Mi rol</span><span class="v" data-i18n="meta.role.val">Desarrollo Unity + AR — pipeline cámara → pose 3D → juego</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.team">Equipo</span><span class="v" data-i18n="meta.team.val">5 personas — Nicolas Martinez, Laura Salazar, Manuel Ávila, Daniel Ospina, Angela Monroy</span></div>
       <div class="cs-meta-item"><span class="k">Stack</span><span class="v">Unity AR Foundation, Barracuda (VNect), Firebase, C#</span></div>
-      <div class="cs-meta-item"><span class="k">Año</span><span class="v">2023</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.year">Año</span><span class="v">2023</span></div>
     </div>
 
     <div class="cs-section">
-      <h2 class="cs-h2"><span class="num">01</span>El reto</h2>
-      <p class="cs-p">Nos propusimos diseñar una integración real entre lo físico y lo digital para <strong>personas en condición de discapacidad motriz osteomuscular —temporal o total—</strong>, donde la falta de espacios y hardware accesibles limita el ocio, el deporte y la rehabilitación.</p>
+      <h2 class="cs-h2"><span class="num">01</span><span data-i18n="h.reto">El reto</span></h2>
+      <p class="cs-p" data-i18n="p.reto">Nos propusimos diseñar una integración real entre lo físico y lo digital para <strong>personas en condición de discapacidad motriz osteomuscular —temporal o total—</strong>, donde la falta de espacios y hardware accesibles limita el ocio, el deporte y la rehabilitación.</p>
 
       <div class="cs-grid2">
         <div class="cs-feature">
           <div class="ic">1</div>
-          <div class="tx"><strong>Autoeficacia e imagen corporal</strong>La salud de las personas con discapacidad física mejora con intervenciones que las fortalecen y reducen ansiedad/depresión.</div>
+          <div class="tx" data-i18n="feat.1"><strong>Autoeficacia e imagen corporal</strong>La salud de las personas con discapacidad física mejora con intervenciones que las fortalecen y reducen ansiedad/depresión.</div>
         </div>
         <div class="cs-feature">
           <div class="ic">2</div>
-          <div class="tx"><strong>Participación social</strong>La falta de acceso a actividades recreativas afecta el bienestar emocional y la interacción social.</div>
+          <div class="tx" data-i18n="feat.2"><strong>Participación social</strong>La falta de acceso a actividades recreativas afecta el bienestar emocional y la interacción social.</div>
         </div>
         <div class="cs-feature">
           <div class="ic">3</div>
-          <div class="tx"><strong>Motivación y determinación</strong>El deporte, el estudio y las metas propias son vías reales de distracción y motivación durante la recuperación.</div>
+          <div class="tx" data-i18n="feat.3"><strong>Motivación y determinación</strong>El deporte, el estudio y las metas propias son vías reales de distracción y motivación durante la recuperación.</div>
         </div>
       </div>
 
       <div class="cs-quote">
-        <p>Los jóvenes-adultos en condición de discapacidad motora temporal necesitan espacios y experiencias de rehabilitación interactivas y motivadoras, sin necesidad de desplazarse.</p>
-        <span>— Oportunidad de intervención, research del proyecto</span>
+        <p data-i18n="quote.text">Los jóvenes-adultos en condición de discapacidad motora temporal necesitan espacios y experiencias de rehabilitación interactivas y motivadoras, sin necesidad de desplazarse.</p>
+        <span data-i18n="quote.attr">— Oportunidad de intervención, research del proyecto</span>
       </div>
     </div>
 
     <div class="cs-section">
       <h2 class="cs-h2"><span class="num">02</span>Physical + Synchronic</h2>
-      <p class="cs-p">Antes de llegar al diseño final exploramos varias referencias de estimación de movimiento: Kinect, los mandos de Wii, y juegos como <strong>Wii Fit</strong> y <strong>Ring Fit Adventure</strong>. De ahí nació el nombre del proyecto: un control <strong>físico</strong> (Arduino) sincronizado con seguimiento <strong>digital</strong> del cuerpo por cámara.</p>
+      <p class="cs-p" data-i18n="p.build1">Antes de llegar al diseño final exploramos varias referencias de estimación de movimiento: Kinect, los mandos de Wii, y juegos como <strong>Wii Fit</strong> y <strong>Ring Fit Adventure</strong>. De ahí nació el nombre del proyecto: un control <strong>físico</strong> (Arduino) sincronizado con seguimiento <strong>digital</strong> del cuerpo por cámara.</p>
 
       <img class="cs-img" src="Portafolio/PhySync_02.jpeg" alt="Control físico con Arduino, construido sobre una maqueta de cartón">
-      <p class="cs-caption">El control físico — Arduino armado sobre una maqueta de cartón, construido por otro subequipo.</p>
+      <p class="cs-caption" data-i18n="cap.arduino">El control físico — Arduino armado sobre una maqueta de cartón, construido por otro subequipo.</p>
 
-      <p class="cs-p">En paralelo, una <strong>red neuronal de estimación de pose 3D</strong> (VNect, 24 puntos de articulación) corre en tiempo real sobre Unity Barracuda a partir de la cámara del dispositivo, siguiendo el movimiento del cuerpo del jugador. Mi rol fue el desarrollo completo de Unity y AR: el pipeline cámara → Barracuda/VNect → mecánica de juego, además de la implementación de las pantallas de interfaz (UI diseñada por Angela Monroy). El control Arduino lo armó otro subequipo.</p>
+      <p class="cs-p" data-i18n="p.build2">En paralelo, una <strong>red neuronal de estimación de pose 3D</strong> (VNect, 24 puntos de articulación) corre en tiempo real sobre Unity Barracuda a partir de la cámara del dispositivo, siguiendo el movimiento del cuerpo del jugador. Mi rol fue el desarrollo completo de Unity y AR: el pipeline cámara → Barracuda/VNect → mecánica de juego, además de la implementación de las pantallas de interfaz (UI diseñada por Angela Monroy). El control Arduino lo armó otro subequipo.</p>
 
       <img class="cs-img" src="Portafolio/PhySync_UXFlow.jpeg" alt="Flujo de onboarding móvil: cargando, login, permisos de cámara, configuración, activo">
-      <p class="cs-caption">Flujo de onboarding — login, permisos de cámara, configuración y activación.</p>
+      <p class="cs-caption" data-i18n="cap.uxflow">Flujo de onboarding — login, permisos de cámara, configuración y activación.</p>
     </div>
 
     <div class="cs-section">
-      <h2 class="cs-h2"><span class="num">03</span>Solución</h2>
-      <p class="cs-p">La app diagnostica la condición del usuario (por ejemplo, tendinitis de Aquiles) y organiza la recuperación como una <strong>rutina diaria con racha</strong>, no como una lista de ejercicios. Cada nivel es un minijuego — el primero, básquetbol — que el jugador controla con su propio cuerpo, detectado en tiempo real por la cámara.</p>
+      <h2 class="cs-h2"><span class="num">03</span><span data-i18n="h.solucion">Solución</span></h2>
+      <p class="cs-p" data-i18n="p.solucion1">La app diagnostica la condición del usuario (por ejemplo, tendinitis de Aquiles) y organiza la recuperación como una <strong>rutina diaria con racha</strong>, no como una lista de ejercicios. Cada nivel es un minijuego — el primero, básquetbol — que el jugador controla con su propio cuerpo, detectado en tiempo real por la cámara.</p>
 
       <video class="cs-video" src="Portafolio/PhySync_demo.mp4" controls preload="metadata" poster="Portafolio/PhySync_Cover.png"></video>
-      <p class="cs-caption">Demo del MVP en funcionamiento.</p>
+      <p class="cs-caption" data-i18n="cap.demo">Demo del MVP en funcionamiento.</p>
 
       <div class="cs-grid2">
         <img class="cs-img" src="Portafolio/PhySync_01.jpeg" alt="Pantalla de diagnóstico y rutina diaria con racha" style="margin:0">
         <img class="cs-img" src="Portafolio/PhySync_GameScreen.jpeg" alt="Minijuego de básquetbol controlado por el cuerpo del jugador" style="margin:0">
       </div>
-      <p class="cs-caption">Diagnóstico + racha diaria (izq.) y el minijuego de básquetbol (der.).</p>
+      <p class="cs-caption" data-i18n="cap.screens">Diagnóstico + racha diaria (izq.) y el minijuego de básquetbol (der.).</p>
 
       <div class="cs-grid2">
         <div class="cs-feature">
           <div class="ic">Dx</div>
-          <div class="tx"><strong>Diagnóstico personalizado</strong>El usuario define su condición y la app arma la rutina alrededor de esa lesión.</div>
+          <div class="tx" data-i18n="feat.diag"><strong>Diagnóstico personalizado</strong>El usuario define su condición y la app arma la rutina alrededor de esa lesión.</div>
         </div>
         <div class="cs-feature">
           <div class="ic">🔥</div>
-          <div class="tx"><strong>Racha diaria</strong>Gamificación tipo streak para sostener la adherencia al tratamiento.</div>
+          <div class="tx" data-i18n="feat.racha"><strong>Racha diaria</strong>Gamificación tipo streak para sostener la adherencia al tratamiento.</div>
         </div>
         <div class="cs-feature">
           <div class="ic">🏀</div>
-          <div class="tx"><strong>Minijuego por nivel</strong>Cada ejercicio terapéutico se convierte en una mecánica de juego real.</div>
+          <div class="tx" data-i18n="feat.minijuego"><strong>Minijuego por nivel</strong>Cada ejercicio terapéutico se convierte en una mecánica de juego real.</div>
         </div>
         <div class="cs-feature">
           <div class="ic">🔗</div>
-          <div class="tx"><strong>Control físico + digital</strong>El botón Arduino y el seguimiento por cámara trabajan sincronizados — de ahí "Phy-Sync".</div>
+          <div class="tx" data-i18n="feat.control"><strong>Control físico + digital</strong>El botón Arduino y el seguimiento por cámara trabajan sincronizados — de ahí "Phy-Sync".</div>
         </div>
       </div>
 
-      <p class="cs-p" style="margin-top:28px"><strong>Pruebas con usuarios reales:</strong></p>
+      <p class="cs-p" style="margin-top:28px" data-i18n="p.pruebas"><strong>Pruebas con usuarios reales:</strong></p>
       <div class="cs-grid2">
         <div>
           <video class="cs-video" src="Portafolio/PhySync_video05.mp4" controls preload="metadata" style="margin:0"></video>
-          <p class="cs-caption">Prueba 1 — entrega y conexión del control Arduino, y una usuaria jugando con su cuerpo sobre el tapete.</p>
+          <p class="cs-caption" data-i18n="cap.prueba1">Prueba 1 — entrega y conexión del control Arduino, y una usuaria jugando con su cuerpo sobre el tapete.</p>
         </div>
         <div>
           <video class="cs-video" src="Portafolio/PhySync_PruebaJuego.mp4" controls preload="metadata" style="margin:0"></video>
-          <p class="cs-caption">Prueba 2 — el juego corriendo en el laptop, siguiendo el movimiento del jugador en tiempo real.</p>
+          <p class="cs-caption" data-i18n="cap.prueba2">Prueba 2 — el juego corriendo en el laptop, siguiendo el movimiento del jugador en tiempo real.</p>
         </div>
       </div>
     </div>
 
     <div class="cs-section">
-      <h2 class="cs-h2"><span class="num">04</span>Resultado</h2>
+      <h2 class="cs-h2"><span class="num">04</span><span data-i18n="h.resultado">Resultado</span></h2>
       <div class="cs-result">
-        <p class="cs-p" style="margin-bottom:0">MVP funcional con un nivel completo jugable, <strong>validado con usuarios reales</strong> en sesiones de prueba. El control físico (Arduino) y el pipeline cámara → Barracuda/VNect → Unity funcionan sincronizados de punta a punta.</p>
+        <p class="cs-p" style="margin-bottom:0" data-i18n="p.resultado">MVP funcional con un nivel completo jugable, <strong>validado con usuarios reales</strong> en sesiones de prueba. El control físico (Arduino) y el pipeline cámara → Barracuda/VNect → Unity funcionan sincronizados de punta a punta.</p>
         <div class="cs-metrics-row">
-          <div class="cs-metric"><div class="v">24</div><div class="l">Puntos de pose</div></div>
-          <div class="cs-metric"><div class="v">5</div><div class="l">Equipo</div></div>
-          <div class="cs-metric"><div class="v">MVP</div><div class="l">Alcance</div></div>
+          <div class="cs-metric"><div class="v">24</div><div class="l" data-i18n="m.pose">Puntos de pose</div></div>
+          <div class="cs-metric"><div class="v">5</div><div class="l" data-i18n="m.equipo">Equipo</div></div>
+          <div class="cs-metric"><div class="v">MVP</div><div class="l" data-i18n="m.alcance">Alcance</div></div>
         </div>
       </div>
     </div>
 
     <div class="cs-section">
-      <h2 class="cs-h2"><span class="num">05</span>Resumen visual</h2>
-      <p class="cs-p">Todo el proceso —problema, research, iteración y solución— condensado en una pieza.</p>
+      <h2 class="cs-h2"><span class="num">05</span><span data-i18n="h.resumen">Resumen visual</span></h2>
+      <p class="cs-p" data-i18n="p.resumen">Todo el proceso —problema, research, iteración y solución— condensado en una pieza.</p>
       <a href="Portafolio/PhySync_Poster.jpeg" target="_blank" rel="noopener">
         <img class="cs-img" src="Portafolio/PhySync_Poster.jpeg" alt="Resumen visual completo del proyecto PHY-SYNC + GAME" style="max-width:340px; margin-left:0">
       </a>
-      <p class="cs-caption">Click para ver completo.</p>
+      <p class="cs-caption" data-i18n="cap.poster">Click para ver completo.</p>
     </div>
 
     <div class="cs-footer">
-      <a href="index.html#work" class="cs-back" style="padding-top:0">
+      <a href="index.html#work" class="cs-back" style="padding-top:0" data-i18n="back">
         <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
         Volver al portafolio
       </a>
     </div>
   </div>
+
+  <script src="case-i18n.js"></script>
+  <script>
+    const DICT = {
+      'back': {es:'Volver al portafolio', en:'Back to portfolio'},
+      'tag1': {es:'AR / REHABILITACIÓN', en:'AR / REHABILITATION'},
+      'tag2': {es:'MVP VALIDADO', en:'MVP VALIDATED'},
+      'subtitle': {es:'Videojuego AR de rehabilitación motriz — tu cuerpo real, capturado por cámara y una red neuronal de pose 3D, es el control del juego. Sin hardware adicional.', en:'AR motor-rehabilitation video game — your own body, captured by camera and a 3D pose-estimation neural network, is the controller. No extra hardware.'},
+      'meta.role': {es:'Mi rol', en:'My role'},
+      'meta.role.val': {es:'Desarrollo Unity + AR — pipeline cámara → pose 3D → juego', en:'Unity + AR development — camera → 3D pose → game pipeline'},
+      'meta.team': {es:'Equipo', en:'Team'},
+      'meta.team.val': {es:'5 personas — Nicolas Martinez, Laura Salazar, Manuel Ávila, Daniel Ospina, Angela Monroy', en:'5 people — Nicolas Martinez, Laura Salazar, Manuel Ávila, Daniel Ospina, Angela Monroy'},
+      'meta.year': {es:'Año', en:'Year'},
+      'h.reto': {es:'El reto', en:'The Challenge'},
+      'p.reto': {es:'Nos propusimos diseñar una integración real entre lo físico y lo digital para <strong>personas en condición de discapacidad motriz osteomuscular —temporal o total—</strong>, donde la falta de espacios y hardware accesibles limita el ocio, el deporte y la rehabilitación.', en:'We set out to design a real integration of the physical and the digital for <strong>people with musculoskeletal motor disabilities —temporary or permanent—</strong>, where the lack of accessible spaces and hardware limits leisure, sport and rehabilitation.'},
+      'feat.1': {es:'<strong>Autoeficacia e imagen corporal</strong>La salud de las personas con discapacidad física mejora con intervenciones que las fortalecen y reducen ansiedad/depresión.', en:'<strong>Self-efficacy and body image</strong>The health of people with physical disabilities improves with interventions that strengthen these and reduce anxiety/depression.'},
+      'feat.2': {es:'<strong>Participación social</strong>La falta de acceso a actividades recreativas afecta el bienestar emocional y la interacción social.', en:'<strong>Social participation</strong>Lack of access to recreational activities affects emotional wellbeing and social interaction.'},
+      'feat.3': {es:'<strong>Motivación y determinación</strong>El deporte, el estudio y las metas propias son vías reales de distracción y motivación durante la recuperación.', en:'<strong>Motivation and determination</strong>Sport, study and personal goals are real sources of distraction and motivation during recovery.'},
+      'quote.text': {es:'Los jóvenes-adultos en condición de discapacidad motora temporal necesitan espacios y experiencias de rehabilitación interactivas y motivadoras, sin necesidad de desplazarse.', en:'Young adults with temporary motor disabilities need interactive, motivating rehabilitation spaces and experiences, without needing to travel.'},
+      'quote.attr': {es:'— Oportunidad de intervención, research del proyecto', en:'— Intervention opportunity, project research'},
+      'p.build1': {es:'Antes de llegar al diseño final exploramos varias referencias de estimación de movimiento: Kinect, los mandos de Wii, y juegos como <strong>Wii Fit</strong> y <strong>Ring Fit Adventure</strong>. De ahí nació el nombre del proyecto: un control <strong>físico</strong> (Arduino) sincronizado con seguimiento <strong>digital</strong> del cuerpo por cámara.', en:'Before reaching the final design we explored several motion-estimation references: Kinect, Wii remotes, and games like <strong>Wii Fit</strong> and <strong>Ring Fit Adventure</strong>. That\'s where the project\'s name came from: a <strong>physical</strong> control (Arduino) synced with <strong>digital</strong> body tracking via camera.'},
+      'cap.arduino': {es:'El control físico — Arduino armado sobre una maqueta de cartón, construido por otro subequipo.', en:'The physical control — Arduino built on a cardboard mockup, built by another sub-team.'},
+      'p.build2': {es:'En paralelo, una <strong>red neuronal de estimación de pose 3D</strong> (VNect, 24 puntos de articulación) corre en tiempo real sobre Unity Barracuda a partir de la cámara del dispositivo, siguiendo el movimiento del cuerpo del jugador. Mi rol fue el desarrollo completo de Unity y AR: el pipeline cámara → Barracuda/VNect → mecánica de juego, además de la implementación de las pantallas de interfaz (UI diseñada por Angela Monroy). El control Arduino lo armó otro subequipo.', en:'In parallel, a <strong>3D pose-estimation neural network</strong> (VNect, 24 joint points) runs in real time on Unity Barracuda from the device camera, tracking the player\'s body movement. My role was the full Unity and AR development: the camera → Barracuda/VNect → game-mechanic pipeline, plus implementing the interface screens (UI designed by Angela Monroy). The Arduino control was built by another sub-team.'},
+      'cap.uxflow': {es:'Flujo de onboarding — login, permisos de cámara, configuración y activación.', en:'Onboarding flow — login, camera permissions, setup and activation.'},
+      'h.solucion': {es:'Solución', en:'Solution'},
+      'p.solucion1': {es:'La app diagnostica la condición del usuario (por ejemplo, tendinitis de Aquiles) y organiza la recuperación como una <strong>rutina diaria con racha</strong>, no como una lista de ejercicios. Cada nivel es un minijuego — el primero, básquetbol — que el jugador controla con su propio cuerpo, detectado en tiempo real por la cámara.', en:'The app diagnoses the user\'s condition (e.g. Achilles tendinitis) and frames recovery as a <strong>daily streak-based routine</strong>, not a list of exercises. Each level is a mini-game — the first, basketball — controlled by the player\'s own body, tracked in real time by the camera.'},
+      'cap.demo': {es:'Demo del MVP en funcionamiento.', en:'Demo of the MVP in action.'},
+      'cap.screens': {es:'Diagnóstico + racha diaria (izq.) y el minijuego de básquetbol (der.).', en:'Diagnosis + daily streak (left) and the basketball mini-game (right).'},
+      'feat.diag': {es:'<strong>Diagnóstico personalizado</strong>El usuario define su condición y la app arma la rutina alrededor de esa lesión.', en:'<strong>Personalized diagnosis</strong>The user defines their condition and the app builds the routine around that injury.'},
+      'feat.racha': {es:'<strong>Racha diaria</strong>Gamificación tipo streak para sostener la adherencia al tratamiento.', en:'<strong>Daily streak</strong>Streak-style gamification to sustain treatment adherence.'},
+      'feat.minijuego': {es:'<strong>Minijuego por nivel</strong>Cada ejercicio terapéutico se convierte en una mecánica de juego real.', en:'<strong>Mini-game per level</strong>Every therapeutic exercise becomes a real game mechanic.'},
+      'feat.control': {es:'<strong>Control físico + digital</strong>El botón Arduino y el seguimiento por cámara trabajan sincronizados — de ahí "Phy-Sync".', en:'<strong>Physical + digital control</strong>The Arduino button and the camera tracking work in sync — hence "Phy-Sync".'},
+      'p.pruebas': {es:'<strong>Pruebas con usuarios reales:</strong>', en:'<strong>Tests with real users:</strong>'},
+      'cap.prueba1': {es:'Prueba 1 — entrega y conexión del control Arduino, y una usuaria jugando con su cuerpo sobre el tapete.', en:'Test 1 — handing over and connecting the Arduino control, and a user playing with her body on the mat.'},
+      'cap.prueba2': {es:'Prueba 2 — el juego corriendo en el laptop, siguiendo el movimiento del jugador en tiempo real.', en:'Test 2 — the game running on the laptop, tracking the player\'s movement in real time.'},
+      'h.resultado': {es:'Resultado', en:'Result'},
+      'p.resultado': {es:'MVP funcional con un nivel completo jugable, <strong>validado con usuarios reales</strong> en sesiones de prueba. El control físico (Arduino) y el pipeline cámara → Barracuda/VNect → Unity funcionan sincronizados de punta a punta.', en:'Functional MVP with one fully playable level, <strong>validated with real users</strong> in test sessions. The physical control (Arduino) and the camera → Barracuda/VNect → Unity pipeline run in sync end-to-end.'},
+      'm.pose': {es:'Puntos de pose', en:'Pose points'},
+      'm.equipo': {es:'Equipo', en:'Team'},
+      'm.alcance': {es:'Alcance', en:'Scope'},
+      'h.resumen': {es:'Resumen visual', en:'Visual summary'},
+      'p.resumen': {es:'Todo el proceso —problema, research, iteración y solución— condensado en una pieza.', en:'The whole process —problem, research, iteration and solution— condensed into one piece.'},
+      'cap.poster': {es:'Click para ver completo.', en:'Click to view full size.'}
+    };
+    initCaseLang(DICT);
+  </script>
 </body>
 </html>

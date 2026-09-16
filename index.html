@@ -92,18 +92,22 @@
     <span class="nav-logo-text">PORTFOLIO</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#home">INICIO</a></li>
+    <li><a href="#home" data-i18n="nav.home">INICIO</a></li>
     <li class="has-sub">
-      <a href="#work">TRABAJO ▾</a>
+      <a href="#work"><span data-i18n="nav.work">TRABAJO</span> ▾</a>
       <div class="nav-sub">
         <a href="#work" onclick="switchCat('ar')">AR</a>
-        <a href="#work" onclick="switchCat('games')">JUEGOS</a>
+        <a href="#work" onclick="switchCat('games')" data-i18n="cat.games">JUEGOS</a>
         <a href="#work" onclick="switchCat('transmedia')">TRANSMEDIA</a>
-        <a href="#work" onclick="switchCat('art')">ARTE</a>
+        <a href="#work" onclick="switchCat('art')" data-i18n="cat.art">ARTE</a>
       </div>
     </li>
-    <li><a href="#about">PERFIL</a></li>
-    <li><a href="#about" onclick="event.preventDefault();openWaPopup()">CONTACTO</a></li>
+    <li><a href="#about" data-i18n="nav.profile">PERFIL</a></li>
+    <li><a href="#about" onclick="event.preventDefault();openWaPopup()" data-i18n="nav.contact">CONTACTO</a></li>
+    <li class="lang-toggle" id="lang-toggle" role="group" aria-label="Language">
+      <button class="lang-btn active" data-lang-btn="es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" data-lang-btn="en" onclick="setLang('en')">EN</button>
+    </li>
   </ul>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Menú" aria-expanded="false" onclick="toggleMobileNav()">
     <span class="ham-bar"></span>
@@ -113,15 +117,19 @@
 </nav>
 
 <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Menú móvil">
-  <a href="#home"  onclick="closeMobileNav()">INICIO</a>
-  <span class="nm-sub-label">TRABAJO</span>
-  <a href="#work"  onclick="switchCat('all');        closeMobileNav()">TODO</a>
+  <a href="#home"  onclick="closeMobileNav()" data-i18n="nav.home">INICIO</a>
+  <span class="nm-sub-label" data-i18n="nav.work">TRABAJO</span>
+  <a href="#work"  onclick="switchCat('all');        closeMobileNav()" data-i18n="cat.all">TODO</a>
   <a href="#work"  onclick="switchCat('ar');         closeMobileNav()">AR</a>
-  <a href="#work"  onclick="switchCat('games');      closeMobileNav()">JUEGOS</a>
+  <a href="#work"  onclick="switchCat('games');      closeMobileNav()" data-i18n="cat.games">JUEGOS</a>
   <a href="#work"  onclick="switchCat('transmedia'); closeMobileNav()">TRANSMEDIA</a>
-  <a href="#work"  onclick="switchCat('art');        closeMobileNav()">ARTE</a>
-  <a href="#about" onclick="closeMobileNav()">PERFIL</a>
-  <a href="#about" onclick="event.preventDefault(); openWaPopup(); closeMobileNav()">CONTACTO</a>
+  <a href="#work"  onclick="switchCat('art');        closeMobileNav()" data-i18n="cat.art">ARTE</a>
+  <a href="#about" onclick="closeMobileNav()" data-i18n="nav.profile">PERFIL</a>
+  <a href="#about" onclick="event.preventDefault(); openWaPopup(); closeMobileNav()" data-i18n="nav.contact">CONTACTO</a>
+  <div class="lang-toggle" id="lang-toggle-mobile" role="group" aria-label="Language" style="margin-top:16px">
+    <button class="lang-btn active" data-lang-btn="es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" data-lang-btn="en" onclick="setLang('en')">EN</button>
+  </div>
 </div>
 
 <!-- scroll dots -->
@@ -149,7 +157,7 @@
 
     <p class="hero-sub">// AR · GAMES · TRANSMEDIA · ART</p>
 
-    <p class="hero-bio">
+    <p class="hero-bio" data-i18n="hero.bio">
       Diseñador interactivo con experiencia en videojuegos y proyectos multimedia,
       enfocado en crear experiencias digitales que integran diseño, narrativa
       y tecnología. Participación en game jams, realidad aumentada con Unity y Python,
@@ -157,9 +165,15 @@
     </p>
 
     <div class="hero-cta">
-      <a href="#work" class="btn btn-blue">VER PROYECTOS</a>
-      <button class="btn btn-ghost btn-ghost--green" onclick="openWaPopup()">CONTACTAR</button>
-      <a href="Portafolio/CV Nicolas Martinez 2026.pdf" download class="btn btn-ghost btn-ghost--amber">↓ CV</a>
+      <a href="#work" class="btn btn-blue" data-i18n="hero.cta.projects">VER PROYECTOS</a>
+      <button class="btn btn-ghost btn-ghost--green" onclick="openWaPopup()" data-i18n="hero.cta.contact">CONTACTAR</button>
+      <div class="cv-dropdown" id="cv-dropdown">
+        <button class="btn btn-ghost btn-ghost--amber" onclick="toggleCvMenu(event)">↓ CV ▾</button>
+        <div class="cv-dropdown-menu" id="cv-dropdown-menu">
+          <a href="Portafolio/CV Nicolas Martinez M.pdf" download>Español</a>
+          <a href="Portafolio/CV Nicolas Martinez EN.pdf" download>English</a>
+        </div>
+      </div>
     </div>
 
 
@@ -209,7 +223,7 @@
     <!-- LEFT: categorías grandes en vertical (220px) -->
     <div class="work-sidebar">
       <button class="cat-btn active" data-cat="all"        onclick="switchCat('all')"        data-reveal>
-        <span class="cat-label">TODO</span>
+        <span class="cat-label" data-i18n="cat.all">TODO</span>
         <span class="cat-count" id="cnt-all">—</span>
       </button>
       <button class="cat-btn"        data-cat="ar"         onclick="switchCat('ar')"         data-reveal data-delay="1">
@@ -217,7 +231,7 @@
         <span class="cat-count" id="cnt-ar">—</span>
       </button>
       <button class="cat-btn"        data-cat="games"      onclick="switchCat('games')"      data-reveal data-delay="2">
-        <span class="cat-label">JUEGOS</span>
+        <span class="cat-label" data-i18n="cat.games">JUEGOS</span>
         <span class="cat-count" id="cnt-games">—</span>
       </button>
       <button class="cat-btn"        data-cat="transmedia" onclick="switchCat('transmedia')" data-reveal data-delay="3">
@@ -225,7 +239,7 @@
         <span class="cat-count" id="cnt-transmedia">—</span>
       </button>
       <button class="cat-btn"        data-cat="art"        onclick="switchCat('art')"        data-reveal data-delay="4">
-        <span class="cat-label">ARTE</span>
+        <span class="cat-label" data-i18n="cat.art">ARTE</span>
         <span class="cat-count" id="cnt-art">—</span>
       </button>
     </div>
@@ -256,8 +270,8 @@
       <p class="id-role">// INTERACTIVE DESIGNER</p>
 
       <div class="lang-row">
-        <div class="lang-pill">ES <span class="lang-lvl">NATIVO</span></div>
-        <div class="lang-pill">EN <span class="lang-lvl">B2</span></div>
+        <div class="lang-pill">ES <span class="lang-lvl" data-i18n="id.native">NATIVO</span></div>
+        <div class="lang-pill">EN <span class="lang-lvl">C1</span></div>
         <div class="lang-pill">JP <span class="lang-lvl">N5</span></div>
       </div>
 
@@ -269,7 +283,7 @@
     </div>
 
     <div class="contact-card" data-reveal data-delay="1">
-      <p class="cc-title">CONTACTO DIRECTO</p>
+      <p class="cc-title" data-i18n="cc.title">CONTACTO DIRECTO</p>
       <div class="cc-items">
 
         <div class="cc-item">
@@ -293,7 +307,7 @@
         <div class="cc-item">
           <div class="cc-ico">▸</div>
           <div>
-            <p class="cc-sub">UBICACIÓN</p>
+            <p class="cc-sub" data-i18n="cc.location">UBICACIÓN</p>
             <p class="cc-val">Bogotá, Colombia</p>
           </div>
         </div>
@@ -301,8 +315,8 @@
         <div class="cc-item">
           <div class="cc-ico">◈</div>
           <div>
-            <p class="cc-sub">DISPONIBILIDAD</p>
-            <p class="cc-val">Inmediata: Freelance y Studio</p>
+            <p class="cc-sub" data-i18n="cc.availability">DISPONIBILIDAD</p>
+            <p class="cc-val" data-i18n="cc.availability.val">Inmediata: Freelance y Studio</p>
           </div>
         </div>
 
@@ -316,25 +330,25 @@
   <div class="about-content">
 
     <div class="s-header" data-reveal>
-      <h2 class="display-title">SOBRE<br><em>NICOLAS</em></h2>
+      <h2 class="display-title" data-i18n-html="about.title">SOBRE<br><em>NICOLAS</em></h2>
     </div>
 
     <div class="blk" data-reveal>
-      <p class="blk-lbl">HABILIDADES</p>
+      <p class="blk-lbl" data-i18n="about.skills">HABILIDADES</p>
       <div class="tool-groups">
 
         <div class="tool-group">
-          <p class="tg-label">DISEÑO &amp; UX</p>
+          <p class="tg-label" data-i18n="about.skills.design">DISEÑO &amp; UX</p>
           <div class="tg-tags">
-            <span class="tag tg-design">Diseño Interactivo</span>
+            <span class="tag tg-design" data-i18n="about.tag.interactive">Diseño Interactivo</span>
             <span class="tag tg-design">UX Design</span>
             <span class="tag tg-design">Figma</span>
-            <span class="tag tg-design">Identidad Visual</span>
+            <span class="tag tg-design" data-i18n="about.tag.identity">Identidad Visual</span>
           </div>
         </div>
 
         <div class="tool-group">
-          <p class="tg-label">DESARROLLO</p>
+          <p class="tg-label" data-i18n="about.skills.dev">DESARROLLO</p>
           <div class="tg-tags">
             <span class="tag tg-dev">Unity</span>
             <span class="tag tg-dev">Python</span>
@@ -344,21 +358,21 @@
         </div>
 
         <div class="tool-group">
-          <p class="tg-label">VISUAL</p>
+          <p class="tg-label" data-i18n="about.skills.visual">VISUAL</p>
           <div class="tg-tags">
             <span class="tag tg-visual">Concept Art</span>
-            <span class="tag tg-visual">Ilustración Digital</span>
+            <span class="tag tg-visual" data-i18n="about.tag.illustration">Ilustración Digital</span>
             <span class="tag tg-visual">Adobe Illustrator</span>
             <span class="tag tg-visual">Adobe Photoshop</span>
           </div>
         </div>
 
         <div class="tool-group">
-          <p class="tg-label">AUDIOVISUAL</p>
+          <p class="tg-label" data-i18n="about.skills.av">AUDIOVISUAL</p>
           <div class="tg-tags">
             <span class="tag tg-av">After Effects</span>
             <span class="tag tg-av">Premiere Pro</span>
-            <span class="tag tg-av">Edición Audio</span>
+            <span class="tag tg-av" data-i18n="about.tag.audioedit">Edición Audio</span>
           </div>
         </div>
 
@@ -366,18 +380,17 @@
     </div>
 
     <div class="blk" data-reveal data-delay="1">
-      <p class="blk-lbl">EXPERIENCIA</p>
+      <p class="blk-lbl" data-i18n="about.experience">EXPERIENCIA</p>
       <div class="tl">
 
         <div class="tl-item">
-          <span class="tl-yr">2025</span>
+          <span class="tl-yr" data-i18n="exp1.yr">2025–Actual</span>
           <div class="tl-spine"></div>
           <div>
-            <p class="tl-role">AR Developer</p>
-            <p class="tl-co">FelloFullStack</p>
+            <p class="tl-role" data-i18n="exp1.role">Diseño Interactivo &amp; Automatización con IA</p>
+            <p class="tl-co">Felo Fullstack <span style="font-size:.7rem;color:var(--text-lo)" data-i18n="exp1.tag">(freelance)</span></p>
             <div class="tl-tasks">
-              <p class="tl-task">Desarrollo e implementación de experiencia de realidad aumentada para integrar objetos 3D en entornos reales.</p>
-              <p class="tl-task">Implementación de lógica e interacción AR basada en cámara utilizando Unity y Python.</p>
+              <p class="tl-task" data-i18n="exp1.task1">Diseño y desarrollo de un sistema de generación de contenido con IA (arquitectura de 3 bloques: prompts, creación, publicación multicanal) para un cliente real, escalando a un roadmap de 4 productos SaaS.</p>
             </div>
           </div>
         </div>
@@ -386,12 +399,24 @@
           <span class="tl-yr">2025</span>
           <div class="tl-spine"></div>
           <div>
-            <p class="tl-role">Analista de Audiovisuales</p>
+            <p class="tl-role" data-i18n="exp2.role">Desarrollo AR</p>
+            <p class="tl-co">Felo Fullstack <span style="font-size:.7rem;color:var(--text-lo)" data-i18n="exp2.tag">(cliente retail)</span></p>
+            <div class="tl-tasks">
+              <p class="tl-task" data-i18n="exp2.task1">Probador de producto en realidad aumentada (Unity + Python) para una tienda física, con body-tracking construido desde cero.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-yr">2025</span>
+          <div class="tl-spine"></div>
+          <div>
+            <p class="tl-role" data-i18n="exp3.role">Analista de Audiovisuales</p>
             <p class="tl-co">Educación ColomboJaponesa S.A.S <span style="font-size:.7rem;color:var(--text-lo)">(Feb–Oct)</span></p>
             <div class="tl-tasks">
-              <p class="tl-task">Creación de contenidos audiovisuales para redes sociales en cultura y educación japonesa.</p>
-              <p class="tl-task">Aplicación de principios de UX para mejorar claridad, interacción y retención del contenido.</p>
-              <p class="tl-task">Diseño de propuestas educativas en entornos virtuales y colaboración con equipos académicos.</p>
+              <p class="tl-task" data-i18n="exp3.task1">Creación de contenidos audiovisuales para redes sociales en cultura y educación japonesa.</p>
+              <p class="tl-task" data-i18n="exp3.task2">Aplicación de principios de UX para mejorar claridad, interacción y retención del contenido.</p>
+              <p class="tl-task" data-i18n="exp3.task3">Diseño de propuestas educativas en entornos virtuales y colaboración con equipos académicos.</p>
             </div>
           </div>
         </div>
@@ -400,15 +425,15 @@
     </div>
 
     <div class="blk" data-reveal data-delay="2">
-      <p class="blk-lbl">EDUCACIÓN</p>
+      <p class="blk-lbl" data-i18n="about.education">EDUCACIÓN</p>
       <div class="edu-list">
         <div class="edu-item">
-          <p class="edu-deg">Diseño de Videojuegos y Contenidos Interactivos</p>
+          <p class="edu-deg" data-i18n="edu1.deg">Diseño de Videojuegos y Contenidos Interactivos</p>
           <p class="edu-yr">2018–2025</p>
           <p class="edu-inst">Universidad Jorge Tadeo Lozano</p>
         </div>
         <div class="edu-item">
-          <p class="edu-deg">Diplomado de Animación Motion Graphics</p>
+          <p class="edu-deg" data-i18n="edu2.deg">Diplomado de Animación Motion Graphics</p>
           <p class="edu-yr">2023</p>
           <p class="edu-inst">LCI Education</p>
         </div>
@@ -554,124 +579,189 @@
 <script>
 'use strict';
 
+/* ── LANGUAGE ──────────────────────────────────────────────── */
+let LANG = (function(){ try { return localStorage.getItem('nm_lang') || 'es'; } catch(e) { return 'es'; } })();
+
 /* ── PROJECTS DATA ──────────────────────────────────────────── */
 const PROJECTS = [
   {
     id:1, cat:'games', year:'2024',
     title:'BYTE-HAVEN',
     brief:'Experiencia metaversal educativa en Spatial con 4 niveles temáticos sobre Metaverso, Crypto, Blockchain y NFTs, gamificada con puzzles y mecánicas de recolección.',
+    brief_en:'Educational metaversal experience in Spatial with 4 themed levels on Metaverse, Crypto, Blockchain and NFTs, gamified with puzzles and collection mechanics.',
     icon:'BH',
     cover:'Bytehaven_Logo_Edit.png',
     ch:'El metaverso era desconocido para el cliente y su audiencia. ¿Cómo presentar tecnologías emergentes (Blockchain, NFTs, Crypto) de forma accesible y memorable sin perder rigor conceptual?',
+    ch_en:'The metaverse was unfamiliar territory for the client and their audience. How do you present emerging technologies (Blockchain, NFTs, Crypto) in an accessible, memorable way without losing conceptual rigor?',
     so:'Mundo metaversal en Spatial con 4 niveles independientes, cada uno dedicado a un tema: fundamentos del metaverso, criptomonedas, blockchain y NFTs. Puzzles de lógica + mecánicas de recolección. Accesible desde celular, tablet, PC y gafas VR.',
+    so_en:'Metaversal world in Spatial with 4 independent levels, each dedicated to a topic: metaverse fundamentals, cryptocurrencies, blockchain and NFTs. Logic puzzles + collection mechanics. Accessible from phone, tablet, PC and VR headsets.',
     re:'Completado en 4 meses. Activo y funcional hasta hoy. Accesible desde cualquier plataforma sin instalación.',
+    re_en:'Completed in 4 months. Still active and functional today. Accessible from any platform with no install.',
     body:'Producción completa end-to-end: conceptualización, diseño de niveles, modelados 3D, diseño de puzzles, programación de interacciones en Unity, montaje en Spatial y publicación. Sin equipo: de la idea al lobby en 4 meses.',
-    links:[{label:'ENTRAR AL LOBBY', url:'https://www.spatial.io/s/ByteHaven-Lobby-671a9239a1c8763a3096cf36?share=9163037786000497364'}],
-    metrics:[{v:'4',l:'NIVELES'},{v:'4m',l:'DESARROLLO'},{v:'Multi',l:'PLATAFORMA'}]
+    body_en:'Full end-to-end production: concept, level design, 3D modeling, puzzle design, Unity interaction programming, Spatial build and publishing. Solo: from idea to lobby in 4 months.',
+    links:[{label:'ENTRAR AL LOBBY', label_en:'ENTER THE LOBBY', url:'https://www.spatial.io/s/ByteHaven-Lobby-671a9239a1c8763a3096cf36?share=9163037786000497364'}],
+    metrics:[{v:'4',l:'NIVELES',l_en:'LEVELS'},{v:'4m',l:'DESARROLLO',l_en:'DEVELOPMENT'},{v:'Multi',l:'PLATAFORMA',l_en:'PLATFORM'}]
   },
   {
     id:2, cat:'transmedia', year:'2023',
     title:'VIVIENDO CON UN MONSTRUO',
     brief:'Proyecto transmedia que aborda la ansiedad en estudiantes universitarios a través de video interactivo, experiencia en vivo y podcast.',
+    brief_en:'Transmedia project addressing anxiety in university students through interactive video, a live experience and a podcast.',
     icon:'VM',
     cover:'Miniatura_3.png',
     ch:'La ansiedad es invisible e incomprendida. ¿Cómo representar una emoción compleja de forma que estudiantes universitarios puedan identificarse y hablar sobre ella sin estigma?',
+    ch_en:'Anxiety is invisible and misunderstood. How do you represent a complex emotion so university students can recognize themselves in it and talk about it without stigma?',
     so:'Ecosistema transmedia de 4 canales: video interactivo en YouTube con ramificaciones narrativas, instalación en vivo donde los asistentes dibujaron su "monstruo de la ansiedad", caja de mensajes colectivos, y podcast en Spotify.',
+    so_en:'4-channel transmedia ecosystem: an interactive YouTube video with branching narrative, a live installation where attendees drew their own "anxiety monster," a box of collective messages, and a Spotify podcast.',
     re:'Video interactivo activo en YouTube. 100+ participantes en la experiencia en vivo. 50+ mensajes anónimos de estrategias recopilados. Podcast publicado en Spotify.',
+    re_en:'Interactive video live on YouTube. 100+ participants in the live experience. 50+ anonymous coping-strategy messages collected. Podcast published on Spotify.',
     body:'Rol: director, productor y editor del video interactivo. Colorista de los personajes ilustrados. Coordinador y participante activo en la muestra en vivo. El proyecto funcionó como espejo colectivo: al darle forma visible a la ansiedad, los participantes pudieron nombrarla y compartirla.',
-    links:[{label:'VER VIDEO', url:'https://www.youtube.com/watch?v=ZX7NEKj4WII&ab_channel=ViviendoConMiMonstruo'}],
-    metrics:[{v:'100+',l:'PARTICIPANTES'},{v:'50+',l:'MENSAJES'},{v:'4',l:'CANALES'}]
+    body_en:'Role: director, producer and editor of the interactive video. Colorist for the illustrated characters. Coordinator and active participant in the live showcase. The project worked as a collective mirror: giving anxiety a visible shape let participants name it and share it.',
+    links:[{label:'VER VIDEO', label_en:'WATCH VIDEO', url:'https://www.youtube.com/watch?v=ZX7NEKj4WII&ab_channel=ViviendoConMiMonstruo'}],
+    metrics:[{v:'100+',l:'PARTICIPANTES',l_en:'PARTICIPANTS'},{v:'50+',l:'MENSAJES',l_en:'MESSAGES'},{v:'4',l:'CANALES',l_en:'CHANNELS'}]
   },
   {
     id:3, cat:'games', year:'2023',
     title:'WILD BYGONE',
     brief:'Videojuego de recolección en tercera persona ambientado en un mundo post-apocalíptico destruido por la contaminación.',
+    brief_en:'Third-person collection game set in a post-apocalyptic world destroyed by pollution.',
     icon:'WB',
     cover:'Portafolio/Wild_By_Gone_Cover.jpg',
     ch:'¿Cómo comunicar una narrativa de colapso ambiental y lazos humanos dentro de un juego de recolección, sin caer en el didactismo?',
+    ch_en:"How do you communicate a story about environmental collapse and human bonds inside a collection game, without becoming didactic?",
     so:'Mundo post-apocalíptico 3D donde la supervivencia y la narrativa se entrelazan. La contaminación define el espacio jugable y la historia emerge de los objetos que el jugador encuentra.',
+    so_en:'3D post-apocalyptic world where survival and narrative intertwine. Pollution defines the playable space, and the story emerges from the objects the player finds.',
     re:'Publicado y jugable en itch.io. Desarrollado bajo la temática de Lazos y Puentes.',
+    re_en:'Published and playable on itch.io. Developed for the Ties & Bridges theme.',
     body:'Participación en la narrativa del juego, modelado 3D de activos del entorno y diseño de niveles. Trabajo colaborativo en formato game jam.',
-    links:[{label:'JUGAR EN ITCH.IO', url:'https://sancho6040.itch.io/wild-by-gone'}],
-    metrics:[{v:'3D',l:'ENTORNO'},{v:'Jam',l:'FORMATO'},{v:'Pub.',l:'ITCH.IO'}]
+    body_en:"Contributed to the game's narrative, 3D modeling of environment assets, and level design. Collaborative work in a game jam format.",
+    links:[{label:'JUGAR EN ITCH.IO', label_en:'PLAY ON ITCH.IO', url:'https://sancho6040.itch.io/wild-by-gone'}],
+    metrics:[{v:'3D',l:'ENTORNO',l_en:'ENVIRONMENT'},{v:'Jam',l:'FORMATO',l_en:'FORMAT'},{v:'Pub.',l:'ITCH.IO'}]
   },
   {
     id:4, cat:'games', year:'2023',
     title:'PROFUGUS ABYSS',
     brief:'Videojuego de plataformas 2D con estética 8-bits donde un pequeño niño debe recolectar diamantes para escapar del abismo.',
+    brief_en:'2D platformer with an 8-bit aesthetic where a small boy must collect diamonds to escape the abyss.',
     icon:'PA',
     cover:'Portafolio/Profugus_Abyss_Cover.png',
     ch:'¿Cómo diseñar un juego de plataformas 2D que sea desafiante pero accesible, con una estética retro que potencie la tensión narrativa sin instrucciones explícitas?',
+    ch_en:"How do you design a 2D platformer that's challenging yet accessible, with a retro aesthetic that heightens narrative tension without explicit instructions?",
     so:'Sistema de plataformas 2D con mecánicas de recolección y obstáculos progresivos. Estética 8-bit que evoca tensión y nostalgia. El diseño de niveles guía al jugador de forma orgánica.',
+    so_en:'2D platform system with collection mechanics and progressive obstacles. 8-bit aesthetic evokes tension and nostalgia. Level design guides the player organically.',
     re:'Publicado y jugable en itch.io. Diseño de niveles, personajes y mecánicas completos.',
+    re_en:'Published and playable on itch.io. Complete level, character and mechanics design.',
     body:'Diseño completo del juego: diseño de niveles, diseño de personajes, diseño de mecánicas de juego, montaje del nivel y publicación final en itch.io bajo el alias nkau.',
-    links:[{label:'JUGAR EN ITCH.IO', url:'https://nkau.itch.io/profugus-abyss'}],
-    metrics:[{v:'2D',l:'PLATAFORMAS'},{v:'8-bit',l:'ESTÉTICA'},{v:'Pub.',l:'ITCH.IO'}]
+    body_en:'Full game design: level design, character design, game mechanics design, level assembly and final publishing on itch.io under the alias nkau.',
+    links:[{label:'JUGAR EN ITCH.IO', label_en:'PLAY ON ITCH.IO', url:'https://nkau.itch.io/profugus-abyss'}],
+    metrics:[{v:'2D',l:'PLATAFORMAS',l_en:'PLATFORMS'},{v:'8-bit',l:'ESTÉTICA',l_en:'AESTHETIC'},{v:'Pub.',l:'ITCH.IO'}]
   },
   {
     id:5, cat:'art', year:'2023',
     title:'MODELADOS 3D',
     brief:'Colección de modelados 3D desarrollados en proceso de formación, desde concept art de referencia hasta resultado final en motor.',
+    brief_en:'Collection of 3D models developed during training, from concept art reference to real-time engine result.',
     icon:'3D',
     cover:'Portafolio/Diapositiva6.JPG',
     ch:'¿Cómo traducir concept art de alta complejidad visual (arquitectura fantástica y personajes estilizados) en modelos 3D funcionales y fieles a la referencia?',
+    ch_en:'How do you translate highly complex concept art (fantastical architecture and stylized characters) into 3D models that are functional and faithful to the reference?',
     so:'Proceso iterativo de modelado partiendo de referencias de concept art. Cada pieza documenta el camino entre referencia e implementación 3D en tiempo real, priorizando la optimización para uso en motor de juego.',
+    so_en:'Iterative modeling process starting from concept art references. Each piece documents the path from reference to real-time 3D implementation, prioritizing optimization for in-engine use.',
     re:'Modelados de arquitectura de fantasía estilo asiático y personajes low-poly tipo samurái. Proceso documentado con comparativa referencia / resultado.',
+    re_en:'Asian-style fantasy architecture models and low-poly samurai-style characters. Process documented with reference/result comparison.',
     body:'Modelados desarrollados durante la formación en Diseño de Videojuegos. Incluye arquitectura fantástica con detalle de techo curvo y faroles, y personaje felino con armadura samurái en geometría low-poly optimizada.',
+    body_en:'Models developed during Game Design training. Includes fantastical architecture with detailed curved roofing and lanterns, and a feline character with samurai armor in optimized low-poly geometry.',
     links:[],
-    metrics:[{v:'3D',l:'HERRAMIENTA'},{v:'LowPoly',l:'ESTILO'},{v:'2023',l:'AÑO'}]
+    metrics:[{v:'3D',l:'HERRAMIENTA',l_en:'TOOL'},{v:'LowPoly',l:'ESTILO',l_en:'STYLE'},{v:'2023',l:'AÑO',l_en:'YEAR'}]
   },
   {
     id:6, cat:'ar', year:'2023',
     title:'PHY-SYNC GAME',
     brief:'Videojuego AR de rehabilitación motriz controlado por estimación de pose 3D en tiempo real (cámara + red neuronal), para personas con discapacidad motriz osteomuscular.',
+    brief_en:'AR motor-rehabilitation video game controlled by real-time 3D pose estimation (camera + neural network), for people with musculoskeletal motor disabilities.',
     icon:'PS',
     cover:'Portafolio/PhySync_Cover.png',
     ch:'Las personas en rehabilitación motriz pierden adherencia al tratamiento por falta de motivación y espacios recreativos accesibles. ¿Cómo convertir los ejercicios de recuperación en una experiencia lúdica que integre control físico y digital?',
+    ch_en:'People in motor rehabilitation lose treatment adherence due to lack of motivation and accessible recreational spaces. How do you turn recovery exercises into a playful experience that blends physical and digital control?',
     so:'Videojuego AR con control híbrido "Phy-Sync": un botón físico construido con Arduino, sincronizado con una red neuronal de estimación de pose 3D (VNect, 24 puntos de articulación) que corre en tiempo real sobre Unity Barracuda a partir de la cámara del dispositivo — el cuerpo del jugador es el control.',
+    so_en:'AR game with a hybrid "Phy-Sync" control: a physical button built with Arduino, synced with a real-time 3D pose-estimation neural network (VNect, 24 joint points) running on Unity Barracuda from the device camera — the player\'s own body is the controller.',
     re:'MVP funcional con un nivel completo jugable (minijuego de básquetbol). Validado con usuarios reales en sesiones de prueba. Pipeline cámara → Barracuda/VNect → Unity operativo de extremo a extremo.',
+    re_en:'Functional MVP with one fully playable level (a basketball mini-game). Validated with real users in test sessions. Camera → Barracuda/VNect → Unity pipeline working end-to-end.',
     body:'Rol: desarrollo Unity + AR — pipeline completo cámara → Barracuda/VNect → mecánica de juego, e implementación de pantallas (UI diseñada por Angela Monroy). Stack: Unity AR Foundation, Barracuda (VNect), Firebase (login + puntaje), C#. Equipo de 5: Nicolas Martinez, Laura Salazar, Manuel Ávila, Daniel Ospina, Angela Monroy.',
-    links:[{label:'VER DEMO', url:'Portafolio/PhySync_demo.mp4'}],
-    metrics:[{v:'24',l:'PUNTOS DE POSE'},{v:'5',l:'EQUIPO'},{v:'MVP',l:'ALCANCE'}],
+    body_en:'Role: Unity + AR development — the full camera → Barracuda/VNect → game-mechanic pipeline, and screen implementation (UI designed by Angela Monroy). Stack: Unity AR Foundation, Barracuda (VNect), Firebase (login + score), C#. Team of 5: Nicolas Martinez, Laura Salazar, Manuel Ávila, Daniel Ospina, Angela Monroy.',
+    links:[{label:'VER DEMO', label_en:'WATCH DEMO', url:'Portafolio/PhySync_demo.mp4'}],
+    metrics:[{v:'24',l:'PUNTOS DE POSE',l_en:'POSE POINTS'},{v:'5',l:'EQUIPO',l_en:'TEAM'},{v:'MVP',l:'ALCANCE',l_en:'SCOPE'}],
     pageUrl:'case-phy-sync.html'
   },
   {
     id:12, cat:'ar', year:'2024',
     title:'NO DEMOS PAPAYA',
     brief:'Experiencia inmersiva 360° en Google Cardboard para concientizar sobre seguridad en el centro de Bogotá, construida en 3 días para un hackathon universitario. 2º puesto con puntaje de innovación perfecto.',
+    brief_en:'360° immersive experience in Google Cardboard to raise safety awareness in downtown Bogotá, built in 3 days for a university hackathon. 2nd place with a perfect innovation score.',
     icon:'ND',
     cover:'Portafolio/NoDemosPapaya_Logo.png',
     ch:'Los estudiantes universitarios que transitan a diario el centro de Bogotá conviven con altos índices de inseguridad, pero las campañas de prevención existentes apelan al miedo y la evasión. ¿Cómo comunicar información real de protección sin generar más ansiedad?',
+    ch_en:"University students who pass through downtown Bogotá daily live with high insecurity rates, but existing prevention campaigns lean on fear and avoidance. How do you communicate real protection information without adding more anxiety?",
     so:'Experiencia inmersiva 360° construida con Google Cardboard: fotografías panorámicas reales de zonas del centro de Bogotá, recorridas como un trayecto gamificado con acertijos que entrega consejos concretos de prevención en el camino. Diseñada con accesibilidad desde el inicio — lector de pantalla, subtítulos, contraste ajustable — para que la información no dependa solo de lo visual.',
+    so_en:"360° immersive experience built with Google Cardboard: real panoramic photos of downtown Bogotá locations, walked through as a gamified journey with riddles that deliver concrete prevention tips along the way. Designed with accessibility from the start — screen reader, subtitles, adjustable contrast — so the information doesn't depend only on sight.",
     re:'2º puesto en el hackathon organizado por CUCB en alianza con TadeoLab, con puntaje de innovación perfecto según el jurado. De la problemática al MVP funcional en 3 días.',
+    re_en:'2nd place at the hackathon organized by CUCB in partnership with TadeoLab, with a perfect innovation score from the judges. From problem to functional MVP in 3 days.',
     body:'Research día 1: entrevistas 1 a 1 y encuesta corta (~30 datos) en el centro de Bogotá, más mapa de afinidad de hallazgos. El insight que definió el proyecto: "evitar" resultó un verbo demasiado negativo para el problema — el equipo pivotó hacia concientizar e informar. Rol: lead del proyecto — definición del MVP, propuesta de gamificar la experiencia y dirección de cómo presentarla al jurado. Equipo de 3: diseño gráfico (piezas visuales, panorámicas 360°) e interactivo (construcción física de la Cardboard, conceptos).',
-    links:[{label:'VER MAPA DE AFINIDAD', url:'Portafolio/NoDemosPapaya_MapaAfinidad.jpg'},{label:'VER FOTOS 360° DEL RECORRIDO', url:'Portafolio/NoDemosPapaya_Panoramica.jpg'}],
-    metrics:[{v:'360°',l:'FORMATO'},{v:'2do',l:'PUESTO'},{v:'3 días',l:'DURACIÓN'}],
+    body_en:'Day 1 research: 1-on-1 interviews and a short survey (~30 data points) in downtown Bogotá, plus an affinity map of findings. The insight that defined the project: "avoid" turned out to be too negative a verb for the problem — the team pivoted toward raising awareness and informing. Role: project lead — defined the MVP, proposed gamifying the experience, and directed how to present it to the judges. Team of 3: graphic design (visuals, 360° panoramics) and interactive design (building the physical Cardboard, concepts).',
+    links:[{label:'VER MAPA DE AFINIDAD', label_en:'VIEW AFFINITY MAP', url:'Portafolio/NoDemosPapaya_MapaAfinidad.jpg'},{label:'VER FOTOS 360° DEL RECORRIDO', label_en:'VIEW 360° PHOTOS OF THE ROUTE', url:'Portafolio/NoDemosPapaya_Panoramica.jpg'}],
+    metrics:[{v:'360°',l:'FORMATO',l_en:'FORMAT'},{v:'2do',l:'PUESTO',l_en:'RANK'},{v:'3 días',l:'DURACIÓN',l_en:'DURATION'}],
     pageUrl:'case-no-demos-papaya.html'
   },
   {
     id:13, cat:'ar', year:'2025',
     title:'HEREJE — MAGIC MIRROR',
     brief:'Probador de carteras en realidad aumentada para una tienda real de bolsos, con flujo de venta por WhatsApp y compra web integrado, y body-tracking construido desde cero en Python.',
+    brief_en:'AR handbag fitting room for a real bag store, with an integrated WhatsApp/web sales flow and body-tracking built from scratch in Python.',
     icon:'HJ',
     cover:'Portafolio/Hereje_Logo.png',
     ch:'¿Cómo construir un probador de carteras en AR para una tienda real — que el cliente vea en tiempo real cómo le queda una cartera y tenga un camino directo a comprarla?',
+    ch_en:'How do you build an AR handbag fitting room for a real store — where the customer sees in real time how a bag looks on them and has a direct path to buy it?',
     so:'Pipeline propio de body-tracking en Python (OpenCV + MediaPipe Pose, 33 puntos a ~30 FPS) transmitido por WebSocket a Unity, que posiciona un avatar 3D rigged en tiempo real y ancla el modelo 3D de la cartera sobre él, con asesoría por WhatsApp y compra web integradas al flujo.',
+    so_en:'Custom body-tracking pipeline in Python (OpenCV + MediaPipe Pose, 33 points at ~30 FPS) streamed over WebSocket to Unity, which positions a rigged 3D avatar in real time and anchors the 3D bag model onto it, with WhatsApp advisory and web purchase built into the flow.',
     re:'Prototipo funcional de punta a punta, probado en vivo con cámara real, con el flujo de venta ya diseñado sobre la tienda real. El AR nunca llegó a integrarse en el punto de venta.',
+    re_en:'Fully functional prototype, tested live with a real camera, with the sales flow already designed on top of the real store. The AR layer never made it into the actual point of sale.',
     body:'Rol: desarrollo del pipeline completo de body-tracking en Python y de la integración Unity/AR. Decisión clave: construir el tracking desde cero en vez de usar un SDK de AR ya probado (Vuforia, ARKit, Barracuda), para entender el mecanismo de raíz.',
-    links:[{label:'VER DEMO', url:'Portafolio/Hereje_Demo.mp4'}],
-    metrics:[{v:'33',l:'PUNTOS DE POSE'},{v:'4',l:'MODELOS PROBADOS'},{v:'~30fps',l:'TRACKING'}],
+    body_en:'Role: full development of the Python body-tracking pipeline and the Unity/AR integration. Key decision: build the tracking from scratch instead of using an already-proven AR SDK (Vuforia, ARKit, Barracuda), to understand the mechanism from the ground up.',
+    links:[{label:'VER DEMO', label_en:'WATCH DEMO', url:'Portafolio/Hereje_Demo.mp4'}],
+    metrics:[{v:'33',l:'PUNTOS DE POSE',l_en:'POSE POINTS'},{v:'4',l:'MODELOS PROBADOS',l_en:'MODELS TESTED'},{v:'~30fps',l:'TRACKING'}],
     pageUrl:'case-ar-hereje.html'
+  },
+  {
+    id:14, cat:'transmedia', year:'2025',
+    title:'PRODUCCIÓN AUDIOVISUAL',
+    title_en:'AUDIOVISUAL PRODUCTION',
+    brief:'Dirección, grabación y edición — de una serie documental en japonés para Educación ColomboJaponesa a piezas personales de exploración.',
+    brief_en:'Direction, filming and editing — from a documentary series in Japanese for Educación ColomboJaponesa to personal exploration pieces.',
+    icon:'AV',
+    ch:'¿Cómo sostener presencia constante en redes para una academia de idiomas, combinando identidad de marca, cultura japonesa real y herramientas nuevas, sin un equipo de producción grande?',
+    ch_en:'How do you sustain constant social media presence for a language academy, blending brand identity, real Japanese culture and new tools, without a large production team?',
+    so:'25 piezas en 8 meses: de la composición de marca disciplinada, a experimentos tempranos con voz e imagen generadas por IA, hasta una firma propia de timing musical y una serie documental dirigida, grabada y editada en japonés.',
+    so_en:'25 pieces over 8 months: from disciplined brand composition, to early experiments with AI-generated voice and imagery, to a personal timing-driven editing signature and a documentary series directed, filmed and edited in Japanese.',
+    re:'Pico de 413 likes y la serie final ("Conoce a tus profesores") con el engagement más consistente de todo el catálogo — 5 piezas seguidas entre 150 y 195 likes.',
+    re_en:'A peak of 413 likes and the final series ("Meet Your Teachers") with the most consistent engagement in the whole catalog — 5 pieces in a row between 150 and 195 likes.',
+    body:'Rol: Analista de Audiovisuales — concepto, dirección, grabación y edición. La mayoría de las 25 piezas fueron 100% propias; dos tuvieron partes ejecutadas por otros (editado con honestidad en el case study).',
+    body_en:'Role: Audiovisual Analyst — concept, direction, filming and editing. Most of the 25 pieces were 100% my own; two had parts executed by others (noted honestly in the case study).',
+    links:[],
+    metrics:[{v:'25',l:'PIEZAS',l_en:'PIECES'},{v:'413',l:'PICO DE LIKES',l_en:'LIKES PEAK'},{v:'8',l:'MESES',l_en:'MONTHS'}],
+    pageUrl:'case-kokomi.html'
   },
   {
     id:7, cat:'art', year:'2024',
     title:'DISEÑO DE LOGO',
     brief:'Diseño de identidad visual y marca. De la construcción geométrica a la aplicación cromática: el mark explorado en distintos contextos y variaciones de color.',
+    brief_en:'Visual identity and brand design. From geometric construction to color application: the mark explored across different contexts and color variations.',
     icon:'ID',
     cover:'Portafolio/Dise%C3%B1o%20Logo%201.jpg',
     isGallery:true,
     medium:'IDENTIDAD VISUAL · DISEÑO GRÁFICO',
+    medium_en:'VISUAL IDENTITY · GRAPHIC DESIGN',
     desc:'Proceso completo de diseño de logotipo: construcción geométrica, refinamiento de la forma y sistema de color. La pieza central es un mark contenido en octógono, explorado en múltiples variaciones cromáticas para evaluar versatilidad y aplicabilidad sobre fondos claros y oscuros.',
+    desc_en:'Full logotype design process: geometric construction, shape refinement and color system. The centerpiece is a mark contained in an octagon, explored across multiple color variations to test versatility and legibility on light and dark backgrounds.',
     images:['Portafolio/Dise%C3%B1o%20Logo%201.jpg','Portafolio/Dise%C3%B1o%20Logo%202.jpg'],
     metrics:[]
   },
@@ -679,37 +769,46 @@ const PROJECTS = [
     id:8, cat:'art', year:'2023',
     title:'ANXIETAS',
     brief:'Diseño de personaje e ilustración del monstruo de la ansiedad para el proyecto transmedia "Viviendo con un Monstruo".',
+    brief_en:'Character design and illustration of the anxiety monster for the transmedia project "Viviendo con un Monstruo."',
     icon:'AX',
     cover:'Portafolio/Anxietas_.png',
     isGallery:true,
     medium:'DISEÑO DE PERSONAJE · ILUSTRACIÓN DIGITAL',
+    medium_en:'CHARACTER DESIGN · DIGITAL ILLUSTRATION',
     desc:'Diseño e ilustración del monstruo de la ansiedad. La criatura debía comunicar presencia, peso e inestabilidad sin recurrir a arquetipos clásicos de terror. La paleta azul/verde genera familiaridad perturbada. La hoja muestra figura completa y tres variaciones de tamaño para validar legibilidad en distintos formatos.',
+    desc_en:'Design and illustration of the anxiety monster. The creature had to communicate presence, weight and instability without leaning on classic horror archetypes. The blue/green palette creates an unsettling familiarity. The sheet shows the full figure and three size variations to validate legibility across formats.',
     images:['Portafolio/Anxietas_.png'],
-    projectRef:{ id:2, label:'VER PROYECTO: VIVIENDO CON UN MONSTRUO' },
+    projectRef:{ id:2, label:'VER PROYECTO: VIVIENDO CON UN MONSTRUO', label_en:'VIEW PROJECT: VIVIENDO CON UN MONSTRUO' },
     metrics:[]
   },
   {
     id:9, cat:'art', year:'2023',
     title:'VALENTINA',
     brief:'Diseño de personaje protagonista con hoja de expresiones. Silueta, paleta emocional y rango expresivo definidos para producción.',
+    brief_en:'Lead character design with an expression sheet. Silhouette, emotional palette and expressive range defined for production.',
     icon:'VL',
     cover:'Portafolio/Valentina_.png',
     isGallery:true,
     medium:'DISEÑO DE PERSONAJE · ILUSTRACIÓN DIGITAL',
+    medium_en:'CHARACTER DESIGN · DIGITAL ILLUSTRATION',
     desc:'Personaje protagonista del proyecto transmedia. La hoja define body shot, perfil, busto y estado de colapso emocional: el rango expresivo completo para producción. Pelo azul sobre tono cálido establece la dualidad visual con Anxietas. Diseñado para ser reconocible en silueta y legible en thumbnail.',
+    desc_en:'Lead character of the transmedia project. The sheet defines body shot, profile, bust and emotional-collapse state: the full expressive range needed for production. Blue hair over a warm tone establishes the visual duality with Anxietas. Designed to be recognizable in silhouette and legible as a thumbnail.',
     images:['Portafolio/Valentina_.png'],
-    projectRef:{ id:2, label:'VER PROYECTO: VIVIENDO CON UN MONSTRUO' },
+    projectRef:{ id:2, label:'VER PROYECTO: VIVIENDO CON UN MONSTRUO', label_en:'VIEW PROJECT: VIVIENDO CON UN MONSTRUO' },
     metrics:[]
   },
   {
     id:10, cat:'art', year:'2022',
     title:'DIBUJO',
     brief:'Selección de ilustraciones tradicionales a lápiz: composición narrativa, concept de personaje, estudios de figura y gesto.',
+    brief_en:'Selection of traditional pencil illustrations: narrative composition, character concept, figure and gesture studies.',
     icon:'DL',
     cover:'Portafolio/Dibujo%20Lapiz%204.jpeg',
     isGallery:true,
     medium:'ILUSTRACIÓN TRADICIONAL · LÁPIZ',
+    medium_en:'TRADITIONAL ILLUSTRATION · PENCIL',
     desc:'Muestra de dibujo tradicional a lápiz. Incluye composición narrativa, concept de personaje con notas de proceso, y estudios de figura y gesto anatómico. El dibujo analógico es el punto de partida del proceso conceptual antes de la etapa digital.',
+    desc_en:'Sample of traditional pencil drawing. Includes narrative composition, character concept with process notes, and anatomical figure and gesture studies. Analog drawing is the starting point of the conceptual process before the digital stage.',
     images:['Portafolio/Dibujo%20Lapiz%204.jpeg','Portafolio/Dibujo%20Lapiz%205.jpeg','Portafolio/Dibujo%20Lapiz%202.jpeg','Portafolio/Dibujo%20Lapiz%201.jpeg','Portafolio/Dibujo%20Lapiz%203.jpeg','Portafolio/Dibujo%20Lapiz%206.jpeg'],
     metrics:[]
   },
@@ -717,6 +816,7 @@ const PROJECTS = [
     id:11, cat:'art', year:'2022–2024',
     title:'ARTE',
     brief:'Identidad visual, diseño de personaje, ilustración digital y dibujo tradicional. Una colección de 5 piezas de distintas disciplinas.',
+    brief_en:'Visual identity, character design, digital illustration and traditional drawing. A collection of 5 pieces across different disciplines.',
     icon:'ART',
     cover:'Portafolio/Anxietas_.png',
     isArtHub:true,
@@ -727,12 +827,24 @@ const PROJECTS = [
 /* ── CARD & WORK ───────────────────────────────────────────── */
 const BADGE = { ar:'b-ar', games:'b-games', transmedia:'b-transmedia', art:'b-art' };
 const CAT_LABEL = { ar:'AR', games:'JUEGOS', transmedia:'TRANSMEDIA', art:'ARTE' };
+const CAT_LABEL_EN = { ar:'AR', games:'GAMES', transmedia:'TRANSMEDIA', art:'ART' };
+const CTA_LABEL_EN = { caseStudy:'VIEW CASE STUDY', hub:'EXPLORE', gallery:'VIEW WORK', modal:'VIEW CASE' };
+const CTA_LABEL_ES = { caseStudy:'VER CASE STUDY', hub:'EXPLORAR', gallery:'VER OBRA', modal:'VER CASO' };
+
+/* Language-aware field getter: returns p[field+'_en'] when LANG is 'en' and it exists, else p[field] */
+function T(p, field) {
+  if (LANG === 'en' && p[field + '_en']) return p[field + '_en'];
+  return p[field];
+}
+function curCatLabel() { return LANG === 'en' ? CAT_LABEL_EN : CAT_LABEL; }
+function curCtaLabel() { return LANG === 'en' ? CTA_LABEL_EN : CTA_LABEL_ES; }
 
 function renderCardHTML(p) {
   const isHub = !!p.isArtHub;
   const isGal = !!p.isGallery;
+  const CTA = curCtaLabel();
   const handler   = p.pageUrl ? `location.href='${p.pageUrl}'` : (isHub ? 'openArtHub()' : (isGal ? `openGallery(${p.id})` : `openModal(${p.id})`));
-  const ctaLabel  = p.pageUrl ? 'VER CASE STUDY' : (isHub ? 'EXPLORAR' : (isGal ? 'VER OBRA' : 'VER CASO'));
+  const ctaLabel  = p.pageUrl ? CTA.caseStudy : (isHub ? CTA.hub : (isGal ? CTA.gallery : CTA.modal));
   return `
     <article class="p-card" role="listitem" onclick="${handler}">
       <div class="p-thumb${p.cover ? ' p-thumb--img' : ''}">
@@ -740,11 +852,11 @@ function renderCardHTML(p) {
           ? `<img src="${p.cover}" alt="${p.title}" class="p-thumb-cover" loading="lazy">`
           : `<span class="p-icon">${p.icon}</span>`
         }
-        <span class="p-badge ${BADGE[p.cat]}">${CAT_LABEL[p.cat]}</span>
+        <span class="p-badge ${BADGE[p.cat]}">${curCatLabel()[p.cat]}</span>
       </div>
       <div class="p-body">
-        <h3 class="p-title">${p.title}</h3>
-        <p class="p-brief">${p.brief}</p>
+        <h3 class="p-title">${T(p,'title')}</h3>
+        <p class="p-brief">${T(p,'brief')}</p>
         <div class="p-meta">
           <span class="p-year">${p.year}</span>
           <span class="p-cta">${ctaLabel} &nbsp;▶</span>
@@ -770,8 +882,10 @@ function showProjects(cat) {
 
 /* Updates the category count badges */
 const CAT_FULL_LABEL = { all:'TODO', ar:'AR', games:'JUEGOS', transmedia:'TRANSMEDIA', art:'ARTE' };
+const CAT_FULL_LABEL_EN = { all:'ALL', ar:'AR', games:'GAMES', transmedia:'TRANSMEDIA', art:'ART' };
 function initCounts() {
   const cats = ['all', 'ar', 'games', 'transmedia', 'art'];
+  const FULL = LANG === 'en' ? CAT_FULL_LABEL_EN : CAT_FULL_LABEL;
   cats.forEach(cat => {
     let n;
     if (cat === 'all')       n = PROJECTS.filter(p => p.cat !== 'art' || p.isArtHub).length;
@@ -781,7 +895,8 @@ function initCounts() {
     if (el) el.textContent = String(n).padStart(2, '0');
     const btn = document.querySelector(`.cat-btn[data-cat="${cat}"]`);
     if (btn) {
-      const label = `${CAT_FULL_LABEL[cat]} — ${n} ${n === 1 ? 'proyecto' : 'proyectos'}`;
+      const word = LANG === 'en' ? (n === 1 ? 'project' : 'projects') : (n === 1 ? 'proyecto' : 'proyectos');
+      const label = `${FULL[cat]} — ${n} ${word}`;
       btn.setAttribute('aria-label', label);
       btn.setAttribute('title', label);
     }
@@ -802,8 +917,9 @@ function openModal(id) {
   const p = PROJECTS.find(x => x.id === id);
   if (!p) return;
 
-  document.getElementById('m-eyebrow').textContent = `// CASO DE ESTUDIO · ${CAT_LABEL[p.cat]}`;
-  document.getElementById('m-title').textContent   = p.title;
+  const eyebrowLbl = LANG === 'en' ? 'CASE STUDY' : 'CASO DE ESTUDIO';
+  document.getElementById('m-eyebrow').textContent = `// ${eyebrowLbl} · ${curCatLabel()[p.cat]}`;
+  document.getElementById('m-title').textContent   = T(p,'title');
 
   const banner = document.getElementById('m-banner');
   if (p.cover) {
@@ -820,31 +936,34 @@ function openModal(id) {
     ctaWrap.innerHTML = p.links.map(l => `
       <a href="${l.url}" target="_blank" rel="noopener" class="m-cta-primary">
         <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
-        ${l.label}
+        ${LANG === 'en' && l.label_en ? l.label_en : l.label}
       </a>`).join('');
   } else {
     ctaWrap.innerHTML = '';
   }
 
-  document.getElementById('m-ch').textContent   = p.ch;
-  document.getElementById('m-so').textContent   = p.so;
-  document.getElementById('m-body').textContent = p.body;
-  document.getElementById('m-re').textContent   = p.re;
+  document.getElementById('m-ch').textContent   = T(p,'ch');
+  document.getElementById('m-so').textContent   = T(p,'so');
+  document.getElementById('m-body').textContent = T(p,'body');
+  document.getElementById('m-re').textContent   = T(p,'re');
 
   document.getElementById('m-metrics').innerHTML = p.metrics.map(m => `
     <div class="m-metric-pill">
       <span class="m-metric-pill-val">${m.v}</span>
-      <span class="m-metric-pill-lbl">${m.l}</span>
+      <span class="m-metric-pill-lbl">${LANG === 'en' && m.l_en ? m.l_en : m.l}</span>
     </div>
   `).join('');
 
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
+  _openModalId = id;
 }
 
+let _openModalId = null;
 function closeModal() {
   document.getElementById('modal').classList.remove('open');
   document.body.style.overflow = '';
+  _openModalId = null;
 }
 
 document.getElementById('modal').addEventListener('click', e => {
@@ -858,18 +977,20 @@ function openGallery(id) {
   const p = PROJECTS.find(x => x.id === id);
   if (!p || !p.isGallery) return;
   _galProj = p; _galIdx = 0;
-  document.getElementById('gal-medium').textContent = p.medium || '';
-  document.getElementById('gal-title').textContent  = p.title;
-  document.getElementById('gal-desc').textContent   = p.desc;
+  document.getElementById('gal-medium').textContent = T(p,'medium') || '';
+  document.getElementById('gal-title').textContent  = T(p,'title');
+  document.getElementById('gal-desc').textContent   = T(p,'desc');
   const refEl = document.getElementById('gal-project-ref');
   if (refEl) {
+    const refLabel = p.projectRef ? (LANG === 'en' && p.projectRef.label_en ? p.projectRef.label_en : p.projectRef.label) : '';
     refEl.innerHTML = p.projectRef
-      ? `<button class="gal-proj-btn" onclick="goToProjectFromGallery(${p.projectRef.id})">${p.projectRef.label} &nbsp;▶</button>`
+      ? `<button class="gal-proj-btn" onclick="goToProjectFromGallery(${p.projectRef.id})">${refLabel} &nbsp;▶</button>`
       : '';
   }
   _renderGalSlide();
   document.getElementById('gallery').classList.add('open');
   document.body.style.overflow = 'hidden';
+  _openGalleryId = id;
 }
 
 function goToProjectFromGallery(id) {
@@ -914,10 +1035,12 @@ function galleryGoTo(i) {
   setTimeout(() => { _renderGalSlide(); img.classList.remove('fading'); }, 160);
 }
 
+let _openGalleryId = null;
 function closeGallery() {
   document.getElementById('gallery').classList.remove('open');
   document.body.style.overflow = '';
   _galProj = null; _galIdx = 0;
+  _openGalleryId = null;
 }
 
 document.getElementById('gallery').addEventListener('click', e => {
@@ -935,9 +1058,10 @@ function openArtHub() {
     });
 
   const grid = document.getElementById('ah-grid');
+  const galCta = curCtaLabel().gallery;
   grid.innerHTML = pieces.map(p => {
     const isGal  = !!p.isGallery;
-    const medium = p.medium || 'ART';
+    const medium = T(p,'medium') || 'ART';
     return `
       <div class="ah-piece" onclick="openFromHub(${p.id})">
         <div class="ah-piece-thumb${isGal ? ' ah-piece-thumb--contain' : ''}">
@@ -948,14 +1072,15 @@ function openArtHub() {
         </div>
         <div class="ah-piece-body">
           <p class="ah-piece-medium">${medium}</p>
-          <h3 class="ah-piece-title">${p.title}</h3>
-          <span class="ah-piece-cta">VER OBRA &nbsp;▶</span>
+          <h3 class="ah-piece-title">${T(p,'title')}</h3>
+          <span class="ah-piece-cta">${galCta} &nbsp;▶</span>
         </div>
       </div>`;
   }).join('');
 
   document.getElementById('art-hub').classList.add('open');
   document.body.style.overflow = 'hidden';
+  _artHubOpen = true;
 }
 
 function openFromHub(id) {
@@ -968,9 +1093,11 @@ function openFromHub(id) {
   }, 240);
 }
 
+let _artHubOpen = false;
 function closeArtHub() {
   document.getElementById('art-hub').classList.remove('open');
   document.body.style.overflow = '';
+  _artHubOpen = false;
 }
 
 document.getElementById('art-hub').addEventListener('click', e => {
@@ -1003,6 +1130,15 @@ document.addEventListener('click', e => {
 function toggleWaPopup() { document.getElementById('wa-popup').classList.toggle('open'); }
 function openWaPopup()   { document.getElementById('wa-popup').classList.add('open'); }
 function closeWaPopup()  { document.getElementById('wa-popup').classList.remove('open'); }
+
+/* ── CV DROPDOWN ───────────────────────────────────────────── */
+function toggleCvMenu(e) {
+  e.stopPropagation();
+  document.getElementById('cv-dropdown').classList.toggle('open');
+}
+document.addEventListener('click', () => {
+  document.getElementById('cv-dropdown').classList.remove('open');
+});
 
 /* ── ESC ───────────────────────────────────────────────────── */
 document.addEventListener('keydown', e => {
@@ -1164,9 +1300,81 @@ function startHeroTypewriter() {
   });
 }
 
+/* ── I18N DICTIONARY (static content) ────────────────────────── */
+const I18N = {
+  'nav.home': {es:'INICIO', en:'HOME'},
+  'nav.work': {es:'TRABAJO', en:'WORK'},
+  'cat.games': {es:'JUEGOS', en:'GAMES'},
+  'cat.art': {es:'ARTE', en:'ART'},
+  'cat.all': {es:'TODO', en:'ALL'},
+  'nav.profile': {es:'PERFIL', en:'PROFILE'},
+  'nav.contact': {es:'CONTACTO', en:'CONTACT'},
+  'hero.bio': {
+    es:'Diseñador interactivo con experiencia en videojuegos y proyectos multimedia, enfocado en crear experiencias digitales que integran diseño, narrativa y tecnología. Participación en game jams, realidad aumentada con Unity y Python, y producción audiovisual con principios de UX.',
+    en:'Interactive designer with experience in video games and multimedia projects, focused on creating digital experiences that blend design, narrative and technology. Experience with game jams, augmented reality with Unity and Python, and audiovisual production grounded in UX principles.'
+  },
+  'hero.cta.projects': {es:'VER PROYECTOS', en:'VIEW PROJECTS'},
+  'hero.cta.contact': {es:'CONTACTAR', en:'CONTACT'},
+  'id.native': {es:'NATIVO', en:'NATIVE'},
+  'cc.title': {es:'CONTACTO DIRECTO', en:'DIRECT CONTACT'},
+  'cc.location': {es:'UBICACIÓN', en:'LOCATION'},
+  'cc.availability': {es:'DISPONIBILIDAD', en:'AVAILABILITY'},
+  'cc.availability.val': {es:'Inmediata: Freelance y Studio', en:'Immediate: Freelance & Studio'},
+  'about.title': {es:'SOBRE<br><em>NICOLAS</em>', en:'ABOUT<br><em>NICOLAS</em>'},
+  'about.skills': {es:'HABILIDADES', en:'SKILLS'},
+  'about.skills.design': {es:'DISEÑO &amp; UX', en:'DESIGN &amp; UX'},
+  'about.skills.dev': {es:'DESARROLLO', en:'DEVELOPMENT'},
+  'about.skills.visual': {es:'VISUAL', en:'VISUAL'},
+  'about.skills.av': {es:'AUDIOVISUAL', en:'AUDIOVISUAL'},
+  'about.tag.interactive': {es:'Diseño Interactivo', en:'Interactive Design'},
+  'about.tag.identity': {es:'Identidad Visual', en:'Visual Identity'},
+  'about.tag.illustration': {es:'Ilustración Digital', en:'Digital Illustration'},
+  'about.tag.audioedit': {es:'Edición Audio', en:'Audio Editing'},
+  'about.experience': {es:'EXPERIENCIA', en:'EXPERIENCE'},
+  'exp1.yr': {es:'2025–Actual', en:'2025–Present'},
+  'exp1.role': {es:'Diseño Interactivo &amp; Automatización con IA', en:'Interactive Design &amp; AI Automation'},
+  'exp1.tag': {es:'(freelance)', en:'(freelance)'},
+  'exp1.task1': {es:'Diseño y desarrollo de un sistema de generación de contenido con IA (arquitectura de 3 bloques: prompts, creación, publicación multicanal) para un cliente real, escalando a un roadmap de 4 productos SaaS.', en:'Designed and built an AI content-generation system (3-block architecture: prompts, creation, multichannel publishing) for a real client, scaling toward a roadmap of 4 SaaS products.'},
+  'exp2.role': {es:'Desarrollo AR', en:'AR Development'},
+  'exp2.tag': {es:'(cliente retail)', en:'(retail client)'},
+  'exp2.task1': {es:'Probador de producto en realidad aumentada (Unity + Python) para una tienda física, con body-tracking construido desde cero.', en:'AR product fitting room (Unity + Python) for a physical store, with body-tracking built from scratch.'},
+  'exp3.role': {es:'Analista de Audiovisuales', en:'Audiovisual Analyst'},
+  'exp3.task1': {es:'Creación de contenidos audiovisuales para redes sociales en cultura y educación japonesa.', en:'Created audiovisual content for social media on Japanese culture and education.'},
+  'exp3.task2': {es:'Aplicación de principios de UX para mejorar claridad, interacción y retención del contenido.', en:'Applied UX principles to improve content clarity, interaction and retention.'},
+  'exp3.task3': {es:'Diseño de propuestas educativas en entornos virtuales y colaboración con equipos académicos.', en:'Designed educational proposals for virtual environments and collaborated with academic teams.'},
+  'about.education': {es:'EDUCACIÓN', en:'EDUCATION'},
+  'edu1.deg': {es:'Diseño de Videojuegos y Contenidos Interactivos', en:'Video Game Design &amp; Interactive Content'},
+  'edu2.deg': {es:'Diplomado de Animación Motion Graphics', en:'Motion Graphics Animation Diploma'}
+};
+
+function setLang(lang) {
+  LANG = lang;
+  try { localStorage.setItem('nm_lang', lang); } catch(e) {}
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('[data-lang-btn]').forEach(b =>
+    b.classList.toggle('active', b.dataset.langBtn === lang)
+  );
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const entry = I18N[el.dataset.i18n];
+    if (entry) el.textContent = entry[lang] || entry.es;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const entry = I18N[el.dataset.i18nHtml];
+    if (entry) el.innerHTML = entry[lang] || entry.es;
+  });
+
+  const activeCatBtn = document.querySelector('.cat-btn.active');
+  showProjects(activeCatBtn ? activeCatBtn.dataset.cat : 'all');
+  initCounts();
+  if (_openModalId !== null) openModal(_openModalId);
+  if (_openGalleryId !== null) openGallery(_openGalleryId);
+  if (_artHubOpen) openArtHub();
+}
+
 /* ── INIT ──────────────────────────────────────────────────── */
-showProjects('all');
-initCounts();
+setLang(LANG);
 initScrollReveal();
 
 /* ── HEX BACKGROUND — neural pulse animation ─────────────────

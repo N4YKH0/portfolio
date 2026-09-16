@@ -1475,3 +1475,37 @@ footer {
   .ah-inner  { padding:1.5rem 1.25rem 2.5rem; }
   .ah-grid   { grid-template-columns:1fr; }
 }
+
+/* ── LANGUAGE TOGGLE ───────────────────────────────────────── */
+.lang-toggle {
+  display:flex; align-items:center; gap:2px;
+  border:1px solid var(--border-blue); border-radius:99px; padding:2px;
+  background:var(--blue-dim);
+}
+.lang-btn {
+  font-family:var(--font-heading); font-weight:700; font-size:.6rem;
+  letter-spacing:.08em; padding:4px 10px; border-radius:99px;
+  color:var(--text-mid); transition:background .2s, color .2s;
+}
+.lang-btn.active { background:var(--blue); color:#0c0c0f; }
+.nav-mobile .lang-toggle { justify-content:center; }
+
+/* ── CV DROPDOWN ───────────────────────────────────────────── */
+.cv-dropdown { position:relative; display:inline-block; }
+.cv-dropdown-menu {
+  position:absolute; top:calc(100% + 8px); left:0; min-width:140px;
+  background:var(--bg-card); border:1px solid var(--border-blue); border-radius:var(--r);
+  box-shadow:0 12px 32px rgba(0,0,0,.4);
+  display:flex; flex-direction:column;
+  opacity:0; visibility:hidden; transform:translateY(-6px);
+  transition:opacity .18s ease-out, transform .18s ease-out, visibility .18s;
+  z-index:20;
+}
+.cv-dropdown.open .cv-dropdown-menu { opacity:1; visibility:visible; transform:translateY(0); }
+.cv-dropdown-menu a {
+  padding:10px 16px; font-family:var(--font-heading); font-size:.7rem; font-weight:700;
+  letter-spacing:.06em; color:var(--text-mid); text-transform:uppercase;
+  transition:background .15s, color .15s;
+}
+.cv-dropdown-menu a:hover { background:var(--blue-dim); color:var(--blue); }
+.cv-dropdown-menu a:not(:last-child) { border-bottom:1px solid var(--border); }

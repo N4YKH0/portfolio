@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRODUCCIÓN AUDIOVISUAL · Nicolas Martinez</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c0c0f'/%3E%3Cpolygon points='16,2 30,16 16,30 2,16' fill='none' stroke='%2300d4ff' stroke-width='1.5' opacity='.35'/%3E%3Cpolygon points='16,2 30,16 16,30 2,16' fill='none' stroke='%2300d4ff' stroke-width='1.5'/%3E%3Ctext x='16' y='20' font-size='9' font-weight='900' text-anchor='middle' fill='%2300d4ff' font-family='sans-serif'%3ENM%3C/text%3E%3C/svg%3E">
+
+  <meta name="description" content="Producción Audiovisual — de una serie documental dirigida en japonés para Educación ColomboJaponesa a piezas personales de edición y dirección.">
+  <meta property="og:title" content="PRODUCCIÓN AUDIOVISUAL · Nicolas Martinez">
+  <meta property="og:description" content="Selección de piezas audiovisuales — dirección, grabación y edición. Educación ColomboJaponesa (cliente) y trabajo personal.">
+  <meta property="og:type" content="article">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@900&family=Rajdhani:wght@600;700&family=Barlow:wght@300;400;500&family=Fira+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="case-study.css">
+
+  <style>
+    /* ── AUDIOVISUAL CAROUSEL (real Instagram embeds) ────────────── */
+    .av-wrap { margin:24px -24px 8px; padding:0 24px; }
+    .av-track-outer { overflow-x:auto; overflow-y:visible; padding:24px 0; scrollbar-width:none; }
+    .av-track-outer::-webkit-scrollbar { display:none; }
+    .av-track { display:flex; gap:20px; width:max-content; }
+    .av-card {
+      position:relative; width:330px; flex:none;
+      border-radius:14px; transition:transform .35s var(--ease), box-shadow .35s;
+      transform:scale(.96); opacity:.8;
+    }
+    .av-card.selected { transform:scale(1.04); opacity:1; box-shadow:0 24px 60px rgba(0,212,255,.3); z-index:5; }
+    .av-card .instagram-media { margin:0 !important; border-radius:14px 14px 0 0 !important; }
+    .av-card .ig-embed-pending {
+      display:block; width:100%; height:400px; border-radius:14px 14px 0 0;
+      background:linear-gradient(135deg, var(--bg-card) 0%, #14141a 50%, var(--bg-card) 100%);
+      background-size:200% 200%; animation:avPulse 1.6s ease-in-out infinite;
+      border:1px solid var(--border);
+    }
+    @keyframes avPulse { 0%,100% { background-position:0% 0%; } 50% { background-position:100% 100%; } }
+    .av-src-tag {
+      position:absolute; top:8px; right:8px; z-index:2;
+      font-family:var(--font-heading); font-size:9px; font-weight:700; letter-spacing:.08em;
+      padding:3px 8px; border-radius:99px; color:#0c0c0f; background:var(--blue);
+    }
+    .av-src-tag.personal { background:var(--amber); }
+    .av-select-btn {
+      display:flex; align-items:center; justify-content:center; gap:6px; width:100%;
+      padding:10px; border-radius:0 0 14px 14px;
+      background:var(--bg-card); border:1px solid var(--border); border-top:none;
+      font-family:var(--font-heading); font-weight:700; font-size:11px; letter-spacing:.06em;
+      text-transform:uppercase; color:var(--blue);
+    }
+    .av-select-btn:hover { background:var(--blue-dim); }
+    .av-nav { display:flex; gap:10px; justify-content:center; margin-top:4px; }
+    .av-nav button {
+      width:30px; height:30px; border-radius:50%; border:1px solid var(--border-blue);
+      color:var(--blue); background:var(--blue-dim); font-size:14px;
+    }
+    .av-hint { text-align:center; font-family:var(--font-mono); font-size:11px; color:var(--text-lo); margin-top:8px; }
+    .av-detail {
+      background:var(--bg-card); border:1px solid var(--border-blue); border-radius:12px;
+      padding:24px 26px; margin-top:16px;
+      opacity:0; max-height:0; overflow:hidden;
+      transition:opacity .3s ease-out, max-height .4s ease-out;
+    }
+    .av-detail.open { opacity:1; max-height:400px; }
+    .av-detail-head { display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:8px; flex-wrap:wrap; }
+    .av-detail-title { font-family:var(--font-heading); font-weight:700; font-size:18px; color:var(--text-hi); }
+    .av-detail-meta { font-family:var(--font-mono); font-size:12px; color:var(--blue); white-space:nowrap; }
+    .av-detail-link {
+      display:inline-flex; align-items:center; gap:6px; margin-top:12px;
+      font-family:var(--font-heading); font-weight:700; font-size:12px; letter-spacing:.06em;
+      text-transform:uppercase; color:var(--blue);
+    }
+    .av-detail-link:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <canvas id="hex-bg"></canvas>
+
+  <div class="cs-wrap">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <a href="index.html#work" class="cs-back" style="padding-top:28px" data-i18n="back">
+        <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
+        Volver al portafolio
+      </a>
+      <div class="lang-toggle" style="margin-top:28px">
+        <button class="lang-btn active" data-lb="es" onclick="setCaseLang('es')">ES</button>
+        <button class="lang-btn" data-lb="en" onclick="setCaseLang('en')">EN</button>
+      </div>
+    </div>
+
+    <div class="cs-hero">
+      <div class="cs-tags">
+        <span class="cs-tag" data-i18n="tag1">CONCEPTO / DIRECCIÓN / PRODUCCIÓN / EDICIÓN</span>
+      </div>
+      <h1 class="cs-title" data-i18n="title">PRODUCCIÓN AUDIOVISUAL</h1>
+      <p class="cs-subtitle" data-i18n="subtitle">Dirección, grabación y edición — de una serie documental en japonés para Educación ColomboJaponesa (su plataforma Kokomi), a piezas personales de exploración.</p>
+    </div>
+
+    <!-- Carrusel primero, como portada -->
+    <div class="av-wrap">
+      <div class="av-track-outer" id="av-track-outer">
+        <div class="av-track" id="av-track">
+
+          <div class="av-card" id="av-card-0">
+            <span class="av-src-tag">KOKOMI</span>
+            <blockquote class="ig-embed-pending" data-instgrm-permalink="https://www.instagram.com/p/DIohw4ZCEAT/" data-instgrm-version="14"></blockquote>
+            <button class="av-select-btn" onclick="avSelect(0)" data-i18n="av.btn">Ver por qué</button>
+          </div>
+
+          <div class="av-card" id="av-card-1">
+            <span class="av-src-tag">KOKOMI</span>
+            <blockquote class="ig-embed-pending" data-instgrm-permalink="https://www.instagram.com/p/DJ7g9aZO6X4/" data-instgrm-version="14"></blockquote>
+            <button class="av-select-btn" onclick="avSelect(1)" data-i18n="av.btn">Ver por qué</button>
+          </div>
+
+          <div class="av-card" id="av-card-2">
+            <span class="av-src-tag">KOKOMI</span>
+            <blockquote class="ig-embed-pending" data-instgrm-permalink="https://www.instagram.com/p/DKkts2exLmP/" data-instgrm-version="14"></blockquote>
+            <button class="av-select-btn" onclick="avSelect(2)" data-i18n="av.btn">Ver por qué</button>
+          </div>
+
+          <div class="av-card" id="av-card-3">
+            <span class="av-src-tag">KOKOMI</span>
+            <blockquote class="ig-embed-pending" data-instgrm-permalink="https://www.instagram.com/p/DND7cxTOi1H/" data-instgrm-version="14"></blockquote>
+            <button class="av-select-btn" onclick="avSelect(3)" data-i18n="av.btn">Ver por qué</button>
+          </div>
+
+          <div class="av-card" id="av-card-4">
+            <span class="av-src-tag">KOKOMI</span>
+            <blockquote class="ig-embed-pending" data-instgrm-permalink="https://www.instagram.com/p/DOREisckvIn/" data-instgrm-version="14"></blockquote>
+            <button class="av-select-btn" onclick="avSelect(4)" data-i18n="av.btn">Ver por qué</button>
+          </div>
+
+          <div class="av-card" id="av-card-5">
+            <span class="av-src-tag personal" data-i18n="av.personal">PERSONAL</span>
+            <blockquote class="ig-embed-pending" data-instgrm-permalink="https://www.instagram.com/p/DMdCzKeO8ZZ/" data-instgrm-version="14"></blockquote>
+            <button class="av-select-btn" onclick="avSelect(5)" data-i18n="av.btn">Ver por qué</button>
+          </div>
+
+          <div class="av-card" id="av-card-6">
+            <span class="av-src-tag personal" data-i18n="av.personal">PERSONAL</span>
+            <blockquote class="ig-embed-pending" data-instgrm-permalink="https://www.instagram.com/p/DM0unxbRwn6/" data-instgrm-version="14"></blockquote>
+            <button class="av-select-btn" onclick="avSelect(6)" data-i18n="av.btn">Ver por qué</button>
+          </div>
+
+          <div class="av-card" id="av-card-7">
+            <span class="av-src-tag personal" data-i18n="av.personal">PERSONAL</span>
+            <blockquote class="ig-embed-pending" data-instgrm-permalink="https://www.instagram.com/reel/DUJDNXQEayl/" data-instgrm-version="14"></blockquote>
+            <button class="av-select-btn" onclick="avSelect(7)" data-i18n="av.btn">Ver por qué</button>
+          </div>
+
+          <div class="av-card" id="av-card-8">
+            <span class="av-src-tag personal" data-i18n="av.personal">PERSONAL</span>
+            <blockquote class="ig-embed-pending" data-instgrm-permalink="https://www.instagram.com/reel/DVWPzbdjhts/" data-instgrm-version="14"></blockquote>
+            <button class="av-select-btn" onclick="avSelect(8)" data-i18n="av.btn">Ver por qué</button>
+          </div>
+
+        </div>
+      </div>
+      <div class="av-nav">
+        <button onclick="avScroll(-1)">‹</button>
+        <button onclick="avScroll(1)">›</button>
+      </div>
+      <p class="av-hint" data-i18n="av.hint">Se desplaza solo — tocá "Ver por qué" en una tarjeta para pausar y ver el detalle.</p>
+
+      <div class="av-detail" id="av-detail">
+        <div class="av-detail-head">
+          <span class="av-detail-title" id="av-detail-title"></span>
+          <span class="av-detail-meta" id="av-detail-meta"></span>
+        </div>
+        <p class="cs-p" id="av-detail-desc" style="margin-bottom:0"></p>
+        <a class="av-detail-link" id="av-detail-link" href="#" target="_blank" rel="noopener"></a>
+      </div>
+    </div>
+
+    <div class="cs-meta">
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.context">Contexto</span><span class="v" data-i18n="meta.context.val">Educación ColomboJaponesa — Kokomi (cliente) + piezas personales</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.role">Mi rol</span><span class="v" data-i18n="meta.role.val">Concepto, dirección, grabación y edición</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.duration">Duración</span><span class="v" data-i18n="meta.duration.val">8 meses de cliente (feb–sept 2025) + exploración continua</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.platform">Plataforma</span><span class="v">Instagram</span></div>
+    </div>
+
+    <div class="cs-section">
+      <h2 class="cs-h2"><span class="num">01</span><span data-i18n="h.sobre">Sobre esta selección</span></h2>
+      <p class="cs-p" data-i18n="p.sobre">Esta es una muestra mixta: piezas hechas para un cliente real (Educación ColomboJaponesa, academia de idiomas, a través de su plataforma Kokomi) junto con piezas personales de exploración. Todas comparten el mismo hilo — dirección y edición con oído musical, no solo composición gráfica.</p>
+    </div>
+
+    <div class="cs-section">
+      <h2 class="cs-h2"><span class="num">02</span><span data-i18n="h.proceso">Educación ColomboJaponesa — 4 fases en 8 meses</span></h2>
+      <p class="cs-p" data-i18n="p.proceso">De la composición de marca disciplinada, a la experimentación con IA (voz, imagen), hasta el desarrollo de una firma propia (timing musical) y la producción de una serie documental dirigida en japonés.</p>
+
+      <div class="cs-grid2">
+        <div class="cs-feature">
+          <div class="ic">1</div>
+          <div class="tx" data-i18n="feat.1"><strong>Composición estática</strong>Disciplina de marca desde el día uno — tipografía y jerarquía consistentes, sobre un kit de marca heredado.</div>
+        </div>
+        <div class="cs-feature">
+          <div class="ic">2</div>
+          <div class="tx" data-i18n="feat.2"><strong>Experimentos con IA</strong>Primer uso de voz generada por IA meses antes de que fuera común en contenido educativo de nicho.</div>
+        </div>
+        <div class="cs-feature">
+          <div class="ic">3</div>
+          <div class="tx" data-i18n="feat.3"><strong>Timing musical como firma</strong>La habilidad más personal del catálogo — usar la música para reforzar una emoción en el momento justo.</div>
+        </div>
+        <div class="cs-feature">
+          <div class="ic">4</div>
+          <div class="tx" data-i18n="feat.4"><strong>Serie documental</strong>"Conoce a tus profesores" — dirección, grabación y edición 100% propias, íntegramente en japonés.</div>
+        </div>
+      </div>
+
+      <div class="cs-quote">
+        <p data-i18n="quote1.text">La señal real de iteración no es el pico ocasional, sino la consistencia lograda al final: la serie final sostuvo 150–195 likes en 5 piezas seguidas, sin los valles del catálogo temprano.</p>
+        <span data-i18n="quote1.attr">— hallazgo del análisis cronológico de las 25 piezas</span>
+      </div>
+    </div>
+
+    <div class="cs-section">
+      <h2 class="cs-h2"><span class="num">03</span><span data-i18n="h.resultado">Resultado</span></h2>
+
+      <div class="cs-quote">
+        <p data-i18n="quote2.text">Soy más editor/director con oído musical que diseñador gráfico puro — la limpieza visual es un gusto consistente, pero el diferencial real está en el ritmo y en dirigir contenido de nicho a algo accesible sin perder autenticidad.</p>
+        <span data-i18n="quote2.attr">— síntesis del proceso</span>
+      </div>
+
+      <p class="cs-p" data-i18n="p.honestidad">La mayoría de las 25 piezas —incluida toda la serie "Conoce a tus profesores"— fueron concepto, dirección, grabación y edición propias. Dos piezas tuvieron partes que no ejecuté yo: la edición de la segunda mitad de una, y la música y portada de otra.</p>
+
+      <p class="cs-p" data-i18n="p.growth">El promedio de likes subió de ~124 en los primeros 10 posts a ~170 en la serie final — no es solo un pico aislado, es una tendencia sostenida. La cuenta @colombojaponesa_oficial tiene hoy 24.2K seguidores en Instagram.</p>
+
+      <div class="cs-result">
+        <p class="cs-p" style="margin-bottom:0" data-i18n="p.resultado">8 meses de producción constante para Educación ColomboJaponesa, con la serie final sosteniendo el engagement más consistente de todo el catálogo.</p>
+        <div class="cs-metrics-row">
+          <div class="cs-metric"><div class="v">25</div><div class="l" data-i18n="m.piezas">Piezas</div></div>
+          <div class="cs-metric"><div class="v">413</div><div class="l" data-i18n="m.pico">Pico de likes</div></div>
+          <div class="cs-metric"><div class="v">124→170</div><div class="l" data-i18n="m.promedio">Promedio de likes</div></div>
+          <div class="cs-metric"><div class="v">24.2K</div><div class="l" data-i18n="m.seguidores">Seguidores hoy</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-footer">
+      <a href="index.html#work" class="cs-back" style="padding-top:0" data-i18n="back">
+        <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
+        Volver al portafolio
+      </a>
+    </div>
+  </div>
+
+  <script src="case-i18n.js"></script>
+  <script>
+    const DICT = {
+      'back': {es:'Volver al portafolio', en:'Back to portfolio'},
+      'tag1': {es:'CONCEPTO / DIRECCIÓN / PRODUCCIÓN / EDICIÓN', en:'CONCEPT / DIRECTION / PRODUCTION / EDITING'},
+      'title': {es:'PRODUCCIÓN AUDIOVISUAL', en:'AUDIOVISUAL PRODUCTION'},
+      'subtitle': {es:'Dirección, grabación y edición — de una serie documental en japonés para Educación ColomboJaponesa (su plataforma Kokomi), a piezas personales de exploración.', en:'Direction, filming and editing — from a documentary series in Japanese for Educación ColomboJaponesa (its Kokomi platform), to personal exploration pieces.'},
+      'av.btn': {es:'Ver por qué', en:'See why'},
+      'av.personal': {es:'PERSONAL', en:'PERSONAL'},
+      'av.hint': {es:'Se desplaza solo — tocá "Ver por qué" en una tarjeta para pausar y ver el detalle.', en:'Scrolls on its own — tap "See why" on a card to pause and see the detail.'},
+      'meta.context': {es:'Contexto', en:'Context'},
+      'meta.context.val': {es:'Educación ColomboJaponesa — Kokomi (cliente) + piezas personales', en:'Educación ColomboJaponesa — Kokomi (client) + personal pieces'},
+      'meta.role': {es:'Mi rol', en:'My role'},
+      'meta.role.val': {es:'Concepto, dirección, grabación y edición', en:'Concept, direction, filming and editing'},
+      'meta.duration': {es:'Duración', en:'Duration'},
+      'meta.duration.val': {es:'8 meses de cliente (feb–sept 2025) + exploración continua', en:'8 months with client (Feb–Sep 2025) + ongoing exploration'},
+      'meta.platform': {es:'Plataforma', en:'Platform'},
+      'h.sobre': {es:'Sobre esta selección', en:'About this selection'},
+      'p.sobre': {es:'Esta es una muestra mixta: piezas hechas para un cliente real (Educación ColomboJaponesa, academia de idiomas, a través de su plataforma Kokomi) junto con piezas personales de exploración. Todas comparten el mismo hilo — dirección y edición con oído musical, no solo composición gráfica.', en:'This is a mixed selection: pieces made for a real client (Educación ColomboJaponesa, a language academy, through its Kokomi platform) alongside personal exploration pieces. They all share the same thread — direction and editing with a musical ear, not just graphic composition.'},
+      'h.proceso': {es:'Educación ColomboJaponesa — 4 fases en 8 meses', en:'Educación ColomboJaponesa — 4 phases in 8 months'},
+      'p.proceso': {es:'De la composición de marca disciplinada, a la experimentación con IA (voz, imagen), hasta el desarrollo de una firma propia (timing musical) y la producción de una serie documental dirigida en japonés.', en:'From disciplined brand composition, to experimenting with AI (voice, image), to developing a personal signature (music timing) and producing a documentary series directed in Japanese.'},
+      'feat.1': {es:'<strong>Composición estática</strong>Disciplina de marca desde el día uno — tipografía y jerarquía consistentes, sobre un kit de marca heredado.', en:'<strong>Static composition</strong>Brand discipline from day one — consistent typography and hierarchy, on an inherited brand kit.'},
+      'feat.2': {es:'<strong>Experimentos con IA</strong>Primer uso de voz generada por IA meses antes de que fuera común en contenido educativo de nicho.', en:'<strong>AI experiments</strong>First use of AI-generated voice months before it became common in niche educational content.'},
+      'feat.3': {es:'<strong>Timing musical como firma</strong>La habilidad más personal del catálogo — usar la música para reforzar una emoción en el momento justo.', en:'<strong>Music timing as a signature</strong>The most personal skill in the catalog — using music to reinforce an emotion at just the right moment.'},
+      'feat.4': {es:'<strong>Serie documental</strong>"Conoce a tus profesores" — dirección, grabación y edición 100% propias, íntegramente en japonés.', en:'<strong>Documentary series</strong>"Meet Your Teachers" — 100% my own direction, filming and editing, entirely in Japanese.'},
+      'quote1.text': {es:'La señal real de iteración no es el pico ocasional, sino la consistencia lograda al final: la serie final sostuvo 150–195 likes en 5 piezas seguidas, sin los valles del catálogo temprano.', en:'The real sign of iteration isn\'t the occasional peak, but the consistency reached at the end: the final series held 150–195 likes across 5 pieces in a row, without the dips of the earlier catalog.'},
+      'quote1.attr': {es:'— hallazgo del análisis cronológico de las 25 piezas', en:'— finding from the chronological analysis of the 25 pieces'},
+      'h.resultado': {es:'Resultado', en:'Result'},
+      'quote2.text': {es:'Soy más editor/director con oído musical que diseñador gráfico puro — la limpieza visual es un gusto consistente, pero el diferencial real está en el ritmo y en dirigir contenido de nicho a algo accesible sin perder autenticidad.', en:'I\'m more of an editor/director with a musical ear than a pure graphic designer — clean visuals are a consistent taste, but the real differentiator is rhythm, and directing niche content into something accessible without losing authenticity.'},
+      'quote2.attr': {es:'— síntesis del proceso', en:'— synthesis of the process'},
+      'p.honestidad': {es:'La mayoría de las 25 piezas —incluida toda la serie "Conoce a tus profesores"— fueron concepto, dirección, grabación y edición propias. Dos piezas tuvieron partes que no ejecuté yo: la edición de la segunda mitad de una, y la música y portada de otra.', en:'Most of the 25 pieces —including the entire "Meet Your Teachers" series— were my own concept, direction, filming and editing. Two pieces had parts I didn\'t execute: the second-half edit of one, and the music and cover of another.'},
+      'p.growth': {es:'El promedio de likes subió de ~124 en los primeros 10 posts a ~170 en la serie final — no es solo un pico aislado, es una tendencia sostenida. La cuenta @colombojaponesa_oficial tiene hoy 24.2K seguidores en Instagram.', en:'The average likes grew from ~124 on the first 10 posts to ~170 on the final series — not just an isolated peak, a sustained trend. The @colombojaponesa_oficial account has 24.2K followers on Instagram today.'},
+      'p.resultado': {es:'8 meses de producción constante para Educación ColomboJaponesa, con la serie final sosteniendo el engagement más consistente de todo el catálogo.', en:'8 months of steady production for Educación ColomboJaponesa, with the final series holding the most consistent engagement in the whole catalog.'},
+      'm.piezas': {es:'Piezas', en:'Pieces'},
+      'm.pico': {es:'Pico de likes', en:'Likes peak'},
+      'm.promedio': {es:'Promedio de likes', en:'Average likes'},
+      'm.seguidores': {es:'Seguidores hoy', en:'Followers today'}
+    };
+    initCaseLang(DICT);
+  </script>
+
+  <script>
+    /* ── CAROUSEL BEHAVIOR ────────────────────────────────────────
+       Cards are real Instagram embeds (rendered by embed.js). We only
+       control: autoplay scroll, select-to-focus, and the detail panel
+       (which is our own curatorial text, bilingual).
+
+       Perf: embed.js + each card's iframe are loaded lazily — only
+       when a card scrolls near the visible area of the horizontal
+       track, instead of all 9 firing at once on page load. */
+    let igScriptState = 'idle'; // idle | loading | ready
+    let igReadyQueue = [];
+    function loadIgScript() {
+      if (igScriptState !== 'idle') return;
+      igScriptState = 'loading';
+      const s = document.createElement('script');
+      s.src = '//www.instagram.com/embed.js';
+      s.onload = () => {
+        igScriptState = 'ready';
+        igReadyQueue.forEach(fn => fn());
+        igReadyQueue = [];
+      };
+      document.body.appendChild(s);
+    }
+    function activateEmbed(card) {
+      const bq = card.querySelector('.ig-embed-pending');
+      if (!bq) return;
+      bq.classList.remove('ig-embed-pending');
+      bq.classList.add('instagram-media');
+      const process = () => { if (window.instgrm) window.instgrm.Embeds.process(); };
+      if (igScriptState === 'ready') process();
+      else { igReadyQueue.push(process); loadIgScript(); }
+    }
+    const avObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          activateEmbed(entry.target);
+          avObserver.unobserve(entry.target);
+        }
+      });
+    }, { root: document.getElementById('av-track-outer'), rootMargin: '0px 700px 0px 700px', threshold: 0.01 });
+    document.querySelectorAll('.av-card').forEach(c => avObserver.observe(c));
+
+    const PIECES = [
+      { title:'Viaje Inmersivo Japón', title_en:'Japan Immersive Trip',
+        date:'19 abr 2025', date_en:'Apr 19, 2025', likes:'278 likes',
+        desc:'Foto real del grupo en Japón, sin gráfica compleja — el contenido más humano del lote, con el segundo mayor alcance de todo el catálogo.',
+        desc_en:'Real photo of the group in Japan, no complex graphics — the most human piece in the batch, with the second-highest reach in the whole catalog.',
+        url:'https://www.instagram.com/p/DIohw4ZCEAT/?img_index=1' },
+      { title:'Blue Lock en la vida real', title_en:'Blue Lock in Real Life',
+        date:'21 may 2025', date_en:'May 21, 2025', likes:'83 likes',
+        desc:'Mejor evidencia de dominio de voz IA + timing musical juntos — primera vez que ambas herramientas están "bien desarrolladas" al mismo tiempo.',
+        desc_en:'Best evidence of AI voice + music timing mastery together — the first time both tools are "well developed" at once.',
+        url:'https://www.instagram.com/p/DJ7g9aZO6X4/' },
+      { title:'"Esto es Japón"', title_en:'"This is Japan"',
+        date:'6 jun 2025', date_en:'Jun 6, 2025', likes:'413 likes — pico', likes_en:'413 likes — peak',
+        desc:'Imágenes editadas con IA, collage tipo estante de tienda. El mayor alcance de las 25 piezas para Educación ColomboJaponesa.',
+        desc_en:'AI-edited images, a store-shelf-style collage. The highest reach of the 25 pieces for Educación ColomboJaponesa.',
+        url:'https://www.instagram.com/p/DKkts2exLmP/?img_index=1' },
+      { title:'Bonsái + Música', title_en:'Bonsai + Music',
+        date:'7 ago 2025', date_en:'Aug 7, 2025', likes:'98 likes',
+        desc:'Top 3 propio. Solo audio y transiciones, sin texto en pantalla — la pieza donde más disfruté unir canción e imagen.',
+        desc_en:'My personal top 3. Just audio and transitions, no on-screen text — the piece I most enjoyed pairing song and image on.',
+        url:'https://www.instagram.com/p/DND7cxTOi1H/' },
+      { title:'Conoce a tus profesores #1', title_en:'Meet Your Teachers #1',
+        date:'6 sept 2025', date_en:'Sep 6, 2025', likes:'195 likes',
+        desc:'Lanzamiento de la serie de mayor complejidad de producción del catálogo: dirección, grabación y edición 100% propias, en japonés.',
+        desc_en:'Launch of the most production-complex series in the catalog: 100% my own direction, filming and editing, in Japanese.',
+        url:'https://www.instagram.com/p/DOREisckvIn/' },
+      { title:'En producción', title_en:'On Set',
+        date:'23 jul 2025', date_en:'Jul 23, 2025', likes:'',
+        desc:'Grado de color cálido y cinematográfico en una sesión de trabajo — exploración personal de dirección de fotografía, sin cliente de por medio.',
+        desc_en:'Warm, cinematic color grade from a work session — personal exploration in cinematography direction, no client involved.',
+        url:'https://www.instagram.com/p/DMdCzKeO8ZZ/' },
+      { title:'Espacio vacío', title_en:'Empty Space',
+        date:'1 ago 2025', date_en:'Aug 1, 2025', likes:'',
+        desc:'Misma línea visual que la pieza anterior — parte de una exploración continua de atmósfera y color.',
+        desc_en:'Same visual language as the previous piece — part of an ongoing exploration of atmosphere and color.',
+        url:'https://www.instagram.com/p/DM0unxbRwn6/' },
+      { title:'We Are Back (2k26)', title_en:'We Are Back (2k26)',
+        date:'2026', date_en:'2026', likes:'',
+        desc:'Reel personal con selección musical deliberada (Bad Bunny, Tainy) — el mismo instinto de timing musical detrás del trabajo en Kokomi, aplicado a contenido propio.',
+        desc_en:'Personal reel with deliberate music selection (Bad Bunny, Tainy) — the same music-timing instinct behind the Kokomi work, applied to personal content.',
+        url:'https://www.instagram.com/reel/DUJDNXQEayl/' },
+      { title:'Vibes 2/12', title_en:'Vibes 2/12',
+        date:'1 mar 2026', date_en:'Mar 1, 2026', likes:'',
+        desc:'Parte de una serie personal de montajes — curaduría musical y de imagen como ejercicio de estilo propio.',
+        desc_en:'Part of a personal series of edits — music and image curation as a personal style exercise.',
+        url:'https://www.instagram.com/reel/DVWPzbdjhts/' }
+    ];
+
+    let avSelected = null;
+    let avAutoTimer = null;
+
+    function avLang() { return (document.documentElement.lang === 'en') ? 'en' : 'es'; }
+    function avT(p, field) { const l = avLang(); return (l === 'en' && p[field + '_en']) ? p[field + '_en'] : p[field]; }
+
+    function avSelect(i) {
+      document.querySelectorAll('.av-card').forEach(c => c.classList.remove('selected'));
+      const wasSame = (avSelected === i);
+      avSelected = wasSame ? null : i;
+      avStopAuto();
+
+      const detail = document.getElementById('av-detail');
+      if (avSelected === null) {
+        detail.classList.remove('open');
+        avStartAuto();
+        return;
+      }
+      document.getElementById('av-card-' + i).classList.add('selected');
+      avRefreshDetail();
+      detail.classList.add('open');
+      document.getElementById('av-card-' + i).scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
+    }
+
+    function avRefreshDetail() {
+      if (avSelected === null) return;
+      const p = PIECES[avSelected];
+      document.getElementById('av-detail-title').textContent = avT(p,'title');
+      const likes = avT(p,'likes');
+      document.getElementById('av-detail-meta').textContent  = likes ? `${avT(p,'date')} · ${likes}` : avT(p,'date');
+      document.getElementById('av-detail-desc').textContent  = avT(p,'desc');
+      const link = document.getElementById('av-detail-link');
+      link.href = PIECES[avSelected].url;
+      link.textContent = (avLang() === 'en' ? 'View on Instagram →' : 'Ver en Instagram →');
+    }
+
+    function avScroll(dir) {
+      document.getElementById('av-track-outer').scrollBy({ left: dir * 350, behavior:'smooth' });
+    }
+
+    function avStartAuto() {
+      avStopAuto();
+      avAutoTimer = setInterval(() => {
+        const el = document.getElementById('av-track-outer');
+        if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 4) el.scrollTo({ left:0, behavior:'smooth' });
+        else el.scrollBy({ left:350, behavior:'smooth' });
+      }, 3800);
+    }
+    function avStopAuto() { if (avAutoTimer) clearInterval(avAutoTimer); avAutoTimer = null; }
+
+    avStartAuto();
+    document.getElementById('av-track-outer').addEventListener('mouseenter', avStopAuto);
+    document.getElementById('av-track-outer').addEventListener('mouseleave', () => { if (avSelected === null) avStartAuto(); });
+
+    /* Re-render curatorial text (not the embeds) when language toggles */
+    const _origSetCaseLang = window.setCaseLang;
+    window.setCaseLang = function(lang) {
+      _origSetCaseLang(lang);
+      avRefreshDetail();
+    };
+  </script>
+</body>
+</html>

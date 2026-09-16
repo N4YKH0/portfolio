@@ -23,99 +23,105 @@
   <canvas id="hex-bg"></canvas>
 
   <div class="cs-wrap">
-    <a href="index.html#work" class="cs-back">
-      <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
-      Volver al portafolio
-    </a>
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <a href="index.html#work" class="cs-back" style="padding-top:28px" data-i18n="back">
+        <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
+        Volver al portafolio
+      </a>
+      <div class="lang-toggle" style="margin-top:28px">
+        <button class="lang-btn active" data-lb="es" onclick="setCaseLang('es')">ES</button>
+        <button class="lang-btn" data-lb="en" onclick="setCaseLang('en')">EN</button>
+      </div>
+    </div>
 
     <div class="cs-hero">
       <div class="cs-tags">
-        <span class="cs-tag">AR / INMERSIVO</span>
-        <span class="cs-tag cs-tag--amber">2º PUESTO</span>
+        <span class="cs-tag" data-i18n="tag1">AR / INMERSIVO</span>
+        <span class="cs-tag cs-tag--amber" data-i18n="tag2">2º PUESTO</span>
       </div>
       <h1 class="cs-title">NO DEMOS PAPAYA</h1>
-      <p class="cs-subtitle">Experiencia inmersiva 360° en Google Cardboard para concientizar sobre seguridad en el centro de Bogotá — de la problemática al MVP en 3 días, hackathon universitario.</p>
+      <p class="cs-subtitle" data-i18n="subtitle">Experiencia inmersiva 360° en Google Cardboard para concientizar sobre seguridad en el centro de Bogotá — de la problemática al MVP en 3 días, hackathon universitario.</p>
     </div>
 
     <img class="cs-cover" src="Portafolio/NoDemosPapaya_Cover.jpg" alt="El equipo con el MVP terminado — Google Cardboard con el logo No Demos Papaya, día de la muestra final">
 
     <div class="cs-meta">
-      <div class="cs-meta-item"><span class="k">Evento</span><span class="v">Hackathon CUCB × TadeoLab</span></div>
-      <div class="cs-meta-item"><span class="k">Mi rol</span><span class="v">Lead de proyecto — MVP y presentación</span></div>
-      <div class="cs-meta-item"><span class="k">Duración</span><span class="v">3 días</span></div>
-      <div class="cs-meta-item"><span class="k">Equipo</span><span class="v">3 personas — diseño gráfico, interactivo, lead</span></div>
-      <div class="cs-meta-item"><span class="k">Año</span><span class="v">2024</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.event">Evento</span><span class="v">Hackathon CUCB × TadeoLab</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.role">Mi rol</span><span class="v" data-i18n="meta.role.val">Lead de proyecto — MVP y presentación</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.duration">Duración</span><span class="v" data-i18n="meta.duration.val">3 días</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.team">Equipo</span><span class="v" data-i18n="meta.team.val">3 personas — diseño gráfico, interactivo, lead</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.year">Año</span><span class="v">2024</span></div>
     </div>
 
     <div class="cs-section">
-      <h2 class="cs-h2"><span class="num">01</span>El reto</h2>
-      <p class="cs-p">Los estudiantes universitarios que transitan a diario el centro de Bogotá conviven con altos índices de inseguridad, pero las campañas de prevención existentes apelan al miedo y la evasión. <strong>¿Cómo comunicar información real de protección sin generar más ansiedad?</strong></p>
+      <h2 class="cs-h2"><span class="num">01</span><span data-i18n="h.reto">El reto</span></h2>
+      <p class="cs-p" data-i18n="p.reto">Los estudiantes universitarios que transitan a diario el centro de Bogotá conviven con altos índices de inseguridad, pero las campañas de prevención existentes apelan al miedo y la evasión. <strong>¿Cómo comunicar información real de protección sin generar más ansiedad?</strong></p>
     </div>
 
     <div class="cs-section">
-      <h2 class="cs-h2"><span class="num">02</span>Research</h2>
-      <p class="cs-p">Día 1 completo dedicado a research en calle: entrevistas 1 a 1 y una encuesta corta con estudiantes y transeúntes del centro de Bogotá, seguidas de un mapa de afinidad para encontrar patrones en los hallazgos.</p>
+      <h2 class="cs-h2"><span class="num">02</span><span data-i18n="h.research">Research</span></h2>
+      <p class="cs-p" data-i18n="p.research1">Día 1 completo dedicado a research en calle: entrevistas 1 a 1 y una encuesta corta con estudiantes y transeúntes del centro de Bogotá, seguidas de un mapa de afinidad para encontrar patrones en los hallazgos.</p>
 
       <img class="cs-img" src="Portafolio/NoDemosPapaya_Entrevista.jpg" alt="Equipo realizando entrevistas en el centro de Bogotá">
-      <p class="cs-caption">Research día 1 — entrevistas 1 a 1 en calle.</p>
+      <p class="cs-caption" data-i18n="cap.entrevista">Research día 1 — entrevistas 1 a 1 en calle.</p>
 
       <img class="cs-img" src="Portafolio/NoDemosPapaya_Encuesta.png" alt="Resultados reales de la encuesta corta, 12 respuestas">
-      <p class="cs-caption">Encuesta corta (Google Forms) — palabras más repetidas: caminar, noche, maleta, pertenencias.</p>
+      <p class="cs-caption" data-i18n="cap.encuesta">Encuesta corta (Google Forms) — palabras más repetidas: caminar, noche, maleta, pertenencias.</p>
 
       <img class="cs-img" src="Portafolio/NoDemosPapaya_MapaAfinidad.jpg" alt="Mapa de afinidad completo: Perpetradores, Afectados, Dónde, Cuándo, Cómo, Por Qué">
-      <p class="cs-caption">Mapa de afinidad completo del research día 1.</p>
+      <p class="cs-caption" data-i18n="cap.mapa">Mapa de afinidad completo del research día 1.</p>
 
       <div class="cs-quote">
-        <p>Los estudiantes universitarios se sienten inseguros en las estaciones de TransMilenio en horas pico por el cosquilleo.</p>
-        <span>— Insight del mapa de afinidad, research día 1</span>
+        <p data-i18n="quote.text">Los estudiantes universitarios se sienten inseguros en las estaciones de TransMilenio en horas pico por el cosquilleo.</p>
+        <span data-i18n="quote.attr">— Insight del mapa de afinidad, research día 1</span>
       </div>
 
-      <p class="cs-p">El insight que definió el proyecto: <strong>"evitar" resultó un verbo demasiado negativo</strong> para el problema. El equipo pivotó de un mensaje de miedo/evasión hacia <strong>concientizar e informar</strong> — dar herramientas de prevención, no una advertencia.</p>
+      <p class="cs-p" data-i18n="p.insight">El insight que definió el proyecto: <strong>"evitar" resultó un verbo demasiado negativo</strong> para el problema. El equipo pivotó de un mensaje de miedo/evasión hacia <strong>concientizar e informar</strong> — dar herramientas de prevención, no una advertencia.</p>
     </div>
 
     <div class="cs-section">
-      <h2 class="cs-h2"><span class="num">03</span>Solución</h2>
-      <p class="cs-p">Experiencia inmersiva 360° construida con Google Cardboard: fotografías panorámicas reales de zonas del centro de Bogotá, recorridas como un trayecto gamificado con acertijos que entrega consejos concretos de prevención en el camino.</p>
+      <h2 class="cs-h2"><span class="num">03</span><span data-i18n="h.solucion">Solución</span></h2>
+      <p class="cs-p" data-i18n="p.solucion1">Experiencia inmersiva 360° construida con Google Cardboard: fotografías panorámicas reales de zonas del centro de Bogotá, recorridas como un trayecto gamificado con acertijos que entrega consejos concretos de prevención en el camino.</p>
 
       <img class="cs-img" src="Portafolio/NoDemosPapaya_Panoramica.jpg" alt="Fotografía panorámica real usada como contenido del recorrido">
-      <p class="cs-caption">Una de las fotografías 360° reales que componen el recorrido.</p>
+      <p class="cs-caption" data-i18n="cap.panoramica">Una de las fotografías 360° reales que componen el recorrido.</p>
 
       <div class="cs-grid2">
         <div class="cs-feature">
           <div class="ic">360°</div>
-          <div class="tx"><strong>Recorrido gamificado</strong>Fotos panorámicas reales del centro con acertijos y niveles de dificultad progresivos.</div>
+          <div class="tx" data-i18n="feat.recorrido"><strong>Recorrido gamificado</strong>Fotos panorámicas reales del centro con acertijos y niveles de dificultad progresivos.</div>
         </div>
         <div class="cs-feature">
           <div class="ic">🔊</div>
-          <div class="tx"><strong>Lector de pantalla</strong>Voz de apoyo como guía y referencia durante todo el recorrido.</div>
+          <div class="tx" data-i18n="feat.lector"><strong>Lector de pantalla</strong>Voz de apoyo como guía y referencia durante todo el recorrido.</div>
         </div>
         <div class="cs-feature">
           <div class="ic">Aa</div>
-          <div class="tx"><strong>Subtítulos</strong>Activables siempre que se enseña información nueva.</div>
+          <div class="tx" data-i18n="feat.subtitulos"><strong>Subtítulos</strong>Activables siempre que se enseña información nueva.</div>
         </div>
         <div class="cs-feature">
           <div class="ic">◐</div>
-          <div class="tx"><strong>Contraste ajustable</strong>Pensado desde el inicio: la app es predominantemente visual, así que la accesibilidad no era opcional.</div>
+          <div class="tx" data-i18n="feat.contraste"><strong>Contraste ajustable</strong>Pensado desde el inicio: la app es predominantemente visual, así que la accesibilidad no era opcional.</div>
         </div>
       </div>
 
-      <p class="cs-p">Roles del equipo: diseño gráfico (piezas visuales, panorámicas 360°), interactivo (construcción física de la Cardboard, fortalecimiento de conceptos), y yo como lead — definición del MVP, propuesta de gamificar la experiencia y dirección de cómo presentarla al jurado.</p>
+      <p class="cs-p" data-i18n="p.roles">Roles del equipo: diseño gráfico (piezas visuales, panorámicas 360°), interactivo (construcción física de la Cardboard, fortalecimiento de conceptos), y yo como lead — definición del MVP, propuesta de gamificar la experiencia y dirección de cómo presentarla al jurado.</p>
     </div>
 
     <div class="cs-section">
-      <h2 class="cs-h2"><span class="num">04</span>Resultado</h2>
+      <h2 class="cs-h2"><span class="num">04</span><span data-i18n="h.resultado">Resultado</span></h2>
       <div class="cs-result">
-        <p class="cs-p" style="margin-bottom:0">2º puesto en el hackathon organizado por CUCB en alianza con TadeoLab, con <strong>puntaje de innovación perfecto</strong> según el jurado. De la problemática al MVP funcional en 3 días.</p>
+        <p class="cs-p" style="margin-bottom:0" data-i18n="p.resultado">2º puesto en el hackathon organizado por CUCB en alianza con TadeoLab, con <strong>puntaje de innovación perfecto</strong> según el jurado. De la problemática al MVP funcional en 3 días.</p>
         <div class="cs-metrics-row">
-          <div class="cs-metric"><div class="v">360°</div><div class="l">Formato</div></div>
-          <div class="cs-metric"><div class="v">2do</div><div class="l">Puesto</div></div>
-          <div class="cs-metric"><div class="v">3 días</div><div class="l">Duración</div></div>
+          <div class="cs-metric"><div class="v">360°</div><div class="l" data-i18n="m.formato">Formato</div></div>
+          <div class="cs-metric"><div class="v" data-i18n="m.puesto.val">2do</div><div class="l" data-i18n="m.puesto">Puesto</div></div>
+          <div class="cs-metric"><div class="v" data-i18n="m.duracion.val">3 días</div><div class="l" data-i18n="m.duracion">Duración</div></div>
         </div>
       </div>
     </div>
 
     <div class="cs-footer">
-      <a href="index.html#work" class="cs-back" style="padding-top:0">
+      <a href="index.html#work" class="cs-back" style="padding-top:0" data-i18n="back">
         <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
         Volver al portafolio
       </a>
@@ -129,6 +135,49 @@
       if (!c) return;
       c.style.opacity = '0.5';
     })();
+  </script>
+  <script src="case-i18n.js"></script>
+  <script>
+    const DICT = {
+      'back': {es:'Volver al portafolio', en:'Back to portfolio'},
+      'tag1': {es:'AR / INMERSIVO', en:'AR / IMMERSIVE'},
+      'tag2': {es:'2º PUESTO', en:'2ND PLACE'},
+      'subtitle': {es:'Experiencia inmersiva 360° en Google Cardboard para concientizar sobre seguridad en el centro de Bogotá — de la problemática al MVP en 3 días, hackathon universitario.', en:'360° immersive experience in Google Cardboard raising safety awareness in downtown Bogotá — from problem to MVP in 3 days, university hackathon.'},
+      'meta.event': {es:'Evento', en:'Event'},
+      'meta.role': {es:'Mi rol', en:'My role'},
+      'meta.role.val': {es:'Lead de proyecto — MVP y presentación', en:'Project lead — MVP and presentation'},
+      'meta.duration': {es:'Duración', en:'Duration'},
+      'meta.duration.val': {es:'3 días', en:'3 days'},
+      'meta.team': {es:'Equipo', en:'Team'},
+      'meta.team.val': {es:'3 personas — diseño gráfico, interactivo, lead', en:'3 people — graphic design, interactive, lead'},
+      'meta.year': {es:'Año', en:'Year'},
+      'h.reto': {es:'El reto', en:'The Challenge'},
+      'p.reto': {es:'Los estudiantes universitarios que transitan a diario el centro de Bogotá conviven con altos índices de inseguridad, pero las campañas de prevención existentes apelan al miedo y la evasión. <strong>¿Cómo comunicar información real de protección sin generar más ansiedad?</strong>', en:'University students who pass through downtown Bogotá daily live with high insecurity rates, but existing prevention campaigns lean on fear and avoidance. <strong>How do you communicate real protection information without adding more anxiety?</strong>'},
+      'h.research': {es:'Research', en:'Research'},
+      'p.research1': {es:'Día 1 completo dedicado a research en calle: entrevistas 1 a 1 y una encuesta corta con estudiantes y transeúntes del centro de Bogotá, seguidas de un mapa de afinidad para encontrar patrones en los hallazgos.', en:'A full first day dedicated to street research: 1-on-1 interviews and a short survey with students and passersby in downtown Bogotá, followed by an affinity map to find patterns in the findings.'},
+      'cap.entrevista': {es:'Research día 1 — entrevistas 1 a 1 en calle.', en:'Day 1 research — 1-on-1 street interviews.'},
+      'cap.encuesta': {es:'Encuesta corta (Google Forms) — palabras más repetidas: caminar, noche, maleta, pertenencias.', en:'Short survey (Google Forms) — most repeated words: walking, night, bag, belongings.'},
+      'cap.mapa': {es:'Mapa de afinidad completo del research día 1.', en:'Full affinity map from day 1 research.'},
+      'quote.text': {es:'Los estudiantes universitarios se sienten inseguros en las estaciones de TransMilenio en horas pico por el cosquilleo.', en:'University students feel unsafe at TransMilenio stations during rush hour because of pickpocketing.'},
+      'quote.attr': {es:'— Insight del mapa de afinidad, research día 1', en:'— Insight from the affinity map, day 1 research'},
+      'p.insight': {es:'El insight que definió el proyecto: <strong>"evitar" resultó un verbo demasiado negativo</strong> para el problema. El equipo pivotó de un mensaje de miedo/evasión hacia <strong>concientizar e informar</strong> — dar herramientas de prevención, no una advertencia.', en:'The insight that defined the project: <strong>"avoid" turned out to be too negative a verb</strong> for the problem. The team pivoted from a fear/avoidance message toward <strong>raising awareness and informing</strong> — giving prevention tools, not a warning.'},
+      'h.solucion': {es:'Solución', en:'Solution'},
+      'p.solucion1': {es:'Experiencia inmersiva 360° construida con Google Cardboard: fotografías panorámicas reales de zonas del centro de Bogotá, recorridas como un trayecto gamificado con acertijos que entrega consejos concretos de prevención en el camino.', en:"360° immersive experience built with Google Cardboard: real panoramic photos of downtown Bogotá locations, walked through as a gamified journey with riddles that deliver concrete prevention tips along the way."},
+      'cap.panoramica': {es:'Una de las fotografías 360° reales que componen el recorrido.', en:'One of the real 360° photos that make up the route.'},
+      'feat.recorrido': {es:'<strong>Recorrido gamificado</strong>Fotos panorámicas reales del centro con acertijos y niveles de dificultad progresivos.', en:'<strong>Gamified journey</strong>Real panoramic photos of downtown with riddles and progressive difficulty levels.'},
+      'feat.lector': {es:'<strong>Lector de pantalla</strong>Voz de apoyo como guía y referencia durante todo el recorrido.', en:'<strong>Screen reader</strong>Voice support as a guide and reference throughout the route.'},
+      'feat.subtitulos': {es:'<strong>Subtítulos</strong>Activables siempre que se enseña información nueva.', en:'<strong>Subtitles</strong>Available whenever new information is presented.'},
+      'feat.contraste': {es:'<strong>Contraste ajustable</strong>Pensado desde el inicio: la app es predominantemente visual, así que la accesibilidad no era opcional.', en:'<strong>Adjustable contrast</strong>Built in from day one: the app is mostly visual, so accessibility wasn\'t optional.'},
+      'p.roles': {es:'Roles del equipo: diseño gráfico (piezas visuales, panorámicas 360°), interactivo (construcción física de la Cardboard, fortalecimiento de conceptos), y yo como lead — definición del MVP, propuesta de gamificar la experiencia y dirección de cómo presentarla al jurado.', en:'Team roles: graphic design (visuals, 360° panoramics), interactive design (building the physical Cardboard, strengthening concepts), and me as lead — defining the MVP, proposing to gamify the experience, and directing how to present it to the judges.'},
+      'h.resultado': {es:'Resultado', en:'Result'},
+      'p.resultado': {es:'2º puesto en el hackathon organizado por CUCB en alianza con TadeoLab, con <strong>puntaje de innovación perfecto</strong> según el jurado. De la problemática al MVP funcional en 3 días.', en:'2nd place at the hackathon organized by CUCB in partnership with TadeoLab, with a <strong>perfect innovation score</strong> from the judges. From problem to functional MVP in 3 days.'},
+      'm.formato': {es:'Formato', en:'Format'},
+      'm.puesto': {es:'Puesto', en:'Rank'},
+      'm.puesto.val': {es:'2do', en:'2nd'},
+      'm.duracion': {es:'Duración', en:'Duration'},
+      'm.duracion.val': {es:'3 días', en:'3 days'}
+    };
+    initCaseLang(DICT);
   </script>
 </body>
 </html>

@@ -23,111 +23,157 @@
   <canvas id="hex-bg"></canvas>
 
   <div class="cs-wrap">
-    <a href="index.html#work" class="cs-back">
-      <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
-      Volver al portafolio
-    </a>
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <a href="index.html#work" class="cs-back" style="padding-top:28px" data-i18n="back">
+        <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
+        Volver al portafolio
+      </a>
+      <div class="lang-toggle" style="margin-top:28px">
+        <button class="lang-btn active" data-lb="es" onclick="setCaseLang('es')">ES</button>
+        <button class="lang-btn" data-lb="en" onclick="setCaseLang('en')">EN</button>
+      </div>
+    </div>
 
     <div class="cs-hero">
       <div class="cs-tags">
-        <span class="cs-tag">AR / COMPUTER VISION</span>
-        <span class="cs-tag cs-tag--amber">PROTOTIPO FUNCIONAL</span>
+        <span class="cs-tag" data-i18n="tag1">AR / COMPUTER VISION</span>
+        <span class="cs-tag cs-tag--amber" data-i18n="tag2">PROTOTIPO FUNCIONAL</span>
       </div>
       <h1 class="cs-title">HEREJE — MAGIC MIRROR</h1>
-      <p class="cs-subtitle">Probador de carteras en realidad aumentada para una tienda real de bolsos — con flujo de venta por WhatsApp y compra web integrado, y un pipeline de body-tracking construido desde cero en Python.</p>
+      <p class="cs-subtitle" data-i18n="subtitle">Probador de carteras en realidad aumentada para una tienda real de bolsos — con flujo de venta por WhatsApp y compra web integrado, y un pipeline de body-tracking construido desde cero en Python.</p>
     </div>
 
     <img class="cs-cover" src="Portafolio/Hereje_Logo.png" alt="HEREJE Colombia — Magic Mirror">
 
     <div class="cs-meta">
-      <div class="cs-meta-item"><span class="k">Cliente</span><span class="v">Retail — tienda de bolsos (vía Felo Fullstack)</span></div>
-      <div class="cs-meta-item"><span class="k">Mi rol</span><span class="v">Body-tracking en Python + desarrollo Unity/AR completo</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.client">Cliente</span><span class="v" data-i18n="meta.client.val">Retail — tienda de bolsos (vía Felo Fullstack)</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.role">Mi rol</span><span class="v" data-i18n="meta.role.val">Body-tracking en Python + desarrollo Unity/AR completo</span></div>
       <div class="cs-meta-item"><span class="k">Stack</span><span class="v">Python (OpenCV, MediaPipe), WebSocket/TCP, Unity, C#</span></div>
-      <div class="cs-meta-item"><span class="k">Año</span><span class="v">2025</span></div>
-      <div class="cs-meta-item"><span class="k">Estado</span><span class="v">Prototipo funcional, no integrado al punto de venta</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.year">Año</span><span class="v">2025</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.status">Estado</span><span class="v" data-i18n="meta.status.val">Prototipo funcional, no integrado al punto de venta</span></div>
     </div>
 
     <div class="cs-section">
-      <h2 class="cs-h2"><span class="num">01</span>El reto</h2>
-      <p class="cs-p">Diseñar un probador de carteras en realidad aumentada para una tienda física real: que el cliente se pare frente a la cámara y vea, en tiempo real, cómo le queda una cartera sobre su propio cuerpo — sin marcadores físicos ni apps de terceros, como un espejo mágico — con un camino directo a la compra: asesoría por WhatsApp o ir a comprarla en la tienda web.</p>
+      <h2 class="cs-h2"><span class="num">01</span><span data-i18n="h.reto">El reto</span></h2>
+      <p class="cs-p" data-i18n="p.reto">Diseñar un probador de carteras en realidad aumentada para una tienda física real: que el cliente se pare frente a la cámara y vea, en tiempo real, cómo le queda una cartera sobre su propio cuerpo — sin marcadores físicos ni apps de terceros, como un espejo mágico — con un camino directo a la compra: asesoría por WhatsApp o ir a comprarla en la tienda web.</p>
     </div>
 
     <div class="cs-section">
-      <h2 class="cs-h2"><span class="num">02</span>Cómo se construyó</h2>
-      <p class="cs-p">Existían stacks de AR ya probados y reutilizables — Vuforia, Unity AR Foundation, Barracuda (el mismo motor de red neuronal usado en <a href="case-phy-sync.html" style="color:var(--blue)">PHY-SYNC</a>) — pero decidí aprender Python desde cero y construir un pipeline propio de body-tracking con <strong>OpenCV + MediaPipe</strong>, en vez de apoyarme en un SDK empaquetado.</p>
+      <h2 class="cs-h2"><span class="num">02</span><span data-i18n="h.build">Cómo se construyó</span></h2>
+      <p class="cs-p" data-i18n="p.build1">Existían stacks de AR ya probados y reutilizables — Vuforia, Unity AR Foundation, Barracuda (el mismo motor de red neuronal usado en <a href="case-phy-sync.html" style="color:var(--blue)">PHY-SYNC</a>) — pero decidí aprender Python desde cero y construir un pipeline propio de body-tracking con <strong>OpenCV + MediaPipe</strong>, en vez de apoyarme en un SDK empaquetado.</p>
 
       <div class="cs-quote">
-        <p>Quería entender el mecanismo de tracking corporal desde la base, no solo implementarlo.</p>
-        <span>— decisión técnica detrás del proyecto</span>
+        <p data-i18n="quote.text">Quería entender el mecanismo de tracking corporal desde la base, no solo implementarlo.</p>
+        <span data-i18n="quote.attr">— decisión técnica detrás del proyecto</span>
       </div>
 
-      <p class="cs-p">El resultado es un sistema de dos partes sincronizadas: un servidor en Python captura la cámara, detecta la pose completa del cuerpo (33 puntos, MediaPipe Pose) a ~30 FPS, y transmite los datos por WebSocket. Del lado de Unity, el body-tracking recibido posiciona un avatar 3D rigged en tiempo real, sobre el que se ancla el modelo 3D de la cartera.</p>
+      <p class="cs-p" data-i18n="p.build2">El resultado es un sistema de dos partes sincronizadas: un servidor en Python captura la cámara, detecta la pose completa del cuerpo (33 puntos, MediaPipe Pose) a ~30 FPS, y transmite los datos por WebSocket. Del lado de Unity, el body-tracking recibido posiciona un avatar 3D rigged en tiempo real, sobre el que se ancla el modelo 3D de la cartera.</p>
 
-      <p class="cs-p" style="margin-top:20px"><strong>El resto del flujo:</strong> el contacto y la compra no son botones directos — el cliente escanea un código QR desde la pantalla/kiosco para continuar en su propio celular.</p>
+      <p class="cs-p" style="margin-top:20px" data-i18n="p.flow"><strong>El resto del flujo:</strong> el contacto y la compra no son botones directos — el cliente escanea un código QR desde la pantalla/kiosco para continuar en su propio celular.</p>
       <div class="cs-grid2">
         <img class="cs-img" src="Portafolio/Hereje_Mockup_Tienda.png" alt="Pantalla 'Tu bolso en filtro' sobre la tienda real, con selección de cartera" style="margin:0">
         <img class="cs-img" src="Portafolio/Hereje_Ayuda_Instruccion.png" alt="Pantalla instructiva: párate en el círculo para medirte el bolso" style="margin:0">
       </div>
-      <p class="cs-caption">Selección de cartera sobre la tienda real (izq.) e instrucción de uso (der.).</p>
+      <p class="cs-caption" data-i18n="cap.flow1">Selección de cartera sobre la tienda real (izq.) e instrucción de uso (der.).</p>
 
       <div class="cs-grid2">
         <img class="cs-img" src="Portafolio/Hereje_Mockup_UI.png" alt="Wireframe de la pantalla de selección de cartera, sin la foto de la tienda" style="margin:0">
         <img class="cs-img" src="Portafolio/Hereje_Mockup_Tienda.png" alt="La misma pantalla ya integrada con la foto real de la tienda" style="margin:0">
       </div>
-      <p class="cs-caption">Del wireframe (izq.) a la pantalla final integrada con la tienda real (der.).</p>
+      <p class="cs-caption" data-i18n="cap.progress">Del wireframe (izq.) a la pantalla final integrada con la tienda real (der.).</p>
 
       <img class="cs-img" src="Portafolio/Hereje_QR_WhatsApp.png" alt="Modal con código QR para hablar por WhatsApp" style="max-width:280px; margin-left:0">
-      <p class="cs-caption">QR para pasar a WhatsApp — hay uno equivalente para ir directo a la tienda web.</p>
+      <p class="cs-caption" data-i18n="cap.qr">QR para pasar a WhatsApp — hay uno equivalente para ir directo a la tienda web.</p>
 
       <div class="cs-grid2">
         <div class="cs-feature">
           <div class="ic">📷</div>
-          <div class="tx"><strong>Solo cámara</strong>Sin marcadores físicos ni hardware adicional — cualquier webcam alcanza.</div>
+          <div class="tx" data-i18n="feat.camera"><strong>Solo cámara</strong>Sin marcadores físicos ni hardware adicional — cualquier webcam alcanza.</div>
         </div>
         <div class="cs-feature">
           <div class="ic">🧍</div>
-          <div class="tx"><strong>Pose completa</strong>33 puntos de articulación vía MediaPipe, a ~30 FPS en tiempo real.</div>
+          <div class="tx" data-i18n="feat.pose"><strong>Pose completa</strong>33 puntos de articulación vía MediaPipe, a ~30 FPS en tiempo real.</div>
         </div>
         <div class="cs-feature">
           <div class="ic">👜</div>
-          <div class="tx"><strong>4 modelos de cartera</strong>Distintos estilos probados sobre el avatar 3D.</div>
+          <div class="tx" data-i18n="feat.models"><strong>4 modelos de cartera</strong>Distintos estilos probados sobre el avatar 3D.</div>
         </div>
         <div class="cs-feature">
           <div class="ic">🔌</div>
-          <div class="tx"><strong>Python ↔ Unity en vivo</strong>Cámara, pose e imagen viajan por WebSocket/TCP cuadro a cuadro.</div>
+          <div class="tx" data-i18n="feat.pipeline"><strong>Python ↔ Unity en vivo</strong>Cámara, pose e imagen viajan por WebSocket/TCP cuadro a cuadro.</div>
         </div>
         <div class="cs-feature">
           <div class="ic">💬</div>
-          <div class="tx"><strong>QR a WhatsApp</strong>El cliente escanea desde el kiosco y sigue la conversación de venta en su propio celular.</div>
+          <div class="tx" data-i18n="feat.wa"><strong>QR a WhatsApp</strong>El cliente escanea desde el kiosco y sigue la conversación de venta en su propio celular.</div>
         </div>
         <div class="cs-feature">
           <div class="ic">🛒</div>
-          <div class="tx"><strong>QR a la tienda web</strong>Camino directo de "probármela" a "comprarla", sin fricción.</div>
+          <div class="tx" data-i18n="feat.web"><strong>QR a la tienda web</strong>Camino directo de "probármela" a "comprarla", sin fricción.</div>
         </div>
       </div>
     </div>
 
     <div class="cs-section">
-      <h2 class="cs-h2"><span class="num">03</span>Resultado</h2>
+      <h2 class="cs-h2"><span class="num">03</span><span data-i18n="h.resultado">Resultado</span></h2>
       <video class="cs-video" src="Portafolio/Hereje_Demo.mp4" controls preload="metadata" poster="Portafolio/Hereje_Mockup_Tienda.png"></video>
-      <p class="cs-caption">Demo del prototipo — avatar y cartera en AR, probado en vivo con cámara real.</p>
+      <p class="cs-caption" data-i18n="cap.demo">Demo del prototipo — avatar y cartera en AR, probado en vivo con cámara real.</p>
 
       <div class="cs-result">
-        <p class="cs-p" style="margin-bottom:0">Prototipo funcional de punta a punta, probado en vivo (Unity + cámara real), con el flujo de venta (WhatsApp + compra web) ya diseñado sobre la tienda real. <strong>El AR nunca llegó a integrarse en el punto de venta</strong> — el pipeline de tracking y el diseño completo del flujo quedaron resueltos, pero el proyecto no pasó de prototipo.</p>
+        <p class="cs-p" style="margin-bottom:0" data-i18n="p.resultado">Prototipo funcional de punta a punta, probado en vivo (Unity + cámara real), con el flujo de venta (WhatsApp + compra web) ya diseñado sobre la tienda real. <strong>El AR nunca llegó a integrarse en el punto de venta</strong> — el pipeline de tracking y el diseño completo del flujo quedaron resueltos, pero el proyecto no pasó de prototipo.</p>
         <div class="cs-metrics-row">
-          <div class="cs-metric"><div class="v">33</div><div class="l">Puntos de pose</div></div>
-          <div class="cs-metric"><div class="v">4</div><div class="l">Modelos probados</div></div>
+          <div class="cs-metric"><div class="v">33</div><div class="l" data-i18n="m.pose">Puntos de pose</div></div>
+          <div class="cs-metric"><div class="v">4</div><div class="l" data-i18n="m.models">Modelos probados</div></div>
           <div class="cs-metric"><div class="v">~30fps</div><div class="l">Tracking</div></div>
         </div>
       </div>
     </div>
 
     <div class="cs-footer">
-      <a href="index.html#work" class="cs-back" style="padding-top:0">
+      <a href="index.html#work" class="cs-back" style="padding-top:0" data-i18n="back">
         <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
         Volver al portafolio
       </a>
     </div>
   </div>
+
+  <script src="case-i18n.js"></script>
+  <script>
+    const DICT = {
+      'back': {es:'Volver al portafolio', en:'Back to portfolio'},
+      'tag1': {es:'AR / COMPUTER VISION', en:'AR / COMPUTER VISION'},
+      'tag2': {es:'PROTOTIPO FUNCIONAL', en:'FUNCTIONAL PROTOTYPE'},
+      'subtitle': {es:'Probador de carteras en realidad aumentada para una tienda real de bolsos — con flujo de venta por WhatsApp y compra web integrado, y un pipeline de body-tracking construido desde cero en Python.', en:'AR handbag fitting room for a real bag store — with an integrated WhatsApp/web sales flow, and a body-tracking pipeline built from scratch in Python.'},
+      'meta.client': {es:'Cliente', en:'Client'},
+      'meta.client.val': {es:'Retail — tienda de bolsos (vía Felo Fullstack)', en:'Retail — bag store (via Felo Fullstack)'},
+      'meta.role': {es:'Mi rol', en:'My role'},
+      'meta.role.val': {es:'Body-tracking en Python + desarrollo Unity/AR completo', en:'Python body-tracking + full Unity/AR development'},
+      'meta.year': {es:'Año', en:'Year'},
+      'meta.status': {es:'Estado', en:'Status'},
+      'meta.status.val': {es:'Prototipo funcional, no integrado al punto de venta', en:'Functional prototype, never integrated into the point of sale'},
+      'h.reto': {es:'El reto', en:'The Challenge'},
+      'p.reto': {es:'Diseñar un probador de carteras en realidad aumentada para una tienda física real: que el cliente se pare frente a la cámara y vea, en tiempo real, cómo le queda una cartera sobre su propio cuerpo — sin marcadores físicos ni apps de terceros, como un espejo mágico — con un camino directo a la compra: asesoría por WhatsApp o ir a comprarla en la tienda web.', en:'Design an AR handbag fitting room for a real physical store: the customer stands in front of the camera and sees, in real time, how a bag looks on their own body — no physical markers or third-party apps, like a magic mirror — with a direct path to purchase: WhatsApp advisory or heading straight to the online store.'},
+      'h.build': {es:'Cómo se construyó', en:'How it was built'},
+      'p.build1': {es:'Existían stacks de AR ya probados y reutilizables — Vuforia, Unity AR Foundation, Barracuda (el mismo motor de red neuronal usado en <a href="case-phy-sync.html" style="color:var(--blue)">PHY-SYNC</a>) — pero decidí aprender Python desde cero y construir un pipeline propio de body-tracking con <strong>OpenCV + MediaPipe</strong>, en vez de apoyarme en un SDK empaquetado.', en:'Proven, reusable AR stacks already existed — Vuforia, Unity AR Foundation, Barracuda (the same neural-network engine used in <a href="case-phy-sync.html" style="color:var(--blue)">PHY-SYNC</a>) — but I decided to learn Python from scratch and build my own body-tracking pipeline with <strong>OpenCV + MediaPipe</strong>, instead of relying on a packaged SDK.'},
+      'quote.text': {es:'Quería entender el mecanismo de tracking corporal desde la base, no solo implementarlo.', en:'I wanted to understand the body-tracking mechanism from the ground up, not just implement it.'},
+      'quote.attr': {es:'— decisión técnica detrás del proyecto', en:'— technical decision behind the project'},
+      'p.build2': {es:'El resultado es un sistema de dos partes sincronizadas: un servidor en Python captura la cámara, detecta la pose completa del cuerpo (33 puntos, MediaPipe Pose) a ~30 FPS, y transmite los datos por WebSocket. Del lado de Unity, el body-tracking recibido posiciona un avatar 3D rigged en tiempo real, sobre el que se ancla el modelo 3D de la cartera.', en:'The result is a two-part synchronized system: a Python server captures the camera, detects full-body pose (33 points, MediaPipe Pose) at ~30 FPS, and streams the data over WebSocket. On the Unity side, the incoming body-tracking data positions a rigged 3D avatar in real time, onto which the 3D bag model is anchored.'},
+      'p.flow': {es:'<strong>El resto del flujo:</strong> el contacto y la compra no son botones directos — el cliente escanea un código QR desde la pantalla/kiosco para continuar en su propio celular.', en:'<strong>The rest of the flow:</strong> contact and purchase aren\'t direct buttons — the customer scans a QR code from the screen/kiosk to continue on their own phone.'},
+      'cap.flow1': {es:'Selección de cartera sobre la tienda real (izq.) e instrucción de uso (der.).', en:'Bag selection over the real store (left) and usage instructions (right).'},
+      'cap.progress': {es:'Del wireframe (izq.) a la pantalla final integrada con la tienda real (der.).', en:'From wireframe (left) to the final screen integrated with the real store (right).'},
+      'cap.qr': {es:'QR para pasar a WhatsApp — hay uno equivalente para ir directo a la tienda web.', en:'QR to jump to WhatsApp — there\'s an equivalent one to go straight to the online store.'},
+      'feat.camera': {es:'<strong>Solo cámara</strong>Sin marcadores físicos ni hardware adicional — cualquier webcam alcanza.', en:'<strong>Camera only</strong>No physical markers or extra hardware — any webcam works.'},
+      'feat.pose': {es:'<strong>Pose completa</strong>33 puntos de articulación vía MediaPipe, a ~30 FPS en tiempo real.', en:'<strong>Full-body pose</strong>33 joint points via MediaPipe, at ~30 FPS in real time.'},
+      'feat.models': {es:'<strong>4 modelos de cartera</strong>Distintos estilos probados sobre el avatar 3D.', en:'<strong>4 bag models</strong>Different styles tested on the 3D avatar.'},
+      'feat.pipeline': {es:'<strong>Python ↔ Unity en vivo</strong>Cámara, pose e imagen viajan por WebSocket/TCP cuadro a cuadro.', en:'<strong>Python ↔ Unity, live</strong>Camera, pose and image travel over WebSocket/TCP frame by frame.'},
+      'feat.wa': {es:'<strong>QR a WhatsApp</strong>El cliente escanea desde el kiosco y sigue la conversación de venta en su propio celular.', en:'<strong>QR to WhatsApp</strong>The customer scans from the kiosk and continues the sales conversation on their own phone.'},
+      'feat.web': {es:'<strong>QR a la tienda web</strong>Camino directo de "probármela" a "comprarla", sin fricción.', en:'<strong>QR to the online store</strong>A direct, frictionless path from "trying it on" to "buying it".'},
+      'h.resultado': {es:'Resultado', en:'Result'},
+      'cap.demo': {es:'Demo del prototipo — avatar y cartera en AR, probado en vivo con cámara real.', en:'Prototype demo — avatar and bag in AR, tested live with a real camera.'},
+      'p.resultado': {es:'Prototipo funcional de punta a punta, probado en vivo (Unity + cámara real), con el flujo de venta (WhatsApp + compra web) ya diseñado sobre la tienda real. <strong>El AR nunca llegó a integrarse en el punto de venta</strong> — el pipeline de tracking y el diseño completo del flujo quedaron resueltos, pero el proyecto no pasó de prototipo.', en:'Fully functional prototype, tested live (Unity + real camera), with the sales flow (WhatsApp + web purchase) already designed on top of the real store. <strong>The AR layer never made it into the point of sale</strong> — the tracking pipeline and the full flow design were fully resolved, but the project never went past prototype.'},
+      'm.pose': {es:'Puntos de pose', en:'Pose points'},
+      'm.models': {es:'Modelos probados', en:'Models tested'}
+    };
+    initCaseLang(DICT);
+  </script>
 </body>
 </html>
