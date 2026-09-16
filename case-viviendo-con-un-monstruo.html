@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIVIENDO CON UN MONSTRUO · Nicolas Martinez</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c0c0f'/%3E%3Cpolygon points='16,2 30,16 16,30 2,16' fill='none' stroke='%2300d4ff' stroke-width='1.5' opacity='.35'/%3E%3Cpolygon points='16,2 30,16 16,30 2,16' fill='none' stroke='%2300d4ff' stroke-width='1.5'/%3E%3Ctext x='16' y='20' font-size='9' font-weight='900' text-anchor='middle' fill='%2300d4ff' font-family='sans-serif'%3ENM%3C/text%3E%3C/svg%3E">
+
+  <meta name="description" content="Case study: Viviendo con un Monstruo — proyecto transmedia sobre ansiedad con video interactivo, activación física real y 98 consejos recolectados en campus.">
+  <meta property="og:title" content="VIVIENDO CON UN MONSTRUO · Nicolas Martinez">
+  <meta property="og:description" content="Ecosistema transmedia de 4 canales sobre ansiedad — video interactivo, visualización de datos, activación física real y cómic.">
+  <meta property="og:image" content="https://n4ykh0.github.io/portfolio/Portafolio/Monstruo_Banner.png">
+  <meta property="og:type" content="article">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@900&family=Rajdhani:wght@600;700&family=Barlow:wght@300;400;500&family=Fira+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="case-study.css">
+
+  <style>
+    .cs-embed-wrap { position:relative; width:100%; aspect-ratio:16/9; border-radius:8px; overflow:hidden; border:1px solid var(--border); margin:28px 0; background:#000; }
+    .cs-embed-wrap iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+    .cs-credit {
+      display:flex; align-items:center; gap:14px;
+      background:var(--bg-card); border:1px solid var(--border);
+      border-radius:8px; padding:16px 18px; margin:20px 0;
+    }
+    .cs-credit .ic { width:36px; height:36px; flex:none; border-radius:50%; background:var(--blue-dim); color:var(--blue); display:flex; align-items:center; justify-content:center; font-size:16px; }
+    .cs-credit .tx { font-size:13px; color:var(--text-mid); line-height:1.5; }
+    .cs-credit .tx strong { display:block; color:var(--text-hi); font-weight:600; font-size:14px; }
+    .cs-credit a { color:var(--blue); }
+    .cs-links { display:flex; gap:20px; flex-wrap:wrap; margin-top:18px; }
+    .cs-link {
+      display:inline-flex; align-items:center; gap:7px;
+      font-family:var(--font-heading); font-weight:700; font-size:13px;
+      letter-spacing:.06em; text-transform:uppercase; color:var(--blue);
+    }
+    .cs-link:hover { text-decoration:underline; }
+    .cs-link svg { width:14px; height:14px; fill:currentColor; }
+  </style>
+</head>
+<body>
+  <canvas id="hex-bg"></canvas>
+
+  <div class="cs-wrap">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <a href="index.html#work" class="cs-back" style="padding-top:28px" data-i18n="back">
+        <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
+        Volver al portafolio
+      </a>
+      <div class="lang-toggle" style="margin-top:28px">
+        <button class="lang-btn active" data-lb="es" onclick="setCaseLang('es')">ES</button>
+        <button class="lang-btn" data-lb="en" onclick="setCaseLang('en')">EN</button>
+      </div>
+    </div>
+
+    <div class="cs-hero">
+      <div class="cs-tags">
+        <span class="cs-tag" data-i18n="tag1">TRANSMEDIA / SALUD MENTAL</span>
+        <span class="cs-tag cs-tag--amber" data-i18n="tag2">ACTIVACIÓN FÍSICA REAL</span>
+      </div>
+      <h1 class="cs-title">VIVIENDO CON UN MONSTRUO</h1>
+      <p class="cs-subtitle" data-i18n="subtitle">Ecosistema transmedia de 4 canales sobre ansiedad en estudiantes universitarios — video interactivo, visualización de datos, cómic y una activación física de 3 días en campus, con 98 consejos reales recolectados.</p>
+      <div class="cs-links">
+        <a class="cs-link" href="https://www.viviendoconunmonstruo.epizy.com/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.94 9h-3.05a15.7 15.7 0 0 0-1.32-5.6A8.03 8.03 0 0 1 19.94 11ZM12 4.05c.9 1.3 1.9 3.5 2.13 6.95H9.87c.23-3.45 1.23-5.65 2.13-6.95ZM4.06 11a8.03 8.03 0 0 1 4.43-5.6A15.7 15.7 0 0 0 7.17 11H4.06Zm0 2h3.11c.16 2.2.62 4.1 1.32 5.6A8.03 8.03 0 0 1 4.06 13ZM12 19.95c-.9-1.3-1.9-3.5-2.13-6.95h4.26c-.23 3.45-1.23 5.65-2.13 6.95Zm3.51-1.35c.7-1.5 1.16-3.4 1.32-5.6h3.11a8.03 8.03 0 0 1-4.43 5.6Z"/></svg>
+          <span data-i18n="link.site">Ver sitio web</span>
+        </a>
+        <a class="cs-link" href="https://www.instagram.com/viviendo.con.mi.monstruo/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07ZM12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56a5.9 5.9 0 0 0-2.13 1.39A5.9 5.9 0 0 0 .62 4.15c-.3.76-.5 1.63-.56 2.9C0 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13a5.9 5.9 0 0 0 2.13 1.38c.76.3 1.63.5 2.9.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.63.56-2.9.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.63-.5-2.9-.56C15.67.01 15.26 0 12 0Zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-10.85a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0Z"/></svg>
+          <span data-i18n="link.ig">Ver Instagram del proyecto</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="cs-embed-wrap">
+      <iframe src="https://www.youtube.com/embed/ZX7NEKj4WII" title="Un día con Mi Monstruo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p class="cs-caption" data-i18n="cap.video">"Un día con Mi Monstruo" — video interactivo real en YouTube, canal propio del proyecto.</p>
+
+    <div class="cs-meta">
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.context">Contexto</span><span class="v" data-i18n="meta.context.val">Proyecto transmedia</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.role">Mi rol</span><span class="v" data-i18n="meta.role.val">Director, productor y editor del video. Colorista de personajes. Coordinador de la activación en vivo</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.year">Año</span><span class="v">2023</span></div>
+      <div class="cs-meta-item"><span class="k" data-i18n="meta.channels">Canales</span><span class="v">4</span></div>
+    </div>
+
+    <div class="cs-section">
+      <h2 class="cs-h2"><span class="num">01</span><span data-i18n="h.reto">El reto</span></h2>
+      <p class="cs-p" data-i18n="p.reto">La ansiedad es invisible e incomprendida. ¿Cómo representar una emoción compleja de forma que estudiantes universitarios puedan identificarse y hablar de ella sin estigma — no solo informar sobre el tema, sino generar una experiencia real de reconocimiento?</p>
+    </div>
+
+    <div class="cs-section">
+      <h2 class="cs-h2"><span class="num">02</span><span data-i18n="h.build">Un ecosistema de 4 canales</span></h2>
+      <p class="cs-p" data-i18n="p.build1">La ansiedad se personifica como "Anxietas", un monstruo que convive con Valentina, la protagonista. La tesis del proyecto: la única forma de ordenar la casa es trabajar junto al monstruo, no combatirlo. Esa metáfora se sostiene en 4 canales distintos, no solo en el video.</p>
+
+      <div class="cs-grid2">
+        <div class="cs-feature">
+          <div class="ic">▶</div>
+          <div class="tx" data-i18n="feat.video"><strong>Video interactivo</strong>Un día con Valentina y Anxietas, en YouTube — el sitio envuelve el video con decisiones sobre la experiencia.</div>
+        </div>
+        <div class="cs-feature">
+          <div class="ic">📊</div>
+          <div class="tx" data-i18n="feat.data"><strong>Visualización de datos</strong>Mapa mundial interactivo del Mental Health Quotient (Sapien Labs, 2022) + 2 tests reales de autoevaluación de ansiedad.</div>
+        </div>
+        <div class="cs-feature">
+          <div class="ic">✏️</div>
+          <div class="tx" data-i18n="feat.draw"><strong>Dibuja a tu Monstruo</strong>Activación física real en campus: los asistentes dibujaron su propio monstruo de la ansiedad en tableros físicos.</div>
+        </div>
+        <div class="cs-feature">
+          <div class="ic">📖</div>
+          <div class="tx" data-i18n="feat.comic"><strong>Cómic</strong>La historia de origen de Valentina y Anxietas — con descripción textual completa de cada viñeta, pensada para accesibilidad.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section">
+      <h2 class="cs-h2"><span class="num">03</span><span data-i18n="h.evento">La activación real: 3 días en campus</span></h2>
+      <p class="cs-p" data-i18n="p.evento">No fue solo un proyecto digital. Del 2 al 4 de mayo de 2023, el proyecto tomó el piso 1 del módulo 1 de UTADEO con un stand, una pantalla y tableros físicos de "Dibuja Aquí" — precedido por una campaña de expectativa propia en Instagram (teaser → reveal → logística → evento).</p>
+
+      <img class="cs-img" src="Portafolio/Monstruo_GaleriaDibujos.png" alt="Tres tableros físicos 'Dibuja Aquí' cubiertos de monstruos dibujados por asistentes al evento">
+      <p class="cs-caption" data-i18n="cap.galeria">Los monstruos de la ansiedad, dibujados a mano por los asistentes durante los 3 días de activación.</p>
+
+      <div class="cs-grid2">
+        <img class="cs-img" src="Portafolio/Monstruo_Evento_Stand.jpg" alt="Estudiantes reunidos en el stand del evento, piso 1 módulo 1 UTADEO" style="margin:0">
+        <img class="cs-img" src="Portafolio/Monstruo_CajaConsejos.jpg" alt="Caja física llena de notas de colores con consejos anónimos sobre ansiedad" style="margin:0">
+      </div>
+      <p class="cs-caption" data-i18n="cap.stand">El stand real (izq.) y la caja donde se recolectaron los 98 consejos anónimos (der.).</p>
+
+      <img class="cs-img" src="Portafolio/Monstruo_ConsejosGrid.png" alt="Muestra de las notas de colores con los 98 consejos recolectados, escritos a mano">
+      <p class="cs-caption" data-i18n="cap.consejos">Muestra de los 98 consejos reales recolectados — visualizados también en la sección de datos del sitio.</p>
+
+      <div class="cs-quote">
+        <p data-i18n="quote1.text">Estoy de acuerdo, me sentí muy identificada con Valentina, al vivir y dudar cosas cotidianas como lo hace una persona que vive con ansiedad, y aún así demostrar que puede luchar contra eso.</p>
+        <span data-i18n="quote1.attr">— Andrea, comentario real en el sitio, 9 mayo 2023</span>
+      </div>
+    </div>
+
+    <div class="cs-section">
+      <h2 class="cs-h2"><span class="num">04</span><span data-i18n="h.resultado">Resultado</span></h2>
+
+      <p class="cs-p" data-i18n="p.resultado">El sitio sigue activo 3 años después. La cuenta de Instagram del proyecto (51 seguidores) tuvo picos de ~50 likes por publicación durante el evento — casi el 100% de la audiencia interactuando, no solo vanity metrics.</p>
+
+      <div class="cs-credit">
+        <div class="ic">🎧</div>
+        <div class="tx" data-i18n="credit.text"><strong>Recurso recomendado en el sitio (no es contenido propio)</strong>El proyecto referenció el episodio "Audio SOS para ataques de pánico" del podcast <a href="https://open.spotify.com/show/1TDJJoHWEq7Nbh3yEBOJOj" target="_blank" rel="noopener">Psicología al Desnudo</a>, de la psicóloga clínica Marina Mammoliti — un recurso profesional externo, con crédito visible al show original.</div>
+      </div>
+
+      <div class="cs-result">
+        <p class="cs-p" style="margin-bottom:0" data-i18n="p.resultado2">Rol: director, productor y editor del video interactivo, colorista de los personajes ilustrados, y coordinador/participante activo de la muestra en vivo. El proyecto funcionó como espejo colectivo — al darle forma visible a la ansiedad, los participantes pudieron nombrarla y compartirla.</p>
+        <div class="cs-metrics-row">
+          <div class="cs-metric"><div class="v">100+</div><div class="l" data-i18n="m.participantes">Participantes</div></div>
+          <div class="cs-metric"><div class="v">98</div><div class="l" data-i18n="m.consejos">Consejos recolectados</div></div>
+          <div class="cs-metric"><div class="v">4</div><div class="l" data-i18n="m.canales">Canales</div></div>
+          <div class="cs-metric"><div class="v">3</div><div class="l" data-i18n="m.dias">Días de activación</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-footer">
+      <a href="index.html#work" class="cs-back" style="padding-top:0" data-i18n="back">
+        <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
+        Volver al portafolio
+      </a>
+    </div>
+  </div>
+
+  <script src="case-i18n.js"></script>
+  <script>
+    const DICT = {
+      'back': {es:'Volver al portafolio', en:'Back to portfolio'},
+      'tag1': {es:'TRANSMEDIA / SALUD MENTAL', en:'TRANSMEDIA / MENTAL HEALTH'},
+      'tag2': {es:'ACTIVACIÓN FÍSICA REAL', en:'REAL-WORLD ACTIVATION'},
+      'subtitle': {es:'Ecosistema transmedia de 4 canales sobre ansiedad en estudiantes universitarios — video interactivo, visualización de datos, cómic y una activación física de 3 días en campus, con 98 consejos reales recolectados.', en:'A 4-channel transmedia ecosystem about anxiety in university students — an interactive video, data visualization, a comic, and a 3-day physical campus activation that collected 98 real coping notes.'},
+      'cap.video': {es:'"Un día con Mi Monstruo" — video interactivo real en YouTube, canal propio del proyecto.', en:'"A Day with My Monster" — real interactive video on YouTube, the project\'s own channel.'},
+      'link.site': {es:'Ver sitio web', en:'View website'},
+      'link.ig': {es:'Ver Instagram del proyecto', en:'View project Instagram'},
+      'meta.context': {es:'Contexto', en:'Context'},
+      'meta.context.val': {es:'Proyecto transmedia', en:'Transmedia project'},
+      'meta.role': {es:'Mi rol', en:'My role'},
+      'meta.role.val': {es:'Director, productor y editor del video. Colorista de personajes. Coordinador de la activación en vivo', en:'Director, producer and editor of the video. Colorist for the characters. Coordinator of the live activation'},
+      'meta.year': {es:'Año', en:'Year'},
+      'meta.channels': {es:'Canales', en:'Channels'},
+      'h.reto': {es:'El reto', en:'The Challenge'},
+      'p.reto': {es:'La ansiedad es invisible e incomprendida. ¿Cómo representar una emoción compleja de forma que estudiantes universitarios puedan identificarse y hablar de ella sin estigma — no solo informar sobre el tema, sino generar una experiencia real de reconocimiento?', en:'Anxiety is invisible and misunderstood. How do you represent a complex emotion so university students can recognize themselves in it and talk about it without stigma — not just inform about the topic, but create a real experience of recognition?'},
+      'h.build': {es:'Un ecosistema de 4 canales', en:'A 4-Channel Ecosystem'},
+      'p.build1': {es:'La ansiedad se personifica como "Anxietas", un monstruo que convive con Valentina, la protagonista. La tesis del proyecto: la única forma de ordenar la casa es trabajar junto al monstruo, no combatirlo. Esa metáfora se sostiene en 4 canales distintos, no solo en el video.', en:'Anxiety is personified as "Anxietas," a monster who lives alongside Valentina, the protagonist. The project\'s thesis: the only way to tidy the house is to work alongside the monster, not fight it. That metaphor holds across 4 distinct channels, not just the video.'},
+      'feat.video': {es:'<strong>Video interactivo</strong>Un día con Valentina y Anxietas, en YouTube — el sitio envuelve el video con decisiones sobre la experiencia.', en:'<strong>Interactive video</strong>A day with Valentina and Anxietas, on YouTube — the site wraps the video with choices about the experience.'},
+      'feat.data': {es:'<strong>Visualización de datos</strong>Mapa mundial interactivo del Mental Health Quotient (Sapien Labs, 2022) + 2 tests reales de autoevaluación de ansiedad.', en:'<strong>Data visualization</strong>Interactive world map of the Mental Health Quotient (Sapien Labs, 2022) + 2 real anxiety self-assessment tests.'},
+      'feat.draw': {es:'<strong>Dibuja a tu Monstruo</strong>Activación física real en campus: los asistentes dibujaron su propio monstruo de la ansiedad en tableros físicos.', en:'<strong>Draw Your Monster</strong>Real physical campus activation: attendees drew their own anxiety monster on physical boards.'},
+      'feat.comic': {es:'<strong>Cómic</strong>La historia de origen de Valentina y Anxietas — con descripción textual completa de cada viñeta, pensada para accesibilidad.', en:'<strong>Comic</strong>Valentina and Anxietas\' origin story — with a full text description of every panel, designed for accessibility.'},
+      'h.evento': {es:'La activación real: 3 días en campus', en:'The Real Activation: 3 Days on Campus'},
+      'p.evento': {es:'No fue solo un proyecto digital. Del 2 al 4 de mayo de 2023, el proyecto tomó el piso 1 del módulo 1 de UTADEO con un stand, una pantalla y tableros físicos de "Dibuja Aquí" — precedido por una campaña de expectativa propia en Instagram (teaser → reveal → logística → evento).', en:'This wasn\'t just a digital project. From May 2 to 4, 2023, the project took over floor 1 of module 1 at UTADEO with a stand, a screen, and physical "Draw Here" boards — preceded by its own Instagram hype campaign (teaser → reveal → logistics → event).'},
+      'cap.galeria': {es:'Los monstruos de la ansiedad, dibujados a mano por los asistentes durante los 3 días de activación.', en:'The anxiety monsters, hand-drawn by attendees over the 3 days of the activation.'},
+      'cap.stand': {es:'El stand real (izq.) y la caja donde se recolectaron los 98 consejos anónimos (der.).', en:'The real stand (left) and the box where the 98 anonymous notes were collected (right).'},
+      'cap.consejos': {es:'Muestra de los 98 consejos reales recolectados — visualizados también en la sección de datos del sitio.', en:'A sample of the 98 real notes collected — also visualized in the site\'s data section.'},
+      'quote1.text': {es:'Estoy de acuerdo, me sentí muy identificada con Valentina, al vivir y dudar cosas cotidianas como lo hace una persona que vive con ansiedad, y aún así demostrar que puede luchar contra eso.', en:'I agree, I really identified with Valentina, living and doubting everyday things the way someone with anxiety does, and still showing she can fight through it.'},
+      'quote1.attr': {es:'— Andrea, comentario real en el sitio, 9 mayo 2023', en:'— Andrea, real comment on the site, May 9, 2023'},
+      'h.resultado': {es:'Resultado', en:'Result'},
+      'p.resultado': {es:'El sitio sigue activo 3 años después. La cuenta de Instagram del proyecto (51 seguidores) tuvo picos de ~50 likes por publicación durante el evento — casi el 100% de la audiencia interactuando, no solo vanity metrics.', en:'The site is still live 3 years later. The project\'s Instagram account (51 followers) peaked at ~50 likes per post during the event — nearly 100% of the audience engaging, not just vanity metrics.'},
+      'credit.text': {es:'<strong>Recurso recomendado en el sitio (no es contenido propio)</strong>El proyecto referenció el episodio "Audio SOS para ataques de pánico" del podcast <a href="https://open.spotify.com/show/1TDJJoHWEq7Nbh3yEBOJOj" target="_blank" rel="noopener">Psicología al Desnudo</a>, de la psicóloga clínica Marina Mammoliti — un recurso profesional externo, con crédito visible al show original.', en:'<strong>Resource recommended on the site (not original content)</strong>The project referenced the episode "SOS Audio for Panic Attacks" from the podcast <a href="https://open.spotify.com/show/1TDJJoHWEq7Nbh3yEBOJOj" target="_blank" rel="noopener">Psicología al Desnudo</a>, by clinical psychologist Marina Mammoliti — an external professional resource, with visible credit to the original show.'},
+      'p.resultado2': {es:'Rol: director, productor y editor del video interactivo, colorista de los personajes ilustrados, y coordinador/participante activo de la muestra en vivo. El proyecto funcionó como espejo colectivo — al darle forma visible a la ansiedad, los participantes pudieron nombrarla y compartirla.', en:'Role: director, producer and editor of the interactive video, colorist for the illustrated characters, and coordinator/active participant in the live showcase. The project worked as a collective mirror — giving anxiety a visible shape let participants name it and share it.'},
+      'm.participantes': {es:'Participantes', en:'Participants'},
+      'm.consejos': {es:'Consejos recolectados', en:'Notes collected'},
+      'm.canales': {es:'Canales', en:'Channels'},
+      'm.dias': {es:'Días de activación', en:'Activation days'}
+    };
+    initCaseLang(DICT);
+  </script>
+</body>
+</html>
