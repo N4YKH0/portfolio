@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHY-SYNC + GAME · Nicolas Martinez</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c0c0f'/%3E%3Cpolygon points='16,2 30,16 16,30 2,16' fill='none' stroke='%2300d4ff' stroke-width='1.5' opacity='.35'/%3E%3Cpolygon points='16,2 30,16 16,30 2,16' fill='none' stroke='%2300d4ff' stroke-width='1.5'/%3E%3Ctext x='16' y='20' font-size='9' font-weight='900' text-anchor='middle' fill='%2300d4ff' font-family='sans-serif'%3ENM%3C/text%3E%3C/svg%3E">
+
+  <meta name="description" content="Case study: PHY-SYNC + GAME — videojuego AR de rehabilitación motriz controlado por estimación de pose 3D en tiempo real.">
+  <meta property="og:title" content="PHY-SYNC + GAME · Nicolas Martinez">
+  <meta property="og:description" content="Videojuego AR de rehabilitación motriz: tu cuerpo real, capturado por cámara y una red neuronal de pose 3D, es el control del juego.">
+  <meta property="og:image" content="https://n4ykh0.github.io/portfolio/Portafolio/PhySync_Cover.png">
+  <meta property="og:type" content="article">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@900&family=Rajdhani:wght@600;700&family=Barlow:wght@300;400;500&family=Fira+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="case-study.css">
+</head>
+<body>
+  <canvas id="hex-bg"></canvas>
+
+  <div class="cs-wrap">
+    <a href="index.html#work" class="cs-back">
+      <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
+      Volver al portafolio
+    </a>
+
+    <div class="cs-hero">
+      <div class="cs-tags">
+        <span class="cs-tag">AR / REHABILITACIÓN</span>
+        <span class="cs-tag cs-tag--amber">MVP VALIDADO</span>
+      </div>
+      <h1 class="cs-title">PHY-SYNC + GAME</h1>
+      <p class="cs-subtitle">Videojuego AR de rehabilitación motriz — tu cuerpo real, capturado por cámara y una red neuronal de pose 3D, es el control del juego. Sin hardware adicional.</p>
+    </div>
+
+    <img class="cs-cover" src="Portafolio/PhySync_Cover.png" alt="Logo PHY-SYNC + GAME — Physical, Synchronic, VideoGame">
+
+    <div class="cs-meta">
+      <div class="cs-meta-item"><span class="k">Mi rol</span><span class="v">Desarrollo Unity + AR — pipeline cámara → pose 3D → juego</span></div>
+      <div class="cs-meta-item"><span class="k">Equipo</span><span class="v">5 personas — Nicolas Martinez, Laura Salazar, Manuel Ávila, Daniel Ospina, Angela Monroy</span></div>
+      <div class="cs-meta-item"><span class="k">Stack</span><span class="v">Unity AR Foundation, Barracuda (VNect), Firebase, C#</span></div>
+      <div class="cs-meta-item"><span class="k">Año</span><span class="v">2023</span></div>
+    </div>
+
+    <div class="cs-section">
+      <h2 class="cs-h2"><span class="num">01</span>El reto</h2>
+      <p class="cs-p">Nos propusimos diseñar una integración real entre lo físico y lo digital para <strong>personas en condición de discapacidad motriz osteomuscular —temporal o total—</strong>, donde la falta de espacios y hardware accesibles limita el ocio, el deporte y la rehabilitación.</p>
+
+      <div class="cs-grid2">
+        <div class="cs-feature">
+          <div class="ic">1</div>
+          <div class="tx"><strong>Autoeficacia e imagen corporal</strong>La salud de las personas con discapacidad física mejora con intervenciones que las fortalecen y reducen ansiedad/depresión.</div>
+        </div>
+        <div class="cs-feature">
+          <div class="ic">2</div>
+          <div class="tx"><strong>Participación social</strong>La falta de acceso a actividades recreativas afecta el bienestar emocional y la interacción social.</div>
+        </div>
+        <div class="cs-feature">
+          <div class="ic">3</div>
+          <div class="tx"><strong>Motivación y determinación</strong>El deporte, el estudio y las metas propias son vías reales de distracción y motivación durante la recuperación.</div>
+        </div>
+      </div>
+
+      <div class="cs-quote">
+        <p>Los jóvenes-adultos en condición de discapacidad motora temporal necesitan espacios y experiencias de rehabilitación interactivas y motivadoras, sin necesidad de desplazarse.</p>
+        <span>— Oportunidad de intervención, research del proyecto</span>
+      </div>
+    </div>
+
+    <div class="cs-section">
+      <h2 class="cs-h2"><span class="num">02</span>Physical + Synchronic</h2>
+      <p class="cs-p">Antes de llegar al diseño final exploramos varias referencias de estimación de movimiento: Kinect, los mandos de Wii, y juegos como <strong>Wii Fit</strong> y <strong>Ring Fit Adventure</strong>. De ahí nació el nombre del proyecto: un control <strong>físico</strong> (Arduino) sincronizado con seguimiento <strong>digital</strong> del cuerpo por cámara.</p>
+
+      <img class="cs-img" src="Portafolio/PhySync_02.jpeg" alt="Control físico con Arduino, construido sobre una maqueta de cartón">
+      <p class="cs-caption">El control físico — Arduino armado sobre una maqueta de cartón, construido por otro subequipo.</p>
+
+      <p class="cs-p">En paralelo, una <strong>red neuronal de estimación de pose 3D</strong> (VNect, 24 puntos de articulación) corre en tiempo real sobre Unity Barracuda a partir de la cámara del dispositivo, siguiendo el movimiento del cuerpo del jugador. Mi rol fue el desarrollo completo de Unity y AR: el pipeline cámara → Barracuda/VNect → mecánica de juego, además de la implementación de las pantallas de interfaz (UI diseñada por Angela Monroy). El control Arduino lo armó otro subequipo.</p>
+
+      <img class="cs-img" src="Portafolio/PhySync_UXFlow.jpeg" alt="Flujo de onboarding móvil: cargando, login, permisos de cámara, configuración, activo">
+      <p class="cs-caption">Flujo de onboarding — login, permisos de cámara, configuración y activación.</p>
+    </div>
+
+    <div class="cs-section">
+      <h2 class="cs-h2"><span class="num">03</span>Solución</h2>
+      <p class="cs-p">La app diagnostica la condición del usuario (por ejemplo, tendinitis de Aquiles) y organiza la recuperación como una <strong>rutina diaria con racha</strong>, no como una lista de ejercicios. Cada nivel es un minijuego — el primero, básquetbol — que el jugador controla con su propio cuerpo, detectado en tiempo real por la cámara.</p>
+
+      <video class="cs-video" src="Portafolio/PhySync_demo.mp4" controls preload="metadata" poster="Portafolio/PhySync_Cover.png"></video>
+      <p class="cs-caption">Demo del MVP en funcionamiento.</p>
+
+      <div class="cs-grid2">
+        <img class="cs-img" src="Portafolio/PhySync_01.jpeg" alt="Pantalla de diagnóstico y rutina diaria con racha" style="margin:0">
+        <img class="cs-img" src="Portafolio/PhySync_GameScreen.jpeg" alt="Minijuego de básquetbol controlado por el cuerpo del jugador" style="margin:0">
+      </div>
+      <p class="cs-caption">Diagnóstico + racha diaria (izq.) y el minijuego de básquetbol (der.).</p>
+
+      <div class="cs-grid2">
+        <div class="cs-feature">
+          <div class="ic">Dx</div>
+          <div class="tx"><strong>Diagnóstico personalizado</strong>El usuario define su condición y la app arma la rutina alrededor de esa lesión.</div>
+        </div>
+        <div class="cs-feature">
+          <div class="ic">🔥</div>
+          <div class="tx"><strong>Racha diaria</strong>Gamificación tipo streak para sostener la adherencia al tratamiento.</div>
+        </div>
+        <div class="cs-feature">
+          <div class="ic">🏀</div>
+          <div class="tx"><strong>Minijuego por nivel</strong>Cada ejercicio terapéutico se convierte en una mecánica de juego real.</div>
+        </div>
+        <div class="cs-feature">
+          <div class="ic">🔗</div>
+          <div class="tx"><strong>Control físico + digital</strong>El botón Arduino y el seguimiento por cámara trabajan sincronizados — de ahí "Phy-Sync".</div>
+        </div>
+      </div>
+
+      <p class="cs-p" style="margin-top:28px"><strong>Pruebas con usuarios reales:</strong></p>
+      <div class="cs-grid2">
+        <div>
+          <video class="cs-video" src="Portafolio/PhySync_video05.mp4" controls preload="metadata" style="margin:0"></video>
+          <p class="cs-caption">Prueba 1 — entrega y conexión del control Arduino, y una usuaria jugando con su cuerpo sobre el tapete.</p>
+        </div>
+        <div>
+          <video class="cs-video" src="Portafolio/PhySync_PruebaJuego.mp4" controls preload="metadata" style="margin:0"></video>
+          <p class="cs-caption">Prueba 2 — el juego corriendo en el laptop, siguiendo el movimiento del jugador en tiempo real.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section">
+      <h2 class="cs-h2"><span class="num">04</span>Resultado</h2>
+      <div class="cs-result">
+        <p class="cs-p" style="margin-bottom:0">MVP funcional con un nivel completo jugable, <strong>validado con usuarios reales</strong> en sesiones de prueba. El control físico (Arduino) y el pipeline cámara → Barracuda/VNect → Unity funcionan sincronizados de punta a punta.</p>
+        <div class="cs-metrics-row">
+          <div class="cs-metric"><div class="v">24</div><div class="l">Puntos de pose</div></div>
+          <div class="cs-metric"><div class="v">5</div><div class="l">Equipo</div></div>
+          <div class="cs-metric"><div class="v">MVP</div><div class="l">Alcance</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section">
+      <h2 class="cs-h2"><span class="num">05</span>Resumen visual</h2>
+      <p class="cs-p">Todo el proceso —problema, research, iteración y solución— condensado en una pieza.</p>
+      <a href="Portafolio/PhySync_Poster.jpeg" target="_blank" rel="noopener">
+        <img class="cs-img" src="Portafolio/PhySync_Poster.jpeg" alt="Resumen visual completo del proyecto PHY-SYNC + GAME" style="max-width:340px; margin-left:0">
+      </a>
+      <p class="cs-caption">Click para ver completo.</p>
+    </div>
+
+    <div class="cs-footer">
+      <a href="index.html#work" class="cs-back" style="padding-top:0">
+        <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
+        Volver al portafolio
+      </a>
+    </div>
+  </div>
+</body>
+</html>

@@ -624,15 +624,44 @@ const PROJECTS = [
   {
     id:6, cat:'ar', year:'2023',
     title:'PHY-SYNC GAME',
-    brief:'MVP de videojuego AR de rehabilitación motriz que sincroniza un acelerómetro Arduino con Unity en tiempo real, diseñado para personas con discapacidad osteomuscular.',
+    brief:'Videojuego AR de rehabilitación motriz controlado por estimación de pose 3D en tiempo real (cámara + red neuronal), para personas con discapacidad motriz osteomuscular.',
     icon:'PS',
     cover:'Portafolio/PhySync_Cover.png',
-    ch:'Las personas en rehabilitación motriz pierden adherencia al tratamiento por falta de motivación y espacios recreativos accesibles. ¿Cómo convertir los ejercicios de recuperación en una experiencia lúdica sin depender de instalaciones especializadas?',
-    so:'Videojuego AR con controlador físico: un acelerómetro conectado a Arduino captura el movimiento corporal del usuario y lo transmite a Unity vía comunicación serial. Firebase gestiona el estado de sesión en tiempo real. El movimiento físico se mapea directamente a las mecánicas de juego, convirtiendo los ejercicios terapéuticos en input de juego.',
-    re:'MVP funcional con un nivel completo jugable. Validado con usuarios reales en sesiones de prueba. Integración Arduino + Firebase + Unity AR operativa de extremo a extremo.',
-    body:'Rol: desarrollo Unity AR, integración del pipeline completo Arduino → Firebase → Unity, e implementación de pantallas (UI diseñada por Angela Monroy). Stack: Unity AR Foundation, Barracuda, Arduino (acelerómetro), Firebase, C#. Equipo de 5: Laura Salazar (Arduino + UX).',
+    ch:'Las personas en rehabilitación motriz pierden adherencia al tratamiento por falta de motivación y espacios recreativos accesibles. ¿Cómo convertir los ejercicios de recuperación en una experiencia lúdica que integre control físico y digital?',
+    so:'Videojuego AR con control híbrido "Phy-Sync": un botón físico construido con Arduino, sincronizado con una red neuronal de estimación de pose 3D (VNect, 24 puntos de articulación) que corre en tiempo real sobre Unity Barracuda a partir de la cámara del dispositivo — el cuerpo del jugador es el control.',
+    re:'MVP funcional con un nivel completo jugable (minijuego de básquetbol). Validado con usuarios reales en sesiones de prueba. Pipeline cámara → Barracuda/VNect → Unity operativo de extremo a extremo.',
+    body:'Rol: desarrollo Unity + AR — pipeline completo cámara → Barracuda/VNect → mecánica de juego, e implementación de pantallas (UI diseñada por Angela Monroy). Stack: Unity AR Foundation, Barracuda (VNect), Firebase (login + puntaje), C#. Equipo de 5: Nicolas Martinez, Laura Salazar, Manuel Ávila, Daniel Ospina, Angela Monroy.',
     links:[{label:'VER DEMO', url:'Portafolio/PhySync_demo.mp4'}],
-    metrics:[{v:'AR',l:'TECNOLOGÍA'},{v:'Arduino',l:'HARDWARE'},{v:'MVP',l:'ALCANCE'}]
+    metrics:[{v:'24',l:'PUNTOS DE POSE'},{v:'5',l:'EQUIPO'},{v:'MVP',l:'ALCANCE'}],
+    pageUrl:'case-phy-sync.html'
+  },
+  {
+    id:12, cat:'ar', year:'2024',
+    title:'NO DEMOS PAPAYA',
+    brief:'Experiencia inmersiva 360° en Google Cardboard para concientizar sobre seguridad en el centro de Bogotá, construida en 3 días para un hackathon universitario. 2º puesto con puntaje de innovación perfecto.',
+    icon:'ND',
+    cover:'Portafolio/NoDemosPapaya_Logo.png',
+    ch:'Los estudiantes universitarios que transitan a diario el centro de Bogotá conviven con altos índices de inseguridad, pero las campañas de prevención existentes apelan al miedo y la evasión. ¿Cómo comunicar información real de protección sin generar más ansiedad?',
+    so:'Experiencia inmersiva 360° construida con Google Cardboard: fotografías panorámicas reales de zonas del centro de Bogotá, recorridas como un trayecto gamificado con acertijos que entrega consejos concretos de prevención en el camino. Diseñada con accesibilidad desde el inicio — lector de pantalla, subtítulos, contraste ajustable — para que la información no dependa solo de lo visual.',
+    re:'2º puesto en el hackathon organizado por CUCB en alianza con TadeoLab, con puntaje de innovación perfecto según el jurado. De la problemática al MVP funcional en 3 días.',
+    body:'Research día 1: entrevistas 1 a 1 y encuesta corta (~30 datos) en el centro de Bogotá, más mapa de afinidad de hallazgos. El insight que definió el proyecto: "evitar" resultó un verbo demasiado negativo para el problema — el equipo pivotó hacia concientizar e informar. Rol: lead del proyecto — definición del MVP, propuesta de gamificar la experiencia y dirección de cómo presentarla al jurado. Equipo de 3: diseño gráfico (piezas visuales, panorámicas 360°) e interactivo (construcción física de la Cardboard, conceptos).',
+    links:[{label:'VER MAPA DE AFINIDAD', url:'Portafolio/NoDemosPapaya_MapaAfinidad.jpg'},{label:'VER FOTOS 360° DEL RECORRIDO', url:'Portafolio/NoDemosPapaya_Panoramica.jpg'}],
+    metrics:[{v:'360°',l:'FORMATO'},{v:'2do',l:'PUESTO'},{v:'3 días',l:'DURACIÓN'}],
+    pageUrl:'case-no-demos-papaya.html'
+  },
+  {
+    id:13, cat:'ar', year:'2025',
+    title:'HEREJE — MAGIC MIRROR',
+    brief:'Probador de carteras en realidad aumentada para una tienda real de bolsos, con flujo de venta por WhatsApp y compra web integrado, y body-tracking construido desde cero en Python.',
+    icon:'HJ',
+    cover:'Portafolio/Hereje_Logo.png',
+    ch:'¿Cómo construir un probador de carteras en AR para una tienda real — que el cliente vea en tiempo real cómo le queda una cartera y tenga un camino directo a comprarla?',
+    so:'Pipeline propio de body-tracking en Python (OpenCV + MediaPipe Pose, 33 puntos a ~30 FPS) transmitido por WebSocket a Unity, que posiciona un avatar 3D rigged en tiempo real y ancla el modelo 3D de la cartera sobre él, con asesoría por WhatsApp y compra web integradas al flujo.',
+    re:'Prototipo funcional de punta a punta, probado en vivo con cámara real, con el flujo de venta ya diseñado sobre la tienda real. El AR nunca llegó a integrarse en el punto de venta.',
+    body:'Rol: desarrollo del pipeline completo de body-tracking en Python y de la integración Unity/AR. Decisión clave: construir el tracking desde cero en vez de usar un SDK de AR ya probado (Vuforia, ARKit, Barracuda), para entender el mecanismo de raíz.',
+    links:[{label:'VER DEMO', url:'Portafolio/Hereje_Demo.mp4'}],
+    metrics:[{v:'33',l:'PUNTOS DE POSE'},{v:'4',l:'MODELOS PROBADOS'},{v:'~30fps',l:'TRACKING'}],
+    pageUrl:'case-ar-hereje.html'
   },
   {
     id:7, cat:'art', year:'2024',
@@ -702,8 +731,8 @@ const CAT_LABEL = { ar:'AR', games:'JUEGOS', transmedia:'TRANSMEDIA', art:'ARTE'
 function renderCardHTML(p) {
   const isHub = !!p.isArtHub;
   const isGal = !!p.isGallery;
-  const handler   = isHub ? 'openArtHub()' : (isGal ? `openGallery(${p.id})` : `openModal(${p.id})`);
-  const ctaLabel  = isHub ? 'EXPLORAR'     : (isGal ? 'VER OBRA'             : 'VER CASO');
+  const handler   = p.pageUrl ? `location.href='${p.pageUrl}'` : (isHub ? 'openArtHub()' : (isGal ? `openGallery(${p.id})` : `openModal(${p.id})`));
+  const ctaLabel  = p.pageUrl ? 'VER CASE STUDY' : (isHub ? 'EXPLORAR' : (isGal ? 'VER OBRA' : 'VER CASO'));
   return `
     <article class="p-card" role="listitem" onclick="${handler}">
       <div class="p-thumb${p.cover ? ' p-thumb--img' : ''}">
@@ -787,12 +816,12 @@ function openModal(id) {
 
   const ctaWrap = document.getElementById('m-cta-wrap');
   if (p.links && p.links.length) {
-    const l = p.links[0];
-    ctaWrap.innerHTML = `
+    ctaWrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:10px';
+    ctaWrap.innerHTML = p.links.map(l => `
       <a href="${l.url}" target="_blank" rel="noopener" class="m-cta-primary">
         <svg viewBox="0 0 24 24"><path d="M10 9V5l7 7-7 7v-4.1c-5 .5-8.5 2.3-11 6.1 1-5 4-10 11-11z"/></svg>
         ${l.label}
-      </a>`;
+      </a>`).join('');
   } else {
     ctaWrap.innerHTML = '';
   }

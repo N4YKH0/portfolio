@@ -1,0 +1,106 @@
+/* ── CASE STUDY PAGE — shared layout, extends portfolio.css tokens ── */
+.cs-wrap { position:relative; z-index:2; max-width:860px; margin:0 auto; padding:0 24px 120px; }
+
+.cs-back {
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--font-heading); font-weight:700; font-size:13px;
+  letter-spacing:.06em; text-transform:uppercase;
+  color:var(--text-mid); padding:28px 0 0;
+}
+.cs-back:hover { color:var(--blue); }
+.cs-back svg { width:14px; height:14px; fill:currentColor; transform:rotate(180deg); }
+
+.cs-hero { padding:32px 0 28px; }
+.cs-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+.cs-tag {
+  font-family:var(--font-heading); font-size:11px; font-weight:700;
+  letter-spacing:.08em; text-transform:uppercase;
+  padding:5px 12px; border-radius:99px;
+  border:1px solid var(--border-blue); color:var(--blue); background:var(--blue-dim);
+}
+.cs-tag--amber { border-color:rgba(245,158,11,.35); color:var(--amber); background:var(--amber-dim); }
+
+.cs-title {
+  font-family:var(--font-display); font-size:clamp(32px,6vw,52px);
+  line-height:1; color:var(--text-hi); margin-bottom:14px;
+}
+.cs-subtitle { font-size:18px; color:var(--text-mid); max-width:620px; font-weight:300; }
+
+.cs-cover {
+  width:100%; aspect-ratio:16/9; object-fit:cover;
+  border-radius:8px; border:1px solid var(--border); margin:28px 0;
+}
+
+.cs-meta {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:20px; padding:24px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+  margin-bottom:48px;
+}
+.cs-meta-item .k {
+  display:block; font-family:var(--font-heading); font-size:11px; font-weight:700;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--text-lo); margin-bottom:6px;
+}
+.cs-meta-item .v { font-size:14px; color:var(--text-hi); font-weight:500; line-height:1.4; }
+
+.cs-section { margin-bottom:56px; }
+.cs-h2 {
+  font-family:var(--font-heading); font-size:26px; font-weight:700;
+  color:var(--text-hi); margin-bottom:16px; letter-spacing:-.01em;
+}
+.cs-h2 .num {
+  color:var(--blue); font-family:var(--font-mono); font-size:15px; margin-right:10px;
+}
+.cs-p { color:var(--text-mid); font-size:16px; line-height:1.7; margin-bottom:14px; max-width:680px; }
+.cs-p strong { color:var(--text-hi); font-weight:500; }
+
+.cs-img {
+  width:100%; border-radius:8px; border:1px solid var(--border);
+  margin:20px 0 8px;
+}
+.cs-video {
+  width:100%; border-radius:8px; border:1px solid var(--border);
+  margin:20px 0 8px; background:#000;
+}
+.cs-caption {
+  font-size:12px; color:var(--text-lo); font-family:var(--font-mono);
+  margin-bottom:24px;
+}
+
+.cs-quote {
+  background:var(--bg-card); border:1px solid var(--border-blue); border-radius:8px;
+  padding:32px 28px; margin:28px 0;
+  font-family:var(--font-heading); font-size:20px; font-weight:600;
+  color:var(--text-hi); line-height:1.5; position:relative;
+}
+.cs-quote::before { content:'"'; color:var(--blue); font-size:40px; font-family:var(--font-display); line-height:0; position:absolute; top:28px; left:20px; opacity:.5; }
+.cs-quote p { padding-left:26px; }
+.cs-quote span { display:block; font-family:var(--font-body); font-weight:300; font-size:13px; color:var(--text-mid); margin-top:12px; padding-left:26px; }
+
+.cs-grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:20px 0; }
+@media (max-width:640px) { .cs-grid2 { grid-template-columns:1fr; } }
+.cs-feature {
+  display:flex; gap:12px; align-items:flex-start;
+  background:var(--bg-card); border:1px solid var(--border);
+  border-radius:8px; padding:16px;
+}
+.cs-feature .ic {
+  width:32px; height:32px; flex:none; border-radius:6px;
+  background:var(--blue-dim); color:var(--blue);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-heading); font-weight:700; font-size:13px;
+}
+.cs-feature .tx { font-size:14px; color:var(--text-mid); line-height:1.5; }
+.cs-feature .tx strong { display:block; color:var(--text-hi); font-weight:600; margin-bottom:2px; }
+
+.cs-result {
+  background:var(--bg-card); border:1px solid var(--border-blue);
+  border-radius:8px; padding:32px; margin-top:12px;
+}
+.cs-metrics-row { display:flex; gap:32px; flex-wrap:wrap; margin-top:20px; }
+.cs-metric .v { font-family:var(--font-display); font-size:28px; color:var(--blue); }
+.cs-metric .l { font-family:var(--font-heading); font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text-lo); margin-top:2px; }
+
+.cs-footer {
+  border-top:1px solid var(--border); padding-top:28px; margin-top:20px;
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+}
