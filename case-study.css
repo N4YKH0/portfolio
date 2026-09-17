@@ -62,7 +62,7 @@
   margin:20px 0 8px; background:#000;
 }
 .cs-caption {
-  font-size:12px; color:var(--text-lo); font-family:var(--font-mono);
+  font-size:12px; color:var(--text-mid); font-family:var(--font-mono);
   margin-bottom:24px;
 }
 

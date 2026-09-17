@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 · NICOLAS MARTINEZ</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c0c0f'/%3E%3Cpolygon points='16,2 30,16 16,30 2,16' fill='none' stroke='%2300d4ff' stroke-width='1.5' opacity='.35'/%3E%3Cpolygon points='16,2 30,16 16,30 2,16' fill='none' stroke='%2300d4ff' stroke-width='1.5'/%3E%3Ctext x='16' y='20' font-size='9' font-weight='900' text-anchor='middle' fill='%2300d4ff' font-family='sans-serif'%3ENM%3C/text%3E%3C/svg%3E">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@900&family=Rajdhani:wght@600;700&family=Barlow:wght@300;400&family=Fira+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="portfolio.css">
+
+  <style>
+    body { display:flex; align-items:center; justify-content:center; min-height:100vh; text-align:center; padding:2rem; }
+    .e404-wrap { position:relative; z-index:2; max-width:520px; }
+    .e404-diamond { width:120px; height:120px; margin:0 auto 2.5rem; color:var(--blue); }
+    .e404-code {
+      font-family:var(--font-display); font-weight:900;
+      font-size:clamp(64px, 14vw, 120px); line-height:.9;
+      letter-spacing:-.02em; color:var(--text-hi); margin-bottom:.5rem;
+    }
+    .e404-code em { font-style:normal; color:var(--blue); }
+    .e404-msg { font-size:16px; color:var(--text-mid); margin-bottom:2.5rem; line-height:1.6; }
+    .e404-msg .sub { display:block; font-size:13px; color:var(--text-lo); margin-top:.5rem; }
+    .e404-cta { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  </style>
+</head>
+<body>
+
+  <div class="e404-wrap">
+    <svg class="e404-diamond" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <polygon points="50,2 98,50 50,98 2,50" stroke="currentColor" stroke-width=".8" opacity=".1"/>
+      <polygon points="50,8 92,50 50,92 8,50" stroke="currentColor" stroke-width="1" opacity=".18"/>
+      <polygon points="50,14 86,50 50,86 14,50" stroke="currentColor" stroke-width="1.5" opacity=".35"/>
+      <polygon points="50,14 86,50 50,86 14,50" fill="currentColor" opacity=".03"/>
+      <polygon points="50,14 86,50 50,86 14,50" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+
+    <p class="hero-eyebrow" style="justify-content:center;">// ERROR</p>
+    <h1 class="e404-code">4<em>0</em>4</h1>
+    <p class="e404-msg" id="e404-msg">
+      Esta página no existe o se movió de lugar.
+      <span class="sub" id="e404-sub">This page doesn't exist or moved elsewhere.</span>
+    </p>
+
+    <div class="e404-cta">
+      <a href="index.html" class="btn btn-blue" id="e404-home">VOLVER AL INICIO</a>
+      <a href="index.html#work" class="btn btn-ghost" id="e404-work">VER PROYECTOS</a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var lang = 'es';
+      try { lang = localStorage.getItem('nm_lang') || 'es'; } catch (e) {}
+      if (lang === 'en') {
+        document.documentElement.lang = 'en';
+        document.getElementById('e404-msg').firstChild.textContent = "This page doesn't exist or moved elsewhere.";
+        document.getElementById('e404-sub').textContent = 'Esta página no existe o se movió de lugar.';
+        document.getElementById('e404-home').textContent = 'BACK TO HOME';
+        document.getElementById('e404-work').textContent = 'VIEW PROJECTS';
+      }
+    })();
+  </script>
+
+</body>
+</html>

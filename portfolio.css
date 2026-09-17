@@ -394,7 +394,7 @@ section {
   display:flex; justify-content:space-between; align-items:center;
   border-top:1px solid var(--border); padding-top:.75rem;
 }
-.p-year { font-family:var(--font-mono); font-size:9px; color:var(--text-lo); }
+.p-year { font-family:var(--font-mono); font-size:9px; color:var(--text-mid); }
 .p-cta {
   font-family:var(--font-mono);
   font-size:9px; letter-spacing:.14em; color:var(--blue);
@@ -788,7 +788,7 @@ footer {
 }
 .f-copy {
   font-family:var(--font-mono); font-size:9px;
-  color:var(--text-lo); letter-spacing:.10em;
+  color:var(--text-mid); letter-spacing:.10em;
 }
 
 /* ════════════════════════════════════════════════════════════

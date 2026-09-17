@@ -788,13 +788,13 @@ const PROJECTS = [
     brief:'Diseño de personaje protagonista con hoja de expresiones. Silueta, paleta emocional y rango expresivo definidos para producción.',
     brief_en:'Lead character design with an expression sheet. Silhouette, emotional palette and expressive range defined for production.',
     icon:'VL',
-    cover:'Portafolio/Valentina_.png',
+    cover:'Portafolio/Valentina_.jpg',
     isGallery:true,
     medium:'DISEÑO DE PERSONAJE · ILUSTRACIÓN DIGITAL',
     medium_en:'CHARACTER DESIGN · DIGITAL ILLUSTRATION',
     desc:'Personaje protagonista del proyecto transmedia. La hoja define body shot, perfil, busto y estado de colapso emocional: el rango expresivo completo para producción. Pelo azul sobre tono cálido establece la dualidad visual con Anxietas. Diseñado para ser reconocible en silueta y legible en thumbnail.',
     desc_en:'Lead character of the transmedia project. The sheet defines body shot, profile, bust and emotional-collapse state: the full expressive range needed for production. Blue hair over a warm tone establishes the visual duality with Anxietas. Designed to be recognizable in silhouette and legible as a thumbnail.',
-    images:['Portafolio/Valentina_.png'],
+    images:['Portafolio/Valentina_.jpg'],
     projectRef:{ id:2, label:'VER PROYECTO: VIVIENDO CON UN MONSTRUO', label_en:'VIEW PROJECT: VIVIENDO CON UN MONSTRUO' },
     metrics:[]
   },
@@ -850,7 +850,7 @@ function renderCardHTML(p) {
     <article class="p-card" role="listitem" onclick="${handler}">
       <div class="p-thumb${p.cover ? ' p-thumb--img' : ''}">
         ${p.cover
-          ? `<img src="${p.cover}" alt="${p.title}" class="p-thumb-cover" loading="lazy">`
+          ? `<img src="${p.cover}" alt="${T(p,'title')} — ${T(p,'brief').replace(/"/g,'&quot;')}" class="p-thumb-cover" loading="lazy">`
           : `<span class="p-icon">${p.icon}</span>`
         }
         <span class="p-badge ${BADGE[p.cat]}">${curCatLabel()[p.cat]}</span>
@@ -924,7 +924,7 @@ function openModal(id) {
 
   const banner = document.getElementById('m-banner');
   if (p.cover) {
-    banner.innerHTML = `<img src="${p.cover}" alt="${p.title}" class="m-banner-img">`;
+    banner.innerHTML = `<img src="${p.cover}" alt="${T(p,'title')} — ${T(p,'brief').replace(/"/g,'&quot;')}" class="m-banner-img">`;
     banner.classList.remove('m-banner--icon');
   } else {
     banner.innerHTML = `<span class="m-banner-icon">${p.icon}</span>`;
@@ -1067,7 +1067,7 @@ function openArtHub() {
       <div class="ah-piece" onclick="openFromHub(${p.id})">
         <div class="ah-piece-thumb${isGal ? ' ah-piece-thumb--contain' : ''}">
           ${p.cover
-            ? `<img src="${p.cover}" alt="${p.title}" loading="lazy">`
+            ? `<img src="${p.cover}" alt="${T(p,'title')} — ${T(p,'brief').replace(/"/g,'&quot;')}" loading="lazy">`
             : `<span class="ah-piece-icon">${p.icon}</span>`
           }
         </div>
@@ -1323,7 +1323,7 @@ const I18N = {
   'cc.availability.val': {es:'Inmediata: Freelance y Studio', en:'Immediate: Freelance & Studio'},
   'about.title': {es:'SOBRE<br><em>NICOLAS</em>', en:'ABOUT<br><em>NICOLAS</em>'},
   'about.skills': {es:'HABILIDADES', en:'SKILLS'},
-  'about.skills.design': {es:'DISEÑO &amp; UX', en:'DESIGN &amp; UX'},
+  'about.skills.design': {es:'DISEÑO & UX', en:'DESIGN & UX'},
   'about.skills.dev': {es:'DESARROLLO', en:'DEVELOPMENT'},
   'about.skills.visual': {es:'VISUAL', en:'VISUAL'},
   'about.skills.av': {es:'AUDIOVISUAL', en:'AUDIOVISUAL'},
@@ -1333,7 +1333,7 @@ const I18N = {
   'about.tag.audioedit': {es:'Edición Audio', en:'Audio Editing'},
   'about.experience': {es:'EXPERIENCIA', en:'EXPERIENCE'},
   'exp1.yr': {es:'2025–Actual', en:'2025–Present'},
-  'exp1.role': {es:'Diseño Interactivo &amp; Automatización con IA', en:'Interactive Design &amp; AI Automation'},
+  'exp1.role': {es:'Diseño Interactivo & Automatización con IA', en:'Interactive Design & AI Automation'},
   'exp1.tag': {es:'(freelance)', en:'(freelance)'},
   'exp1.task1': {es:'Diseño y desarrollo de un sistema de generación de contenido con IA (arquitectura de 3 bloques: prompts, creación, publicación multicanal) para un cliente real, escalando a un roadmap de 4 productos SaaS.', en:'Designed and built an AI content-generation system (3-block architecture: prompts, creation, multichannel publishing) for a real client, scaling toward a roadmap of 4 SaaS products.'},
   'exp2.role': {es:'Desarrollo AR', en:'AR Development'},
@@ -1344,7 +1344,7 @@ const I18N = {
   'exp3.task2': {es:'Aplicación de principios de UX para mejorar claridad, interacción y retención del contenido.', en:'Applied UX principles to improve content clarity, interaction and retention.'},
   'exp3.task3': {es:'Diseño de propuestas educativas en entornos virtuales y colaboración con equipos académicos.', en:'Designed educational proposals for virtual environments and collaborated with academic teams.'},
   'about.education': {es:'EDUCACIÓN', en:'EDUCATION'},
-  'edu1.deg': {es:'Diseño de Videojuegos y Contenidos Interactivos', en:'Video Game Design &amp; Interactive Content'},
+  'edu1.deg': {es:'Diseño de Videojuegos y Contenidos Interactivos', en:'Video Game Design & Interactive Content'},
   'edu2.deg': {es:'Diplomado de Animación Motion Graphics', en:'Motion Graphics Animation Diploma'}
 };
 
