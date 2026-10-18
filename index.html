@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="no-js">
 <head>
   <meta charset="UTF-8">
+  <script>document.documentElement.className = 'js';</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NICOLAS MARTINEZ · Interactive Designer</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c0c0f'/%3E%3Cpolygon points='16,2 30,16 16,30 2,16' fill='none' stroke='%2300d4ff' stroke-width='1.5' opacity='.35'/%3E%3Cpolygon points='16,2 30,16 16,30 2,16' fill='none' stroke='%2300d4ff' stroke-width='1.5'/%3E%3Ctext x='16' y='20' font-size='9' font-weight='900' text-anchor='middle' fill='%2300d4ff' font-family='sans-serif'%3ENM%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
   <!-- SEO & Open Graph -->
   <meta name="description" content="Diseñador interactivo con experiencia en videojuegos, AR y proyectos multimedia. Bogotá, Colombia.">
@@ -58,7 +59,20 @@
         <div class="ldr-diamond-fill-wrap">
           <div class="ldr-diamond-fill" id="ldr-fill-diamond"></div>
         </div>
-        <span class="ldr-nm">NM</span>
+        <!-- Pinza NM: se enciende con la carga y hace clac al completarse (ritual de entrada) -->
+        <svg class="ldr-pinza pinza" id="ldr-pinza" viewBox="393 254 270 270" aria-hidden="true">
+          <defs>
+            <filter id="ldr-pinza-glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="ldr-pinza-hit" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="10"/></filter>
+          </defs>
+          <use class="logo-hit" href="#ldr-pinza-main" filter="url(#ldr-pinza-hit)" style="opacity:0"/>
+          <g id="ldr-pinza-main" filter="url(#ldr-pinza-glow)" fill="none" stroke="currentColor" stroke-width="11" stroke-miterlimit="10">
+            <path class="logo-head" d="M473.85,397.43 L440.66,364.24 L440.66,302.96 L472.32,269.77 L580.06,269.77 L611.72,302.96 L611.72,364.24 L578.53,397.43"/>
+            <path class="logo-bolt" d="M557.96,411.26 L514.87,345.96 L546.31,345.96 L473.91,272.32"/>
+            <path class="logo-claw-l" d="M440.66,381.6 L422.28,415.81 L422.28,467.38 L463.64,505.68 L494.79,469.94 L475.89,443.64 L498.87,411.21 L525.55,437.89"/>
+            <path class="logo-claw-r" d="M616.17,381.64 L634.56,415.86 L634.56,467.43 L593.2,505.73 L562.05,469.98 L580.94,443.69 L557.96,411.26 L531.28,437.94"/>
+          </g>
+        </svg>
       </div>
 
       <!-- Track derecho -->
@@ -83,11 +97,7 @@
 <nav class="main-nav">
   <a href="#home" class="nav-logo">
     <div class="nav-logo-icon" aria-hidden="true">
-      <svg viewBox="0 0 100 100" fill="none">
-        <polygon points="50,4 96,50 50,96 4,50" stroke="currentColor" stroke-width="2" opacity=".35"/>
-        <polygon points="50,4 96,50 50,96 4,50" stroke="currentColor" stroke-width="2"/>
-      </svg>
-      <span>NM</span>
+      <img src="pinza-mark.svg" alt="">
     </div>
     <span class="nav-logo-text">PORTFOLIO</span>
   </a>
@@ -198,7 +208,21 @@
         <polygon points="50,14 86,50 50,86 14,50"
                  stroke="currentColor" stroke-width="1.5"/>
       </svg>
-      <img src="Portafolio/Logo_NM.jpg" alt="NM Logo" class="hero-logo-img" id="hero-logo">
+      <!-- Logo Pinza NM (vector de Illustrator, 17 oct). Microinteracciones en logo-pinza.js -->
+      <svg class="hero-logo pinza" id="hero-logo" viewBox="393 254 270 270">
+        <defs>
+          <filter id="pinza-glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="pinza-hit" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9"/></filter>
+        </defs>
+        <use class="logo-hit" href="#pinza-main" filter="url(#pinza-hit)" style="opacity:0"/>
+        <g id="pinza-main" filter="url(#pinza-glow)" fill="none" stroke="currentColor" stroke-width="5" stroke-miterlimit="10">
+          <path class="logo-head" d="M473.85,397.43 L440.66,364.24 L440.66,302.96 L472.32,269.77 L580.06,269.77 L611.72,302.96 L611.72,364.24 L578.53,397.43"/>
+          <path class="logo-bolt" d="M557.96,411.26 L514.87,345.96 L546.31,345.96 L473.91,272.32"/>
+          <path class="logo-claw-l" d="M440.66,381.6 L422.28,415.81 L422.28,467.38 L463.64,505.68 L494.79,469.94 L475.89,443.64 L498.87,411.21 L525.55,437.89"/>
+          <path class="logo-claw-r" d="M616.17,381.64 L634.56,415.86 L634.56,467.43 L593.2,505.73 L562.05,469.98 L580.94,443.69 L557.96,411.26 L531.28,437.94"/>
+          <path class="logo-flash" d="M557.96,411.26 L514.87,345.96 L546.31,345.96 L473.91,272.32" stroke="#FFF4CC" stroke-width="7" stroke-linecap="round" opacity="0"/>
+        </g>
+      </svg>
     </div>
 
 
@@ -215,7 +239,7 @@
 <section id="work">
 
   <div class="s-header" data-reveal>
-    <h2 class="display-title">WORK / <em>ARCHIVE</em></h2>
+    <h2 class="display-title" data-i18n-html="work.title">TRABAJO / <em>ARCHIVO</em></h2>
   </div>
 
   <div class="work-layout">
@@ -224,23 +248,23 @@
     <div class="work-sidebar">
       <button class="cat-btn active" data-cat="all"        onclick="switchCat('all')"        data-reveal>
         <span class="cat-label" data-i18n="cat.all">TODO</span>
-        <span class="cat-count" id="cnt-all">—</span>
+        <span class="cat-count" id="cnt-all">&nbsp;</span>
       </button>
       <button class="cat-btn"        data-cat="ar"         onclick="switchCat('ar')"         data-reveal data-delay="1">
         <span class="cat-label">AR</span>
-        <span class="cat-count" id="cnt-ar">—</span>
+        <span class="cat-count" id="cnt-ar">&nbsp;</span>
       </button>
       <button class="cat-btn"        data-cat="games"      onclick="switchCat('games')"      data-reveal data-delay="2">
         <span class="cat-label" data-i18n="cat.games">JUEGOS</span>
-        <span class="cat-count" id="cnt-games">—</span>
+        <span class="cat-count" id="cnt-games">&nbsp;</span>
       </button>
       <button class="cat-btn"        data-cat="transmedia" onclick="switchCat('transmedia')" data-reveal data-delay="3">
         <span class="cat-label">TRANSMEDIA</span>
-        <span class="cat-count" id="cnt-transmedia">—</span>
+        <span class="cat-count" id="cnt-transmedia">&nbsp;</span>
       </button>
       <button class="cat-btn"        data-cat="art"        onclick="switchCat('art')"        data-reveal data-delay="4">
         <span class="cat-label" data-i18n="cat.art">ARTE</span>
-        <span class="cat-count" id="cnt-art">—</span>
+        <span class="cat-count" id="cnt-art">&nbsp;</span>
       </button>
     </div>
 
@@ -265,7 +289,7 @@
   <div class="id-sidebar">
 
     <div class="id-card" data-reveal>
-      <div class="id-avatar"><span>NM</span></div>
+      <div class="id-avatar"><img src="pinza-mark.svg" alt=""></div>
       <p class="id-name">NICOLAS MARTINEZ</p>
       <p class="id-role">// INTERACTIVE DESIGNER</p>
 
@@ -276,9 +300,9 @@
       </div>
 
       <nav class="social-links" aria-label="Redes y contacto">
-        <a href="https://linkedin.com/in/nicolas-martinez-m" target="_blank" rel="noopener" class="s-link s-link--linkedin">⟁ &nbsp;LINKEDIN</a>
-        <a href="https://wa.me/573186938099" class="s-link s-link--wa" onclick="event.preventDefault();openWaPopup()">⟁ &nbsp;WHATSAPP</a>
-        <a href="mailto:nicolasamartinezm99@gmail.com" class="s-link s-link--email">⟁ &nbsp;EMAIL</a>
+        <a href="https://linkedin.com/in/nicolas-martinez-m" target="_blank" rel="noopener" class="s-link s-link--linkedin"><svg class="s-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LINKEDIN</a>
+        <a href="https://wa.me/573186938099" class="s-link s-link--wa" onclick="event.preventDefault();openWaPopup()"><svg class="s-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WHATSAPP</a>
+        <a href="mailto:nicolasamartinezm99@gmail.com" class="s-link s-link--email"><svg class="s-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>EMAIL</a>
       </nav>
     </div>
 
@@ -287,7 +311,7 @@
       <div class="cc-items">
 
         <div class="cc-item">
-          <div class="cc-ico">@</div>
+          <div class="cc-ico"><svg class="s-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
           <div>
             <p class="cc-sub">EMAIL</p>
             <p class="cc-val"><a href="mailto:nicolasamartinezm99@gmail.com">nicolasamartinezm99@gmail.com</a></p>
@@ -296,7 +320,7 @@
 
         <div class="cc-item">
           <div class="cc-ico">
-            <svg viewBox="0 0 24 24" style="width:12px;height:12px;fill:var(--amber)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <svg viewBox="0 0 24 24" style="width:12px;height:12px;fill:currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           </div>
           <div>
             <p class="cc-sub">WHATSAPP</p>
@@ -305,7 +329,7 @@
         </div>
 
         <div class="cc-item">
-          <div class="cc-ico">▸</div>
+          <div class="cc-ico"><svg class="s-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div>
             <p class="cc-sub" data-i18n="cc.location">UBICACIÓN</p>
             <p class="cc-val">Bogotá, Colombia</p>
@@ -313,7 +337,7 @@
         </div>
 
         <div class="cc-item">
-          <div class="cc-ico">◈</div>
+          <div class="cc-ico"><svg class="s-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div>
           <div>
             <p class="cc-sub" data-i18n="cc.availability">DISPONIBILIDAD</p>
             <p class="cc-val" data-i18n="cc.availability.val">Inmediata: Freelance y Studio</p>
@@ -561,7 +585,7 @@
 
 <div class="wa-popup" id="wa-popup">
   <span class="wa-close" onclick="closeWaPopup()">✕ CERRAR</span>
-  <div class="wa-avatar"><span>NM</span></div>
+  <div class="wa-avatar"><img src="pinza-mark.svg" alt=""></div>
   <p class="wa-name">NICOLAS MARTINEZ</p>
   <p class="wa-status">DISPONIBLE</p>
   <p class="wa-msg">¡Hola! Estoy disponible para proyectos de AR, Games, Transmedia y diseño interactivo. Escríbeme por WhatsApp.</p>
@@ -576,6 +600,7 @@
 <!-- ══════════════════════════════════════════════════════════
      JAVASCRIPT
 ════════════════════════════════════════════════════════════ -->
+<script src="logo-pinza.js"></script>
 <script>
 'use strict';
 
@@ -830,7 +855,7 @@ const BADGE = { ar:'b-ar', games:'b-games', transmedia:'b-transmedia', art:'b-ar
 const CAT_LABEL = { ar:'AR', games:'JUEGOS', transmedia:'TRANSMEDIA', art:'ARTE' };
 const CAT_LABEL_EN = { ar:'AR', games:'GAMES', transmedia:'TRANSMEDIA', art:'ART' };
 const CTA_LABEL_EN = { caseStudy:'VIEW CASE STUDY', hub:'EXPLORE', gallery:'VIEW WORK', modal:'VIEW CASE' };
-const CTA_LABEL_ES = { caseStudy:'VER CASE STUDY', hub:'EXPLORAR', gallery:'VER OBRA', modal:'VER CASO' };
+const CTA_LABEL_ES = { caseStudy:'VER CASO DE ESTUDIO', hub:'EXPLORAR', gallery:'VER OBRA', modal:'VER CASO' };
 
 /* Language-aware field getter: returns p[field+'_en'] when LANG is 'en' and it exists, else p[field] */
 function T(p, field) {
@@ -911,6 +936,7 @@ function switchCat(cat) {
   );
   showProjects(cat);
   document.getElementById('work').scrollIntoView({ behavior: 'smooth' });
+  history.replaceState(null, '', cat === 'all' ? '#work' : '#work-' + cat);
 }
 
 /* ── MODAL ─────────────────────────────────────────────────── */
@@ -958,6 +984,7 @@ function openModal(id) {
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
   _openModalId = id;
+  history.replaceState(null, '', '#p-' + id);
 }
 
 let _openModalId = null;
@@ -965,6 +992,7 @@ function closeModal() {
   document.getElementById('modal').classList.remove('open');
   document.body.style.overflow = '';
   _openModalId = null;
+  if (location.hash.startsWith('#p-')) history.replaceState(null, '', '#work');
 }
 
 document.getElementById('modal').addEventListener('click', e => {
@@ -1168,7 +1196,7 @@ SEC_IDS.forEach(id => { const el = document.getElementById(id); if (el) io.obser
   if (sessionStorage.getItem('nm_loader_seen')) {
     loader.style.display = 'none';
     startHeroTypewriter();
-    startHeroLogo();
+    startHeroLogo(false);
     return;
   }
   sessionStorage.setItem('nm_loader_seen', '1');
@@ -1195,21 +1223,30 @@ SEC_IDS.forEach(id => { const el = document.getElementById(id); if (el) io.obser
       loader.style.display         = 'none';
       document.body.style.overflow = '';
       startHeroTypewriter();
-      startHeroLogo();
+      startHeroLogo(true);   // el loader ya hizo el ritual de la pinza
     }, 180);
   }
 
   loader.addEventListener('click', complete);
 
+  const ldrPinza = window.Pinza ? window.Pinza.mount(document.getElementById('ldr-pinza')) : null;
+  let ldrIgnite = Promise.resolve();
+
   requestAnimationFrame(() => requestAnimationFrame(() => {
     fillLeft.classList.add('ldr-go');
-    st(() => fillDiamond.classList.add('ldr-go'), 720);
+    st(() => {
+      fillDiamond.classList.add('ldr-go');
+      if (ldrPinza) ldrIgnite = ldrPinza.ignite();   // la pinza se enciende mientras sube el relleno
+    }, 720);
     st(() => fillRight.classList.add('ldr-go'),  1140);
   }));
 
   st(() => {
     loader.classList.add('ldr-complete');
-    st(() => {
+    // Ritual: clac al completarse la carga; recién después se abre el loader
+    const sign = () => loader.classList.add('ldr-signed');   // el rombo pasa a mostaza en el choque
+    // espera a que termine el encendido (en equipos lentos puede pasarse de los 1.9 s)
+    ldrIgnite.then(() => ldrPinza ? ldrPinza.clac(sign) : null).then(() => { sign(); if (!skipped) st(() => {
       center.style.transition = 'opacity 200ms ease-out';
       center.style.opacity    = '0';
       st(() => {
@@ -1220,7 +1257,7 @@ SEC_IDS.forEach(id => { const el = document.getElementById(id); if (el) io.obser
           st(complete, 720);
         }, 260);
       }, 200);
-    }, 200);
+    }, 200); });
   }, 1900);
 })();
 
@@ -1247,12 +1284,15 @@ function initScrollReveal() {
 }
 
 /* ── HERO LOGO REVEAL ───────────────────────────────────────── */
-function startHeroLogo() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+function startHeroLogo(afterLoader) {
+  // Con movimiento reducido, igniteHeroLogo deja el logo encendido y quieto
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (window.igniteHeroLogo) window.igniteHeroLogo(true);
+    return;
+  }
   const wrap = document.querySelector('.hero-diamond-wrap');
-  const logo = document.getElementById('hero-logo');
   if (wrap) wrap.classList.add('diamond-ready');
-  if (logo) setTimeout(() => logo.classList.add('logo-visible'), 150);
+  if (window.igniteHeroLogo) setTimeout(() => window.igniteHeroLogo(afterLoader), 150);
 }
 
 /* ── HERO TYPEWRITER ────────────────────────────────────────── */
@@ -1305,6 +1345,7 @@ function startHeroTypewriter() {
 const I18N = {
   'nav.home': {es:'INICIO', en:'HOME'},
   'nav.work': {es:'TRABAJO', en:'WORK'},
+  'work.title': {es:'TRABAJO / <em>ARCHIVO</em>', en:'WORK / <em>ARCHIVE</em>'},
   'cat.games': {es:'JUEGOS', en:'GAMES'},
   'cat.art': {es:'ARTE', en:'ART'},
   'cat.all': {es:'TODO', en:'ALL'},
@@ -1377,6 +1418,19 @@ function setLang(lang) {
 /* ── INIT ──────────────────────────────────────────────────── */
 setLang(LANG);
 initScrollReveal();
+
+/* ── DEEP LINKS ─────────────────────────────────────────────
+   #work-ar, #work-games… abre la categoría; #p-<id> abre ese proyecto */
+(function applyDeepLink() {
+  const h = decodeURIComponent(location.hash.slice(1));
+  const cat = h.match(/^work-(\w+)$/);
+  if (cat && document.querySelector(`.cat-btn[data-cat="${cat[1]}"]`)) { switchCat(cat[1]); return; }
+  const pid = h.match(/^p-(.+)$/);
+  if (pid) {
+    const p = PROJECTS.find(x => String(x.id) === pid[1]);
+    if (p) openModal(p.id);
+  }
+})();
 
 /* ── HEX BACKGROUND — neural pulse animation ─────────────────
    Architecture:
